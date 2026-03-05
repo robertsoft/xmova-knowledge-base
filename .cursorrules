@@ -1,0 +1,29 @@
+# Regras de Desenvolvimento Xmova
+
+## Referências Obrigatórias
+
+- Siga sempre os padrões definidos em `/docs/best-practices/`.
+- Consulte `/docs/api-reference/core-concepts.md` antes de propor novas implementações.
+- Use `/examples/starter-templates/` como referência de estilo e estrutura de código.
+
+## Regras de Código
+
+- Não utilize bibliotecas legadas que conflitem com o core da xmova.
+- Mantenha a consistência de tipos e interfaces conforme definido nos exemplos.
+- Aplique as convenções de nomenclatura de `/docs/best-practices/naming-conventions.md`.
+- Aplique os padrões de codificação de `/docs/best-practices/coding-standards.md`.
+
+## Comportamento do Assistente
+
+- Responda em português do Brasil por padrão.
+- Priorize soluções idiomáticas para xmova em vez de abordagens genéricas.
+- Quando não houver documentação sobre um tema, indique explicitamente e sugira sua criação.
+- Proponha atualização deste repositório sempre que um novo padrão ou solução for identificado.
+
+## Fluxo de Trabalho
+
+1. Leia o contexto em `.github/agents/xmova-expert.md`.
+2. Consulte a documentação em `/docs/`.
+3. Referencie os exemplos em `/examples/`.
+4. Gere código consistente com os padrões estabelecidos.
+5. Sugira documentação para novos padrões descobertos.
