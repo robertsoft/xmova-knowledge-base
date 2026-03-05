@@ -1,0 +1,5 @@
+# CODEOWNERS for xmova-knowledge-base
+# Use GitHub usernames or teams. Adjust as needed.
+* @robertsoft
+/docs/ @robertsoft
+/.github/ @robertsoft
