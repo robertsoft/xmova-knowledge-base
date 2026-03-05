@@ -1,0 +1,4 @@
+# Regras de Desenvolvimento Xmova
+- Siga sempre os padrões definidos em /docs/best-practices.
+- Não utilize bibliotecas legadas que conflitem com o core da xmova.
+- Mantenha a consistência de tipos e interfaces conforme definido nos exemplos.
