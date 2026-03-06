@@ -1,0 +1,17 @@
+ResumoApontamentoUpdate sync=in emptyVerify=false
+	SEQ_DB_DEVICE long
+	tipoApontamento TipoApontamento
+	descricao Str
+	ordemServico ORDEM_SERVICO
+	dataInicial Date
+	dataFinal Date
+	tempo long
+	duracao Str
+	flagApontouFim boolean
+	flagDeslocamento boolean
+	server name=Apontamento_Mobile
+	events
+		beforeSyncSave
+			ResumoApontamento reg = selectFirst from ResumoApontamento WHERE SEQ_DB_DEVICE == :SEQ_DB_DEVICE
+			if  reg == null
+				INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, ordemServico, dataInicial, dataFinal, tempo, duracao, flagApontouFim, flagDeslocamento) VALUES (:SEQ_DB_DEVICE, :tipoApontamento, :descricao, :ordemServico, :dataInicial, :dataFinal, :tempo, :duracao, :flagApontouFim, :flagDeslocamento)

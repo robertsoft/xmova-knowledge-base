@@ -1,0 +1,18 @@
+MensagemAgendada sync=in emptyVerify=false messageScheduled
+	id int
+	title Str
+	text Str
+	hour Str
+	date Str
+	fixedPoint int externalName=FLAG_TURNO_ABERTO
+	server name=Mensagem_Agendada_Mobile
+	events
+		onShowScheduledMessage
+			Integer anoAtual = getYear
+			Integer mesAtual = getMonth
+			Integer diaAtual = getDay
+			Integer diaSemanaAtual = getWeekDay
+			if diaSemanaAtual != 1
+				Feriado f = SelectFirst from Feriado where DIA == diaAtual AND MES == mesAtual AND ANO == anoAtual
+				return f == null
+			return false

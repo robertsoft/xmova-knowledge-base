@@ -1,0 +1,19 @@
+ORDEM_SERVICO sync=in searchFields=CODIGO,DESCRICAO typeSearchContains emptyVerify=false
+	SEQ_DB long hide
+	CODIGO int
+	DESCRICAO Str
+	CLIENTE_SEQ_DB CLIENTE
+	CLIENTE_PROJETO_SEQ_DB PROJETO
+	CLIENTE_LOCAL_SEQ_DB CLIENTE_LOCAL
+	PRODUTO_SEQ_DB PRODUTO
+	DATA_ABERTURA String
+	DATA_INICIO_PREVISTO Date
+	DATA_FIM_PREVISTO Date
+	FLAG_ASSINADO boolean
+	flagAssinado boolean notSync
+	statusOS int notSync
+	FLAG_LISTA_REALIZADA boolean
+	flagListaRealizada boolean notSync
+	FLAG_LISTA_ENVIADA boolean
+	flagListaEnviada boolean notSync
+	server name=Ordem_Servico_Mobile

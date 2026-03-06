@@ -1,0 +1,13 @@
+ResumoTermoCautelar cleanupDays=7
+	id inc
+	SEQ_DB_DEVICE long
+	ordemServico ORDEM_SERVICO
+	dataInicial Date
+	chamado Str
+	nomeRecebedor Str
+	matriculaRecebedor Str
+	eqpColetor Str
+	celular Str mask="(99)\99999-9999"
+	email Str
+//------------FIM TERMO CAUTELAR----------------------
+//------------BNC-------------------------------------	

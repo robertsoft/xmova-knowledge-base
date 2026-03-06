@@ -1,0 +1,4 @@
+FUNCAO sync=in descriptionFields=DESCRICAO searchFields=DESCRICAO typeSearchContains
+	SEQ_DB long hide
+	DESCRICAO Str
+	server name=Funcao_Mobile

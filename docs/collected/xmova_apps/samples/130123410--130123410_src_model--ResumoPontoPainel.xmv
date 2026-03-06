@@ -1,0 +1,11 @@
+ResumoPontoPainel sync=in emptyVerify=false cleanupDays=7
+    id inc
+    ENTRADA String
+    SAIDA String
+    ENTRADA2 String
+    SAIDA2 String
+    ENTRADA3 String
+    SAIDA3 String
+    HORAS_A_TRABALHAR String
+    SUJESTAO_SAIDA String
+    server name=ResumoPonto_Mobile

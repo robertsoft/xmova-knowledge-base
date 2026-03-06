@@ -1,0 +1,5 @@
+CLASSE_OPERACIONAL sync=in emptyVerify=false descriptionFields=CODIGO,DESCRICAO searchFields=CODIGO,DESCRICAO typeSearchContains
+	SEQ_DB long hide
+	CODIGO Str
+	DESCRICAO Str
+	server name=Classe_Operacional_Mobile

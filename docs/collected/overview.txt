@@ -1,0 +1,21 @@
+Xmova Apps - overview
+
+Languages detected:
+     32 unknown
+
+Top-level entries frequency (top 20):
+     64 .gitignore
+     62 xmova-compiler-project.properties
+     62 src
+     18 .vscode
+     16 build
+      2 scripts
+      2 model_prod.txt
+      2 model_homol.txt
+      2 logs
+      2 lang_prod.txt
+      2 lang_homol.txt
+      2 LANG.xmv
+      2 docs
+      2 app_prod.txt
+      2 app_homol.txt

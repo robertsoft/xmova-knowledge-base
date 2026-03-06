@@ -1,0 +1,27 @@
+MenuResumoPonto notSavedMessage noFinishAction noSyncAction
+    SEQ_DB_DEVICE long uuid
+    crudActions
+		Resumo
+			isVisible
+				return true
+			show ResumoPontoDetail
+			// show ResumoApontamentoDetails
+		Semanal
+			isVisible
+				ResumoApontamentoSemanal rs = SelectFirst from ResumoApontamentoSemanal
+				return rs != null
+			show ResumoApontamentoSemanalDetails
+		Banco
+			isVisible
+				// ResumoBancoHoras bh = SelectFirst FROM ResumoBancoHoras
+				// return bh != null
+				return true
+			show ResumoBancoHorasDetails
+		EspelhoPonto
+			isVisible
+				// ResumoEspelhoPonto rp = SelectFirst FROM ResumoEspelhoPonto
+				// return rp != null
+				return true
+			show ResumoEspelhoPontoDetails
+        Voltar
+			CrudBack entity=MenuResumoPonto

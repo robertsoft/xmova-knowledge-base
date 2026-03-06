@@ -1,0 +1,7 @@
+Equipamento sync=in searchFields=CODIGO,DESCRICAO descriptionFields=CODIGO,DESCRICAO TypeSearchContains
+	SEQ_DB long
+	CODIGO String
+	DESCRICAO String
+	EQP_CLASSE_SEQ_DB Eqp_Classe
+	FLAG_AVARIA int
+	server name=Equipamento_Mobile

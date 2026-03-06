@@ -1,0 +1,9 @@
+MenuSolicitarAdiantamento cleanupDays=1
+	id inc
+	boletim Boletim
+	dateMobile Now
+	events
+		afterInsert
+			Boletim b = boletim
+			b.telaPrincipal = %TelaAdiantamento
+			save b

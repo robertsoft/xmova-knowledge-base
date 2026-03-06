@@ -1,0 +1,6 @@
+MarteEmInstalacao descriptionFields=nomeCliente,nomeEPS,frota searchFields=nomeCliente,nomeEPS,frota typeSearchContains
+	id inc
+	SEQ_DB_DEVICE long
+	nomeCliente text
+	nomeEPS text
+	frota text

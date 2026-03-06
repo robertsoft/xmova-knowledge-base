@@ -1,0 +1,65 @@
+Boletim_RH sync=out cleanupDays=7 noFinishAction noSyncAction
+	id inc	
+	SEQ_DB_DEVICE long uuid
+	seqMecanico SeqMecanico
+	efetivo_funcionario Efetivo_Funcionario
+	dataInicio Now timeTypeField=tipoDataInicio
+	flagOnlineInicio int notFill onlineFlagCreate
+	locationInicio Location inlineData
+	apontamentoLiberacao ApontamentoLiberacao transient notFill add ignoreExternal
+	centralMensagem CentralMensagem transient notFill add ignoreExternal
+	menuLivre MenuLivre transient notFill add ignoreExternal
+	menuCheckList MenuChecklist transient notFill add ignoreExternal
+	dataFim Now fill=Finish timeTypeField=tipoDataFim
+	flagOnlineFim int notFill onlineFlagFinish
+	locationFim Location inlineData fill=Finish
+	confirmaFinalizarBoletimRH boolean fill=Finish notShowNo ignoreExternal
+	events
+		afterFinish
+			actionbarsubtitle @
+			dropTable ResumoApontamento
+			dropTable ResumoMensagemRecebida
+			dropTable ResumoMensagemEnviada
+			EquipamentoLivre eqps = Select * FROM EquipamentoLivre WHERE flagApontado == true and flagMecanica == true
+			for e in eqps
+			//	INSERT INTO BoletimFim (SEQ_DB_DEVICE, efetivo_funcionario, equipamento, tipoEquipamento) VALUES (e.SEQ_DB_DEVICE_MASTER_SEQ_DB, :efetivo_funcionario.SEQ_DB, e.SEQ_DB, e.TIPO)
+				UPDATE EquipamentoLivre SET flagApontado = false, flagMecanica = false, SEQ_DB_DEVICE_MASTER_SEQ_DB = null WHERE SEQ_DB == e.SEQ_DB
+			UPDATE Grupo_Questao set flagRespondido = false
+			dropTable ResumoCheckList
+			UPDATE Questao set flagRespondido = false
+			dropTable ChecklistPreenchido
+	crudActions
+		MenuLivre
+			fill menuLivre
+		Checklist
+			isVisible
+				return true
+			fill menuCheckList
+		ApontamentoLiberacao
+			fill apontamentoLiberacao
+		ResumoCheckList
+			isVisible
+				ResumoCheckList q1 = selectFirst FROM ResumoCheckList
+				return q1 != null
+			show ResumoCheckListDetail
+		Resumo
+			isVisible
+				ResumoApontamento resumo = SelectFirst from ResumoApontamento
+				return resumo != null
+			show ResumoApontamentoDetail
+		FinalizarBoletim
+			isVisible
+				return true
+			finishRecord
+		CentralMensagem	
+			fill centralMensagem
+		AtualizarDados
+			sync
+	fieldEvents
+		autoFill
+			efetivo_funcionario
+				Efetivo_Funcionario f = SelectFirst from Efetivo_Funcionario where SEQ_DB == :seqMecanico
+				return f
+		getInputScreenLabel
+			confirmaFinalizarBoletimRH
+				return lang=custom.msgCustomconfirmaFinalizarBoletimRH vars=efetivo_funcionario:efetivo_funcionario

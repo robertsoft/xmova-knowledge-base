@@ -1,0 +1,10 @@
+ApontamentoRespostaEmail sync=out cleanupDays=7
+	id inc ignoreExternal
+	SEQ_DB_DEVICE_MASTER long
+	SEQ_DB_DEVICE_APONTAMENTO long
+	SEQ_DB_DEVICE long uuid
+	data Date
+	dataMobile now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	seqFuncionario SeqFuncionario hide
+	ordemServico ORDEM_SERVICO

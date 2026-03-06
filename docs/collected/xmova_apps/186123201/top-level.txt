@@ -1,0 +1,9 @@
+.gitignore
+app_homol.txt
+app_prod.txt
+lang_homol.txt
+lang_prod.txt
+model_homol.txt
+model_prod.txt
+src
+xmova-compiler-project.properties

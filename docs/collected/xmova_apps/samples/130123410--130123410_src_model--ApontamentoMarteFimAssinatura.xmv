@@ -1,0 +1,34 @@
+ApontamentoMarteFimAssinatura sync=out cleanupDays=7 confirm=Create
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	SEQ_DB_DEVICE long autoFill=boletim.SEQ_DB_DEVICE_MARTE
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	pedeMarte boolean ignoreExternal
+	flagOperadorPresente boolean
+	nomeOperador Str fillCondition="flagOperadorPresente == true"
+	assinaturaOperador Binary draw fillCondition="flagOperadorPresente == true" hide
+	marte _MARTE_STATUS inlineData
+	flagMarteConectado boolean notFill
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	server name=Apontamento_Marte
+	events
+		afterInsert
+			Boletim b = boletim
+			b.telaPrincipal = %TelaMarte
+			b.flagMarteAssinaturaApontada = true
+			save b
+	fieldEvents
+		afterFill
+			marte
+				if marte == null
+					flagMarteConectado = 0
+				else
+					flagMarteConectado = 1
+		autoFill
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false
+//Entidades que recebem os valores através de métodos definidos no DB(entry_points). São usadas na criação das telas

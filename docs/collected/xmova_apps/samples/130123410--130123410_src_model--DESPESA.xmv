@@ -1,0 +1,9 @@
+DESPESA sync=in descriptionFields=CODIGO,DESCRICAO searchFields=CODIGO,DESCRICAO typeSearchContains
+	SEQ_DB long hide
+	CODIGO int
+	DESCRICAO Str
+	TIPO_DESPESA int
+	FLAG_APONTA_OBSERVACAO int
+	SOLICITA_TIPO int
+	TIPO_PAGAMENTO_LOVN List<TIPO_PAGAMENTO>
+	server name=Despesa_Mobile

@@ -1,0 +1,4 @@
+Filial sync=beforeInstall
+	SEQ_DB long
+	NOME Str
+	EMPRESA_SEQ_DB Empresa

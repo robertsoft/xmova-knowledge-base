@@ -1,0 +1,6 @@
+ChecklistPreenchido
+	id inc
+	grupo_questao long
+	questao long
+	equipamento long
+//------------------------ RESPOSTA CHECKLIST --------------------------

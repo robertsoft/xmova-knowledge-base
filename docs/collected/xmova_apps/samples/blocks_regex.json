@@ -1,0 +1,412 @@
+[
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoApontamentoDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 13,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoApontamento",
+      "\t\t\trecordDetail fields=tipoApontamento,descricao,dataInicial,dataFinal,duracao labels",
+      "\t\trecordList getRecords=_resumoTotal",
+      "\t\t\trecordDetail fields=duracaoServico,duracaoParada,duracaoDeslocamento labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_resumoApontamento = Select * FROM ResumoApontamento",
+      "\t\t\t_resumoTotal = Select * FROM ResumoTotal",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoApontamento = null",
+      "\t\t\t_resumoTotal = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoApontamento",
+        "value": "Select * FROM ResumoApontamento",
+        "raw": "_resumoApontamento = Select * FROM ResumoApontamento"
+      },
+      {
+        "key": "_resumoTotal",
+        "value": "Select * FROM ResumoTotal",
+        "raw": "_resumoTotal = Select * FROM ResumoTotal"
+      },
+      {
+        "key": "_resumoApontamento",
+        "value": "null",
+        "raw": "_resumoApontamento = null"
+      },
+      {
+        "key": "_resumoTotal",
+        "value": "null",
+        "raw": "_resumoTotal = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoApontamentoSemanalDetails.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoApontamentoSemanal",
+      "\t\t\trecordDetail fields=DIA,ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3 labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_resumoApontamentoSemanal = select * from ResumoApontamentoSemanal",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoApontamentoSemanal = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoApontamentoSemanal",
+        "value": "select * from ResumoApontamentoSemanal",
+        "raw": "_resumoApontamentoSemanal = select * from ResumoApontamentoSemanal"
+      },
+      {
+        "key": "_resumoApontamentoSemanal",
+        "value": "null",
+        "raw": "_resumoApontamentoSemanal = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoBancoHorasDetails.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoBancoHoras",
+      "\t\t\trecordDetail fields=SALDO,HORAS_TRABALHADAS labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_resumoBancoHoras = select * from ResumoBancoHoras",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoBancoHoras = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoBancoHoras",
+        "value": "select * from ResumoBancoHoras",
+        "raw": "_resumoBancoHoras = select * from ResumoBancoHoras"
+      },
+      {
+        "key": "_resumoBancoHoras",
+        "value": "null",
+        "raw": "_resumoBancoHoras = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoBNCDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoBNC",
+      "\t\t\trecordDetail fields=descricaoAtividade,ordemServico,dataInicial,equipamento,irregularidade,tratativa,cliente labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_resumoBNC = Select * FROM ResumoBNC",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoBNC = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoBNC",
+        "value": "Select * FROM ResumoBNC",
+        "raw": "_resumoBNC = Select * FROM ResumoBNC"
+      },
+      {
+        "key": "_resumoBNC",
+        "value": "null",
+        "raw": "_resumoBNC = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoEspelhoLapsoDetails.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoEspelhoLapso",
+      "\t\t\trecordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_resumoEspelhoLapso = select * from ResumoEspelhoLapso",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoEspelhoLapso = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoEspelhoLapso",
+        "value": "select * from ResumoEspelhoLapso",
+        "raw": "_resumoEspelhoLapso = select * from ResumoEspelhoLapso"
+      },
+      {
+        "key": "_resumoEspelhoLapso",
+        "value": "null",
+        "raw": "_resumoEspelhoLapso = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoEspelhoPontoDetails.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 14,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoEspelhoPonto",
+      "\t\t\trecordDetail fields=DATA,ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3,HORAS_A_TRABALHAR,HORAS_TRABALHADAS,HORAS_EXTRAS labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_resumoEspelhoPonto = select * from ResumoEspelhoPonto",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoEspelhoPonto = null",
+      "        defineRowColor entity=ResumoEspelhoPonto",
+      "            if FALTOU_HORAS == 1",
+      "                return @#ffb6b6",
+      "            if FALTOU_HORAS == 0",
+      "                return @#a1ffa7"
+    ],
+    "kv": [
+      {
+        "key": "_resumoEspelhoPonto",
+        "value": "select * from ResumoEspelhoPonto",
+        "raw": "_resumoEspelhoPonto = select * from ResumoEspelhoPonto"
+      },
+      {
+        "key": "_resumoEspelhoPonto",
+        "value": "null",
+        "raw": "_resumoEspelhoPonto = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoLapsosSemanalDetails.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoLapsosSemanal",
+      "\t\t\trecordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_resumoLapsosSemanal = select * from ResumoLapsosSemanal",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoLapsosSemanal = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoLapsosSemanal",
+        "value": "select * from ResumoLapsosSemanal",
+        "raw": "_resumoLapsosSemanal = select * from ResumoLapsosSemanal"
+      },
+      {
+        "key": "_resumoLapsosSemanal",
+        "value": "null",
+        "raw": "_resumoLapsosSemanal = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoPontoDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 3,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoPontoPainel ResumoPontoPainel"
+    ],
+    "kv": []
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoPontoDetail.xmv",
+    "type": "recorddetail",
+    "start_line": 5,
+    "end_line": 11,
+    "lines": [
+      "\t\t\trecordDetail fields=ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3,HORAS_A_TRABALHAR,SUJESTAO_SAIDA labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "            sync",
+      "\t\t\t_resumoPontoPainel = select * from ResumoPontoPainel",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoPontoPainel = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoPontoPainel",
+        "value": "select * from ResumoPontoPainel",
+        "raw": "_resumoPontoPainel = select * from ResumoPontoPainel"
+      },
+      {
+        "key": "_resumoPontoPainel",
+        "value": "null",
+        "raw": "_resumoPontoPainel = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoSubOSDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 7,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoSubOS",
+      "\t\t\trecordDetail fields=OS_DESC,CODIGO,DESCRICAO,DATA_ABERTURA,TIPO_SUB_OS,OS_SEQ_DB,EQP_DESC,STATUS_SUB_OS_DESC labels",
+      "\tevents",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoSubOS = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoSubOS",
+        "value": "null",
+        "raw": "_resumoSubOS = null"
+      }
+    ]
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoTermoCautelarDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_resumoTermoCautelar",
+      "\t\t\trecordDetail fields=SEQ_DB_DEVICE,ordemServico,dataInicial,chamado,nomeRecebedor,matriculaRecebedor,eqpColetor,celular,email labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_resumoTermoCautelar = Select * FROM ResumoTermoCautelar",
+      "\t\tbeforeClose",
+      "\t\t\t_resumoTermoCautelar = null"
+    ],
+    "kv": [
+      {
+        "key": "_resumoTermoCautelar",
+        "value": "Select * FROM ResumoTermoCautelar",
+        "raw": "_resumoTermoCautelar = Select * FROM ResumoTermoCautelar"
+      },
+      {
+        "key": "_resumoTermoCautelar",
+        "value": "null",
+        "raw": "_resumoTermoCautelar = null"
+      }
+    ]
+  },
+  {
+    "file": "186123125--186123125_src_app_screens--MensagensAgendadaDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_msgAgendada",
+      "\t\t\trecordDetail fields=id,title,text,hora,DIA_SEMANA,FLAG_TURNO_ABERTO labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_msgAgendada = select * from MensagemAgendada",
+      "\t\tbeforeClose",
+      "\t\t\t_msgAgendada = null"
+    ],
+    "kv": [
+      {
+        "key": "_msgAgendada",
+        "value": "select * from MensagemAgendada",
+        "raw": "_msgAgendada = select * from MensagemAgendada"
+      },
+      {
+        "key": "_msgAgendada",
+        "value": "null",
+        "raw": "_msgAgendada = null"
+      }
+    ]
+  },
+  {
+    "file": "186123125--186123125_src_app_screens--MensagensEnviadasDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 4,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_msgEnviadas",
+      "\t\t\trecordDetail fields=data,descricao labels"
+    ],
+    "kv": []
+  },
+  {
+    "file": "186123125--186123125_src_app_screens--MensagensRecebidasDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 4,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_msgRecebidas",
+      "\t\t\trecordDetail fields=date,data,descricao,remetente labels"
+    ],
+    "kv": []
+  },
+  {
+    "file": "186123125--186123125_src_app_screens--ResumoApontamentoDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_lastApontamento",
+      "\t\t\trecordDetail fields=data,equipamento,oper labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_lastApontamento = select * from ResumoApontamento",
+      "\t\tbeforeClose",
+      "\t\t\t_lastApontamento = null"
+    ],
+    "kv": [
+      {
+        "key": "_lastApontamento",
+        "value": "select * from ResumoApontamento",
+        "raw": "_lastApontamento = select * from ResumoApontamento"
+      },
+      {
+        "key": "_lastApontamento",
+        "value": "null",
+        "raw": "_lastApontamento = null"
+      }
+    ]
+  },
+  {
+    "file": "186123125--186123125_src_app_screens--ResumoCheckListDetail.xmv",
+    "type": "views",
+    "start_line": 2,
+    "end_line": 9,
+    "lines": [
+      "\tviews",
+      "\t\trecordList getRecords=_checklistRespondido",
+      "\t\t\trecordDetail fields=data,descricao,tipoResposta,quantidadeAbastecida,observacao,equipamento,funcionario labels",
+      "\tevents",
+      "\t\tbeforeInit",
+      "\t\t\t_checklistRespondido = select * from ResumoCheckList",
+      "\t\tbeforeClose",
+      "\t\t\t_checklistRespondido = null"
+    ],
+    "kv": [
+      {
+        "key": "_checklistRespondido",
+        "value": "select * from ResumoCheckList",
+        "raw": "_checklistRespondido = select * from ResumoCheckList"
+      },
+      {
+        "key": "_checklistRespondido",
+        "value": "null",
+        "raw": "_checklistRespondido = null"
+      }
+    ]
+  }
+]

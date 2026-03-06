@@ -1,0 +1,56 @@
+ApontamentoChecklist sync=out cleanupDays=7
+	id inc ignoreExternal
+	menuChecklist MenuChecklist ignoreExternal
+	data Now ignoreExternal
+	boletim Boletim hide ignoreExternal
+	TIPO int autoFill=boletim.tipoChecklist
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE_APONTAMENTO long autoFill=boletim.SEQ_DB_DEVICE_DESLOCAMENTO
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	showChecklist boolean autoFill=0 ignoreExternal
+	apontar boolean ignoreExternal
+	SEQ_DB_DEVICE_BNC long autoFill=boletim.SEQ_DB_DEVICE_BNC
+	todosApontados boolean notShowNo notShowYes fillCondition="apontar == false" ignoreExternal
+	grupoQuestao Grupo_Questao fillCondition="apontar == true" ignoreExternal
+	checklistDescricao Str autoFill=grupoQuestao.DESCRICAO fillCondition="apontar == true" ignoreExternal
+	respostas List<Resposta> getManyRecords="select * from Questao WHERE GRUPO_QUESTAO_SEQ_DB == :grupoQuestao.SEQ_DB and flagRespondido == false" fillCondition="apontar == true" ignoreExternal
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast FROM Boletim
+			menuChecklist
+				return SelectLast FROM MenuChecklist
+			apontar
+				Grupo_Questao q1 = SelectFirst FROM Grupo_Questao WHERE TIPO == :TIPO AND flagRespondido == false
+				if q1 != null
+					return true
+				else
+					Boletim b = boletim
+					b.flagChecklistRespondido = true
+					if TIPO == %TipoSaidaACampo
+						b.telaPrincipal = %TelaDeslocamento
+					else
+						if TIPO == %TipoInicioEquipamento || TIPO == %TipoFimEquipamento
+							b.telaPrincipal = %TelaApontamento
+						else
+							if boletim.flagMarteAssinaturaApontada == false
+								b.telaPrincipal = %TelaMarteFim
+							else
+								b.telaPrincipal = %TelaMarte
+					save b
+				return false
+		filterListRecord
+			grupoQuestao
+				if listRecord.TIPO == :TIPO
+					return listRecord.flagRespondido == false
+				return false
+		afterFill
+			checklistDescricao
+				save record
+			respostas
+				UPDATE Grupo_Questao SET flagRespondido = true WHERE SEQ_DB == :grupoQuestao.SEQ_DB				
+				dropTable Resposta
+				if TIPO == %TipoSaidaACampo
+					Boletim b = SelectLast FROM Boletim
+					if b.flagEmailChecklist == true						
+						INSERT INTO ApontamentoRespostaEmail (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE_APONTAMENTO, data, ordemServico) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE_APONTAMENTO, :data, :ordemServico)

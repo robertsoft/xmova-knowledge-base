@@ -1,0 +1,132 @@
+ApontamentoAtividade sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	atividade ATIVIDADE
+	marte _MARTE_STATUS inlineData
+	flagMarte boolean autoFill=atividade.FLAG_MARTE
+	flagMarteConectado boolean notFill
+	flagAntena boolean autoFill=atividade.FLAG_ANTENA
+	antenaID Str maxValue=50 fillCondition="flagAntena == true"
+	detalheAtividade text acceptEmpty
+	tipoApontamento TipoApontamento autoFill=%TipoAtividade
+	flagLocal boolean fillCondition="atividade.FLAG_LOCAL == true"
+	localAtividade text fillCondition="flagLocal == true"
+	flagListaPresenca boolean fillCondition="atividade.FLAG_LISTA_PRESENCA == true"
+	flagDeslocamento boolean autoFill=atividade.FLAG_DESLOCAMENTO
+	flagEquipamento boolean autoFill=atividade.FLAG_EQUIPAMENTO
+	flagConfirmaDeslocamento boolean notShowNo fillCondition="flagDeslocamento == true"
+	flagResponderChecklist boolean notFill
+	flagResponderChecklistEquipamento boolean notFill
+	seqPonto long notFill
+	menuChecklist MenuChecklist transient notFill add ignoreExternal
+	apontarSubOS boolean autoFill=true fillCondition="atividade.FLAG_SUB_OS == true && (atividade.FLAG_MANUTENCAO == true || atividade.FLAG_INSTALACAO == true || atividade.FLAG_DESMOBILIZACAO == true)"
+	apontamentoSubOSManut ApontamentoSubOSManut add transient fillCondition="apontarSubOS == true && atividade.FLAG_MANUTENCAO == true" ignoreExternal
+	apontamentoSubOSInstall ApontamentoSubOSInstall add transient fillCondition="apontarSubOS == true && atividade.FLAG_INSTALACAO == true" ignoreExternal
+	apontamentoSubOSDesmobilizacao ApontamentoSubOSDesmobilizacao add transient fillCondition="apontarSubOS == true && atividade.FLAG_DESMOBILIZACAO == true" ignoreExternal
+	DESC1 String notFill ignoreExternal
+	// motivoDesconectado text fillCondition="flagMarteConectado == 0"
+	server name=Apontamento
+	events
+		afterInsert
+			ResumoApontamento resumo = SelectFirst FROM ResumoApontamento WHERE flagApontouFim == false
+			if resumo != null
+				Long tempo = difDateMilli resumo.dataInicial data
+				String duracao = formatDateMilli tempo
+				resumo.tempo = tempo
+				resumo.duracao = duracao
+				resumo.dataFinal = data
+				resumo.flagApontouFim = true
+				save resumo
+			INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, ordemServico, dataInicial, flagApontouFim, flagDeslocamento) VALUES (:SEQ_DB_DEVICE, :tipoApontamento, :atividade.DESCRICAO, :ordemServico, :data, false, :flagDeslocamento)
+			Boletim b = boletim
+			if boletim.flagEmRefeicao == true
+				b.flagEmRefeicao = false
+				save b
+			if b.flagRealizouInicioPonto == false
+				b.flagRealizouInicioPonto = true
+			save b
+			flagResponderChecklist = false
+			if flagDeslocamento == true
+				b.flagEmailChecklist = false
+				b.flagResponderChecklist = false
+				b.telaPrincipal = %TelaDeslocamento
+				b.apontarDeslocamento = true
+				b.atividadeDeslocamento = atividade
+				b.detalheAtividadeDeslocamento = detalheAtividade
+				b.SEQ_DB_DEVICE_DESLOCAMENTO = SEQ_DB_DEVICE
+				if b.flagPrimeiroAptOS == true
+					b.flagPrimeiroAptOS = false
+					dropTable Resposta
+					UPDATE Grupo_Questao SET flagRespondido = false
+					UPDATE Questao SET flagRespondido = false
+					Grupo_Questao q = SelectFirst FROM Grupo_Questao WHERE TIPO == %TipoSaidaACampo AND flagRespondido == false
+					if q != null
+						flagResponderChecklist = true
+						b.flagResponderChecklist = true
+						b.telaPrincipal = %TelaDeslocamentoChecklist
+						b.tipoChecklist = %TipoSaidaACampo
+			else
+				b.flagResponderChecklist = false
+				b.telaPrincipal = %TelaApontamento
+				b.atividadeDeslocamento = null
+				b.detalheAtividadeDeslocamento = null
+				b.apontarDeslocamento = false
+				b.SEQ_DB_DEVICE_DESLOCAMENTO = null
+			if flagListaPresenca == true
+				b.SEQ_DB_DEVICE_LISTA_PRESENCA = SEQ_DB_DEVICE
+			else
+				b.SEQ_DB_DEVICE_LISTA_PRESENCA = null
+			b.flagMarte = flagMarte
+			b.dataApontamento = data
+			if b.finalizarDeslocamento == true
+				INSERT INTO ApontamentoDeslocamentoFim (SEQ_DB_DEVICE_MASTER,SEQ_DB_DEVICE,dataFimDeslocamento) VALUES (:SEQ_DB_DEVICE_MASTER,b.seqUltDeslocamento, :data)
+				b.finalizarDeslocamento = false
+			save b
+			sync background
+			if flagListaPresenca == true
+				crud MenuListaPresenca
+			else
+				if flagResponderChecklist == true
+					crud MenuChecklist
+				else
+					if flagConfirmaDeslocamento == true
+						crud Deslocamento
+					else
+						toast @"Atividade Registrada com Sucesso!"
+	fieldEvents
+		filterListRecord
+			atividade
+				ORDEM_SERVICO_ATIVIDADE osa = SelectFirst from ORDEM_SERVICO_ATIVIDADE where ORDEM_SERVICO_SEQ_DB == :ordemServico.SEQ_DB and ATIVIDADE_SEQ_DB == listRecord.SEQ_DB
+				if osa != null
+					if listRecord.FLAG_LISTA_PRESENCA == true
+						ORDEM_SERVICO os = SelectFirst from ORDEM_SERVICO where SEQ_DB == :ordemServico.SEQ_DB and flagListaEnviada == false and FLAG_LISTA_ENVIADA == false
+						return os != null
+					else
+						return true
+				return false
+		afterFill
+			flagEquipamento
+				if flagEquipamento == true
+					flagResponderChecklistEquipamento = true
+					Boletim b = SelectLast from Boletim
+					if b ! null
+						b.flagResponderChecklistInicioEquipamento = true
+						b.flagResponderChecklistFimEquipamento = true
+						save b
+			flagConfirmaDeslocamento
+				save record saveSyncOut
+			marte
+				if marte == null
+					flagMarteConectado = 0
+					// toast @"entrou no marte == null"
+					// goToField motivoDesconectado
+				else
+					flagMarteConectado = 1

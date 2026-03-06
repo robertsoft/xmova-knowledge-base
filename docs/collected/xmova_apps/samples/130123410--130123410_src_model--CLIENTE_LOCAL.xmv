@@ -1,0 +1,5 @@
+CLIENTE_LOCAL sync=in descriptionFields=DESCRICAO searchFields=DESCRICAO typeSearchContains emptyVerify=false
+	SEQ_DB long hide
+	DESCRICAO Str
+	CLIENTE_PROJETO_SEQ_DB long
+	server name=Cliente_Local_Mobile

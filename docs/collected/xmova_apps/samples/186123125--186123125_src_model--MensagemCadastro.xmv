@@ -1,0 +1,4 @@
+MensagemCadastro sync=in emptyVerify=false
+	SEQ_DB long hide
+	DESCRICAO Str
+	server name=Mensagem_Cadastro_Mobile

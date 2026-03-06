@@ -1,0 +1,31 @@
+ApontamentoServico sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	marte _MARTE_STATUS inlineData
+	pedeMarte boolean ignoreExternal
+	flagMarteConectado boolean notFill
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MARTE long autoFill=boletim.SEQ_DB_DEVICE_MARTE
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	problema text
+	diagnostico text
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	fieldEvents
+		afterFill
+			marte
+				if marte == null
+					flagMarteConectado = 0
+				else
+					flagMarteConectado = 1
+		autoFill
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false

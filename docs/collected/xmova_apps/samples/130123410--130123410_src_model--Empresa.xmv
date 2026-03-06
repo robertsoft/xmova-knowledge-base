@@ -1,0 +1,4 @@
+Empresa sync=beforeInstall|in
+	SEQ_DB long
+	NOME String
+//Busca de informações no BD antes da instalação

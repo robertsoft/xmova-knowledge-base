@@ -1,0 +1,4 @@
+syncInterval 1m
+waitForNetworkTimeout 4s
+connectionTimeout 30s
+readTimeout 60s

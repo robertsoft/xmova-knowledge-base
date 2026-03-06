@@ -1,0 +1,5 @@
+ITEM sync=in descriptionFields=ID,DESCRICAO searchFields=ID,DESCRICAO typeSearchContains
+	SEQ_DB long hide
+	ID int
+	DESCRICAO Str
+	server name=Item_Mobile

@@ -1,0 +1,5 @@
+Auth
+	idEmpresa Empresa
+	idFilial Filial
+	idLocal Local
+	uuidDevice Str

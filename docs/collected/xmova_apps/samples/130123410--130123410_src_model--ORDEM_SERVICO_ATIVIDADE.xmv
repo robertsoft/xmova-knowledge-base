@@ -1,0 +1,4 @@
+ORDEM_SERVICO_ATIVIDADE sync=in emptyVerify=false
+	ORDEM_SERVICO_SEQ_DB long
+	ATIVIDADE_SEQ_DB long
+	server name=Ordem_Servico_Atividade_Mobile

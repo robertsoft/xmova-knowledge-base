@@ -1,0 +1,5 @@
+.gitignore
+docs
+scripts
+src
+xmova-compiler-project.properties

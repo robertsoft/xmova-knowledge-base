@@ -1,0 +1,9 @@
+ResumoBancoHorasDetails tableLayout title="Banco de Horas"
+	views
+		recordList getRecords=_resumoBancoHoras 
+			recordDetail fields=SALDO,HORAS_TRABALHADAS labels
+	events
+		beforeInit
+			_resumoBancoHoras = select * from ResumoBancoHoras  
+		beforeClose
+			_resumoBancoHoras = null

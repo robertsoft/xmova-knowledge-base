@@ -1,0 +1,65 @@
+ApontamentoParada sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	parada PARADA
+	tipoParada int autoFill=parada.TIPO_PARADA
+	foto Binary picture fillCondition="tipoParada == 4 || tipoParada == 2" // foto para abastecimento SMARTOS-4010
+	observacao Str fillCondition="tipoParada == 4"
+	kmCarro int fillCondition="tipoParada == %TipoAbastecimento"
+	combustivel COMBUSTIVEL fillCondition="tipoParada == %TipoAbastecimento"
+	tipoApontamento TipoApontamento autoFill=%TipoParada
+	seqPonto long notFill
+	confirmaRegistroRefeicaoI boolean hide fillCondition="tipoParada == %TipoRefeicao"
+	DESC1 String notFill ignoreExternal
+	server name=Apontamento
+	events
+		afterInsert
+			Boletim b = boletim
+			b.flagEmRefeicao = false
+			b.flagMarte = false
+			if b.finalizarDeslocamento == true
+				INSERT INTO ApontamentoDeslocamentoFim (SEQ_DB_DEVICE_MASTER,SEQ_DB_DEVICE,dataFimDeslocamento) VALUES (:SEQ_DB_DEVICE_MASTER,b.seqUltDeslocamento, :data)
+				b.finalizarDeslocamento = false
+			if tipoParada == %TipoRefeicao
+				if confirmaRegistroRefeicaoI == true
+					b.SEQ_DB_DEVICE_REFEICAO = SEQ_DB_DEVICE
+					seqPonto = generateuuid
+					INSERT INTO ApontamentoPontoAlt (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE_REFEICAO, SEQ_DB_DEVICE, data, tipoPonto) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :seqPonto, :data, %PontoRefeicaoEntrada)
+					INSERT INTO ResumoPonto (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, FUNCIONARIO_SEQ_DB, DATA_PONTO, TIPO_PONTO) VALUES (:SEQ_DB_DEVICE_MASTER, :seqPonto, :seqFuncionario, :data, %PontoRefeicaoEntrada)
+					if ordemServico != NULL
+						DESC1 = @
+						DESC1 = concat @"OS: " :ordemServico.CODIGO
+						DESC1 = concat DESC1 @"::"
+						DESC1 = concat DESC1 :ordemServico.DESCRICAO
+						DESC1 = concat DESC1 @"\n"
+						DESC1 = concat DESC1 @"Último Ponto: "
+						DESC1 = concat DESC1 data
+						setInfoView DESC1
+					else
+						DESC1 = @
+						DESC1 = concat DESC1 @"Último Ponto: "
+						DESC1 = concat DESC1 data
+						setInfoView DESC1
+					b.DESC = DESC1
+				b.flagEmRefeicao = true
+				b.flagRealizouRefeicao = true
+			save b
+			ResumoApontamento resumo = SelectFirst FROM ResumoApontamento WHERE flagApontouFim == false
+			if resumo != null
+				Long tempo = difDateMilli resumo.dataInicial data
+				String duracao = formatDateMilli tempo
+				resumo.tempo = tempo
+				resumo.duracao = duracao
+				resumo.dataFinal = data
+				resumo.flagApontouFim = true
+				save resumo
+			INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, ordemServico, dataInicial, flagApontouFim) VALUES (:SEQ_DB_DEVICE, :tipoApontamento, :parada.DESCRICAO, :ordemServico, :data, false)
+	fieldEvents

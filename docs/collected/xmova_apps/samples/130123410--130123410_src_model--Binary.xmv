@@ -1,0 +1,5 @@
+Binary sync=out cleanupDays=1
+	id String uuid
+	date now
+	data path
+//---------------------CHECKLIST INICIO---------------------

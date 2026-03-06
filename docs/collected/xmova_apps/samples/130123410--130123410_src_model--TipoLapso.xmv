@@ -1,0 +1,4 @@
+TipoLapso
+	id int
+	tipo boolean
+

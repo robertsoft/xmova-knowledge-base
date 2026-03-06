@@ -1,0 +1,4 @@
+PROJETO sync=in descriptionFields=DESCRICAO searchFields=DESCRICAO typeSearchContains emptyVerify=false
+	SEQ_DB long hide
+	DESCRICAO Str
+	server name=Projeto_Mobile

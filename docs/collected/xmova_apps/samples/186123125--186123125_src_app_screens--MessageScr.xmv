@@ -1,0 +1,8 @@
+MessageScr message title=Mensagem entity=MensagemRecebida messageField=DESCRICAO dateField=DATA fromField=REMETENTE
+	actions
+		ok
+			INSERT INTO ApontamentoMensagemLida (SEQ_DB, ATIVO) VALUES (:SEQ_DB, 0)
+			ResumoMensagemRecebida mensagem = selectFirst FROM ResumoMensagemRecebida WHERE id == :SEQ_DB
+			if mensagem == null
+				INSERT INTO ResumoMensagemRecebida (id, descricao, data, remetente) VALUES (:SEQ_DB, :DESCRICAO, :DATA, :REMETENTE)
+			sync background

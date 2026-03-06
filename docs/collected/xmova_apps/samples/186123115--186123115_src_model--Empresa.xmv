@@ -1,0 +1,3 @@
+Empresa sync=beforeInstall|in
+	SEQ_DB int hide
+	NOME String

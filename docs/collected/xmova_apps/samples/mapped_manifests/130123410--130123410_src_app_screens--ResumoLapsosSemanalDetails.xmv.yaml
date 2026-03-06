@@ -1,0 +1,36 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoLapsosSemanalDetails
+  labels:
+  - recordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels
+pipeline:
+  tasks:
+  - id: get__resumoLapsosSemanal
+    name: get__resumoLapsosSemanal
+    run:
+      type: resource_query
+      resource: _resumoLapsosSemanal
+  - id: query__resumoLapsosSemanal
+    name: query__resumoLapsosSemanal
+    run:
+      type: sql
+      sql: select * from ResumoLapsosSemanal
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: DATA_REAL
+    - name: horarioPonto
+    - name: STATUS
+    - name: MOTIVO
+hooks:
+  beforeInit:
+  - _resumoLapsosSemanal: select * from ResumoLapsosSemanal
+  - _resumoLapsosSemanal: 'null'
+resources:
+- name: _resumoLapsosSemanal
+  type: sql
+  sql: select * from ResumoLapsosSemanal
+secrets: {}

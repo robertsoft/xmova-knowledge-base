@@ -1,0 +1,8 @@
+ResumoEspelhoLapso sync=in emptyVerify=false cleanupDays=7
+    SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long
+	horarioPonto String
+    DATA_REAL String
+    MOTIVO String
+    STATUS String
+    server name=EspelhoLapsos

@@ -1,0 +1,39 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoBNCDetail
+  labels:
+  - recordDetail fields=descricaoAtividade,ordemServico,dataInicial,equipamento,irregularidade,tratativa,cliente
+    labels
+pipeline:
+  tasks:
+  - id: get__resumoBNC
+    name: get__resumoBNC
+    run:
+      type: resource_query
+      resource: _resumoBNC
+  - id: query__resumoBNC
+    name: query__resumoBNC
+    run:
+      type: sql
+      sql: Select * FROM ResumoBNC
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: descricaoAtividade
+    - name: ordemServico
+    - name: dataInicial
+    - name: equipamento
+    - name: irregularidade
+    - name: tratativa
+    - name: cliente
+hooks:
+  beforeInit:
+  - _resumoBNC: 'null'
+resources:
+- name: _resumoBNC
+  type: sql
+  sql: Select * FROM ResumoBNC
+secrets: {}

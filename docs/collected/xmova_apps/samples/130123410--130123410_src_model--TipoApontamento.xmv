@@ -1,0 +1,3 @@
+TipoApontamento
+	id int
+	descricao Str

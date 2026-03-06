@@ -1,0 +1,15 @@
+LapsoEnvio sync=out
+	id inc
+	SEQ_DB long
+	SEQ_DB_DEVICE long
+	SEQ_DB_DEVICE_MASTER long
+	dataAtual Date
+	novaData Date
+	dataSolicitacao Date
+	novoHorario Date
+	tipoLapso boolean
+	justificativa Justificativa
+	funcionario Funcionario
+	seqFuncionario SeqFuncionario
+	vigencia Vigencia_Banco
+

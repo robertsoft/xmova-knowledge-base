@@ -1,0 +1,43 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoEspelhoPontoDetails
+  labels:
+  - recordDetail fields=DATA,ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3,HORAS_A_TRABALHAR,HORAS_TRABALHADAS,HORAS_EXTRAS
+    labels
+pipeline:
+  tasks:
+  - id: get__resumoEspelhoPonto
+    name: get__resumoEspelhoPonto
+    run:
+      type: resource_query
+      resource: _resumoEspelhoPonto
+  - id: query__resumoEspelhoPonto
+    name: query__resumoEspelhoPonto
+    run:
+      type: sql
+      sql: select * from ResumoEspelhoPonto
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: DATA
+    - name: ENTRADA
+    - name: SAIDA
+    - name: ENTRADA2
+    - name: SAIDA2
+    - name: ENTRADA3
+    - name: SAIDA3
+    - name: HORAS_A_TRABALHAR
+    - name: HORAS_TRABALHADAS
+    - name: HORAS_EXTRAS
+hooks:
+  beforeInit:
+  - _resumoEspelhoPonto: select * from ResumoEspelhoPonto
+  - _resumoEspelhoPonto: 'null'
+resources:
+- name: _resumoEspelhoPonto
+  type: sql
+  sql: select * from ResumoEspelhoPonto
+secrets: {}

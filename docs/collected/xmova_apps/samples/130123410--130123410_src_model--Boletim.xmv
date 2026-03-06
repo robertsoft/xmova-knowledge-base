@@ -1,0 +1,455 @@
+Boletim sync=out cleanupDays=7 noFinishAction confirm=Create
+	id inc
+	telaPrincipal int autoFill=0 ignoreExternal
+	ordemServico ORDEM_SERVICO notFill ignoreExternal hide
+	cliente long notFill ignoreExternal
+	nomeCliente text notFill ignoreExternal
+	projeto long notFill ignoreExternal
+	clienteLocal long notFill ignoreExternal
+	fillBackgroundColor String autoFill="@#ff6565"
+	notfillBackgroundColor String autoFill="@transparent"
+	DESC String notFill ignoreExternal
+	fluxo int autoFill=0
+	vigencia Vigencia_Banco ignoreExternal notUseAsFilter autoFillWhenOneItem
+	//Variáveis de controle de Checklist
+	flagChecklistRespondido boolean autoFill=false ignoreExternal
+	flagEmailChecklist boolean autoFill=false ignoreExternal
+	flagPrimeiroAptOS boolean autoFill=false ignoreExternal
+	flagResponderChecklist boolean autoFill=false ignoreExternal
+	flagResponderChecklistInicioEquipamento boolean autoFill=false ignoreExternal
+	flagResponderChecklistFimEquipamento boolean autoFill=false ignoreExternal
+	//Variáveis de apontamento de marte
+	flagMarte boolean autoFill=false ignoreExternal
+	flagMarteFotoApontada boolean autoFill=false ignoreExternal
+	flagMarteHorimetroApontado boolean autoFill=false ignoreExternal
+	flagMarteAssinaturaApontada boolean autoFill=true ignoreExternal
+	SEQ_DB_DEVICE_MARTE long notFill ignoreExternal
+	tipoChecklist int notFill ignoreExternal
+	//Variáveis de controle do deslocamento
+	finalizarDeslocamento boolean autoFill=false ignoreExternal
+	seqUltDeslocamento long notFill ignoreExternal
+	deslocamentoInterrompido boolean autoFill=0 ignoreExternal
+	veiculo VEICULO notFill ignoreExternal hide
+	kmAtual int notFill ignoreExternal
+	apontarDeslocamento boolean autoFill=0 ignoreExternal
+	dataApontamento Date notFill ignoreExternal
+	atividadeDeslocamento ATIVIDADE notUseAsFilter notFill ignoreExternal hide
+	detalheAtividadeDeslocamento text notFill ignoreExternal
+	SEQ_DB_DEVICE_DESLOCAMENTO long notFill ignoreExternal
+	SEQ_DB_DEVICE_BNC long notFill ignoreExternal
+	//Variáveis de lista de presença
+	SEQ_DB_DEVICE_LISTA_PRESENCA long notFill ignoreExternal
+	//Variáveis de controle do ponto
+	seqPonto long notFill
+	flagRealizouInicioPonto boolean autoFill=false ignoreExternal
+	flagRealizouRefeicao boolean autoFill=false ignoreExternal
+	flagEmRefeicao boolean autoFill=false ignoreExternal
+	SEQ_DB_DEVICE_REFEICAO long notFill
+	dataStatusOS Date notFill
+	SEQ_DB_DEVICE_STATUS_OS long notFill
+	//Variáveis de apontamentos
+	seqApontamento long notFill
+	dataInicial Now timeTypeField=tipoDataInicial
+	seqFuncionario SeqFuncionario hide
+	funcionario Funcionario
+	flagOnlineInicial int notFill onlineFlagCreate
+	locationInicial Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	marte _MARTE_STATUS inlineData hide
+	//Variáveis de duracao dos apontamentos
+	tempoServico int notFill
+	tempoParada int notFill
+	tempoDeslocamento int notFill
+	//Variáveis de controle de Solicitacao de adiantamento
+	flagRealizouAdiantamento boolean autoFill=false ignoreExternal
+	SEQ_DB_DEVICE_ADIANTAMENTO long notFill ignoreExternal
+	SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO long notFill ignoreExternal
+	//Definição para os Menus
+	menuRh MenuRh transient notFill add ignoreExternal
+	apontamentoOS ApontamentoOS transient notFill add ignoreExternal
+	apontamentoPonto ApontamentoPonto transient notFill add ignoreExternal
+	apontamentoServico ApontamentoServico transient notFill add ignoreExternal
+	apontamentoItem ApontamentoItem transient notFill add ignoreExternal
+	apontamentoIndicacao ApontamentoIndicacao transient notFill add ignoreExternal
+	apontamentoAtividade ApontamentoAtividade transient notFill add ignoreExternal
+	apontamentoTermoCautelar ApontamentoTermoCautelar transient notFill add ignoreExternal
+	apontamentoDeslocamento Deslocamento transient notFill add ignoreExternal
+	apontamentoParada ApontamentoParada transient notFill add ignoreExternal
+	apontamentoDespesa MenuDespesa transient notFill add ignoreExternal
+	apontamentoFoto ApontamentoFoto transient notFill add ignoreExternal
+	apontamentoAssinatura ApontamentoAssinatura transient notFill add ignoreExternal
+	apontamentoPausarOS ApontamentoPausarOS transient notFill add ignoreExternal
+	apontamentoEncerrarOS ApontamentoEncerrarOS transient notFill add ignoreExternal
+	menuSolicitarAdiantamento MenuSolicitarAdiantamento transient notFill add ignoreExternal
+	menuAdiantamento MenuAdiantamento transient notFill add ignoreExternal
+	apontamentoAdiantamentoEmail ApontamentoAdiantamentoEmail transient notFill add ignoreExternal
+	apontamentoListaPresencaEmail ApontamentoListaPresencaEmail transient notFill add ignoreExternal
+	voltarSolicitarAdiantamento VoltarSolicitarAdiantamento transient notFill add ignoreExternal
+	menuMarte MenuMarte transient notFill add ignoreExternal
+	apontamentoMarteInicio ApontamentoMarteInicio transient notFill add ignoreExternal
+	apontamentoEquipamento ApontamentoEquipamento transient notFill add ignoreExternal
+	apontamentoMarteInicioHorimetro ApontamentoMarteInicioHorimetro transient notFill add ignoreExternal
+	menuMarteFoto MenuMarteFoto transient notFill add ignoreExternal
+	menuChecklist MenuChecklist transient notFill add ignoreExternal
+	apontamentoMarteFim ApontamentoMarteFim transient notFill add ignoreExternal
+	apontamentoMarteFimAssinatura ApontamentoMarteFimAssinatura transient notFill add ignoreExternal
+	voltarMarte VoltarMarte transient notFill add ignoreExternal
+	menuChecklistDeslocamento MenuChecklist transient notFill add ignoreExternal
+	menuChecklistInicioEquipamento MenuChecklist transient notFill add ignoreExternal
+	menuChecklistFimEquipamento MenuChecklist transient notFill add ignoreExternal
+	menuChecklistBNC MenuChecklist transient notFill add ignoreExternal
+	lapso ResumoLapsosSemanal transient notFill add ignoreExternal
+	menuLapso List<MenuLapso> transient ignoreExternal
+	lapsoInicio LapsoInicio transient ignoreExternal hide
+	confirmaFinalizarBoletim boolean notShowNo fill=Finish
+	dataFinal Now timeTypeField=tipoDataFinal fill=Finish
+	flagOnlineFinal int notFill onlineFlagFinish fill=Finish
+	locationFinal Location inlineData fill=Finish hide
+	fieldEvents
+		fillCondition
+			apontamentoDeslocamento
+				kmAtual = 0
+				deslocamentoInterrompido = false
+				apontarDeslocamento = true
+				save record
+		getInputScreenLabel
+			confirmaFinalizarBoletim
+				return @"Confirma fechar o boletim?"
+		onValidate
+			funcionario
+				if funcionario != null
+					if funcionario.DATA_INICIO_X != null && funcionario.DATA_FIM_X != null
+						long dataInicio1 = dateToMilli funcionario.DATA_INICIO_X
+						long dataFim1 = dateToMilli funcionario.DATA_FIM_X
+						long inicioBol = simpleDateFormat @"dd/MM/yyyy 00:00:00" dataInicial
+						long dataApt = dateToMilli inicioBol
+						if dataApt >= dataInicio1 && dataApt <= dataFim1
+							toast @"Abertura de turno não permitida por causa das Férias programadas! \n Sincronize o aplicativo ou entre em contato com o RH."
+							return false
+						else
+							return true
+					return true
+		autoFill
+			funcionario
+				Funcionario f = SelectFirst from Funcionario where SEQ_DB == seqFuncionario
+				return f
+		afterFill
+			funcionario
+				if :funcionario.FLAG_PEDE_MARTE == 1
+					INSERT INTO ConectarMarte (id, podeConectar) VALUES (1, 1)
+	events
+		afterFinish
+			stopAlertTimer
+			stopSound
+			if finalizarDeslocamento == true
+				INSERT INTO ApontamentoDeslocamentoFim (SEQ_DB_DEVICE_MASTER,SEQ_DB_DEVICE,dataFimDeslocamento) VALUES (:SEQ_DB_DEVICE,:seqUltDeslocamento, :dataFinal)
+			ResumoApontamento resumo = SelectFirst FROM ResumoApontamento WHERE flagApontouFim == false
+			if resumo != null
+				Long tempo = difDateMilli resumo.dataInicial dataFinal
+				String duracao = formatDateMilli tempo
+				resumo.tempo = tempo
+				resumo.duracao = duracao
+				resumo.dataFinal = dataFinal
+				resumo.flagApontouFim = true
+				save resumo
+			setInfoView @
+			dropTable ResumoPonto
+			dropTable TipoLapso
+			dropTable ConectarMarte
+		afterInsert
+			log "Inseriu Boletim"
+			ParadaPadrao p = SelectFirst from ParadaPadrao where TIPO == 1
+			if p != null
+				seqApontamento = generateUuid
+				INSERT INTO Apontamento (tipoApontamento, parada, SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, data) VALUES (%TipoParada, p.PARADA_SEQ_DB, :SEQ_DB_DEVICE, :seqApontamento, :dataInicial)
+				INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, dataInicial, flagApontouFim) VALUES (:SEQ_DB_DEVICE, %TipoParada, p.PARADA_DESCRICAO, :dataInicial, false)
+			if funcionario.FLAG_CLT == true
+				setAlertTimer lang=custom.msgNotificarNenhumRegistro totalTime=30m snooze=1m repeat=-1
+			Funcionario f = SelectFirst FROM Funcionario WHERE SEQ_DB == :seqFuncionario
+			if f != null
+				if f.FLAG_PEDE_MARTE == true
+					connectMarte
+			INSERT INTO TipoLapso (id, tipo) VALUES (1, 0)
+
+			// Verifica se há apontamentos faltantes na última data
+			MarcacoesData data = SelectLast from MarcacoesData
+			if data != null
+				MarcacoesLapso lapsos = SELECT COUNT FROM MarcacoesLapso WHERE DATA == data.DATA
+				if lapsos == 0
+					if data != null
+						MarcacoesPonto ponto2 = SELECT COUNT FROM MarcacoesPonto WHERE DATA == data.DATA
+						Integer pontos2 = ponto2 % 2
+					if pontos2 != 0
+						log "OS:"
+						log ordemServico
+						log "chamando lapso inicio"
+						crud lapsoInicio
+		beforeFinish
+			MarteEmInstalacao m = SelectFirst FROM MarteEmInstalacao
+			if m != null
+				msg text=custom.msgBloqueiaFimMarte useOkAsBack
+				return false
+			Boletim boletim = SelectLast from Boletim
+			ResumoApontamento ponto = SELECT COUNT FROM ResumoApontamento WHERE SEQ_DB_DEVICE == boletim.SEQ_DB_DEVICE
+			Integer pontos = ponto % 2
+			if pontos != 0
+				UPDATE TipoLapso SET tipo = 1 WHERE tipo == 0
+				crud lapsoFim
+	//Apresentação dos Menus e seus níveis. Busca a informação do LANG-> Crud...
+	crudActions
+		MenuMarte
+			isVisible
+				if flagMarte == true	
+					return telaPrincipal == %TelaApontamento
+				return false
+			fill menuMarte
+		MenuMarteFoto
+			isVisible
+				if flagMarteHorimetroApontado == false
+					return telaPrincipal == %TelaMarteInicio
+				return false
+			fill menuMarteFoto
+		ApontamentoServico
+			isVisible
+				if flagMarteHorimetroApontado == false
+					if telaPrincipal == %TelaMarteInicio
+						return true
+				return false
+			fill apontamentoServico
+		ApontamentoItem
+			isVisible
+				if flagMarteHorimetroApontado == false
+					if telaPrincipal == %TelaMarteInicio
+						return true
+				return false
+			fill apontamentoItem
+		ApontamentoMarteInicioHorimetro
+			isVisible
+				if flagMarteHorimetroApontado == false
+					if telaPrincipal == %TelaMarteInicio
+						//crud ApontamentoMarteInicioHorimetro
+						return true
+				return false
+			if flagMarteFotoApontada == false
+				msg text=custom.msgBloqueiaHorimetroMarte useOkAsBack
+			else
+				fill apontamentoMarteInicioHorimetro
+		ApontamentoMarteFimAssinatura
+			isVisible				
+				if flagMarteAssinaturaApontada == false
+					if telaPrincipal == %TelaMarteFim
+						//crud ApontamentoMarteFimAssinatura	
+						return true
+				return false
+			fill apontamentoMarteFimAssinatura
+		MenuChecklist
+			isVisible
+				return telaPrincipal == %TelaMarteChecklist
+			fill menuChecklist
+		ApontamentoMarteInicio
+			isVisible				
+				return telaPrincipal == %TelaMarte
+			fill apontamentoMarteInicio
+		ApontamentoEquipamento
+			isVisible
+				return telaPrincipal == %TelaMarte
+			fill apontamentoEquipamento
+		ApontamentoMarteFim
+			isVisible
+				MarteEmInstalacao m = SelectFirst FROM MarteEmInstalacao
+				if m != null
+					return telaPrincipal == %TelaMarte
+				return false
+			fill apontamentoMarteFim
+		VoltarMarte
+			isVisible
+				return telaPrincipal == %TelaMarte
+			fill voltarMarte
+		ApontamentoOS
+			isVisible
+				return telaPrincipal == %TelaPrincipal
+			fill apontamentoOS
+		ApontamentoPonto
+			isVisible
+				if funcionario.FLAG_CLT
+					return telaPrincipal == %TelaPrincipal || telaPrincipal == %TelaOS || telaPrincipal == %TelaApontamento
+				return false
+			fill apontamentoPonto	
+		ApontamentoAtividade
+			isVisible
+				return telaPrincipal == %TelaOS || telaPrincipal == %TelaApontamento
+			fill apontamentoAtividade
+		ApontamentoTermoCautelar
+			isVisible
+				return telaPrincipal == %TelaOS || telaPrincipal == %TelaApontamento
+			fill apontamentoTermoCautelar
+		ApontamentoDeslocamento
+			isVisible
+				return telaPrincipal == %TelaDeslocamento
+			fill apontamentoDeslocamento
+		MenuChecklistDeslocamento
+			isVisible
+				return telaPrincipal == %TelaDeslocamentoChecklist
+			fill menuChecklistDeslocamento
+		MenuChecklistInicioEquipamento
+			isVisible
+				return telaPrincipal == %TelaInicioEquipamentoChecklist
+			fill menuChecklistInicioEquipamento
+		MenuChecklistFimEquipamento
+			isVisible
+				return telaPrincipal == %TelaFimEquipamentoChecklist
+			fill menuChecklistFimEquipamento
+		MenuChecklistBNC
+			isVisible
+				return telaPrincipal == %TelaBNCChecklist
+			fill menuChecklistBNC
+		ApontamentoParada
+			isVisible
+				return telaPrincipal == %TelaApontamento
+			fill apontamentoParada
+		MenuDespesa
+			isVisible
+				return telaPrincipal == %TelaOS || telaPrincipal == %TelaApontamento
+			fill apontamentoDespesa
+		ApontamentoFoto
+			isVisible
+				return telaPrincipal == %TelaApontamento
+			fill apontamentoFoto
+		ResumoSubOS
+			isVisible
+				ResumoSubOS sub = SelectFirst FROM ResumoSubOS
+				return sub != null
+			if ordemServico != null
+				if telaPrincipal == %TelaPrincipal
+					_resumoSubOS = Select * FROM ResumoSubOS
+				else
+					_resumoSubOS = Select * FROM ResumoSubOS where OS_SEQ_DB == :ordemServico.SEQ_DB
+			else
+				_resumoSubOS = Select * FROM ResumoSubOS
+			show ResumoSubOSDetail
+		ResumoBNC
+			isVisible
+				ResumoBNC bnc = SelectFirst FROM ResumoBNC
+				if bnc != null
+					return telaPrincipal == %TelaApontamento
+				return false
+			show ResumoBNCDetail
+		ResumoTermoCautelar
+			isVisible
+				ResumoTermoCautelar tc = SelectFirst FROM ResumoTermoCautelar
+				if tc != null
+					return telaPrincipal == %TelaApontamento
+				return false
+			show ResumoTermoCautelarDetail
+		ResumoComOS
+			isVisible
+				ResumoApontamento at = SelectFirst FROM ResumoApontamento where ordemServico == :ordemServico
+				if at != null
+					return telaPrincipal == %TelaApontamento
+				return false
+			dropTable ResumoTotal
+			tempoServico = 0
+			tempoParada = 0
+			tempoDeslocamento = 0
+			tempoServico = SumField tempo FROM ResumoApontamento where ordemServico == :ordemServico and tipoApontamento == %TipoAtividade and flagDeslocamento == false
+			tempoDeslocamento = SumField tempo FROM ResumoApontamento where ordemServico == :ordemServico and tipoApontamento == %TipoAtividade and flagDeslocamento == true
+			tempoParada = SumField tempo FROM ResumoApontamento where ordemServico == :ordemServico and tipoApontamento == %TipoParada
+			String duracaoServico = formatDateMilli tempoServico
+			String duracaoParada = formatDateMilli tempoParada
+			String duracaoDeslocamento = formatDateMilli tempoDeslocamento
+			INSERT INTO ResumoTotal (duracaoServico,duracaoParada,duracaoDeslocamento) VALUES (duracaoServico,duracaoParada,duracaoDeslocamento)
+			_resumoTotal = Select * FROM ResumoTotal
+			_resumoApontamento = Select * FROM ResumoApontamento where ordemServico == :ordemServico order by dataInicial
+			show ResumoApontamentoDetail
+		ApontamentoAssinatura
+			backgroundColor
+				ORDEM_SERVICO assinaturaCheck = SelectFirst from ORDEM_SERVICO where SEQ_DB == :ordemServico and (flagAssinado == true or FLAG_ASSINADO == true)
+				if assinaturaCheck != null
+					return fillBackgroundColor
+				return notfillBackgroundColor
+			isVisible
+				return telaPrincipal == %TelaOS
+			fill apontamentoAssinatura
+		ApontamentoListaPresencaEmail
+			isVisible
+				ORDEM_SERVICO os = SelectFirst from ORDEM_SERVICO where SEQ_DB == :ordemServico
+				if os != null
+					if os.flagListaRealizada == true || os.FLAG_LISTA_REALIZADA == true
+						if os.flagListaEnviada == false && os.FLAG_LISTA_ENVIADA == false
+							if telaPrincipal == %TelaOS
+								return true
+							if telaPrincipal == %TelaApontamento
+								return true
+				return false
+			fill apontamentoListaPresencaEmail
+		ApontamentoPausarOS
+			isVisible
+				return telaPrincipal == %TelaOS || telaPrincipal == %TelaApontamento
+			MarteEmInstalacao m = SelectFirst FROM MarteEmInstalacao
+			if m != null
+				msg text=custom.msgBloqueiaFimMarte useOkAsBack
+			else
+				fill apontamentoPausarOS
+		ApontamentoEncerrarOS
+			isVisible
+				return telaPrincipal == %TelaOS || telaPrincipal == %TelaApontamento
+			ORDEM_SERVICO os = SelectFirst from ORDEM_SERVICO where SEQ_DB == :ordemServico and (flagAssinado == true or FLAG_ASSINADO == true)
+			if os == null
+				msg text=custom.msgBloqueiaFim useOkAsBack
+			else
+				MarteEmInstalacao m = SelectFirst FROM MarteEmInstalacao
+				if m != null
+					msg text=custom.msgBloqueiaFimMarte useOkAsBack
+				else
+					fill apontamentoEncerrarOS	
+		MenuSolicitarAdiantamento
+			isVisible
+				return telaPrincipal == %TelaOS
+			fill menuSolicitarAdiantamento
+		MenuAdiantamento
+			isVisible
+				return telaPrincipal == %TelaAdiantamento
+			fill menuAdiantamento
+		ApontamentoAdiantamentoEmail
+			isVisible
+				if telaPrincipal == %TelaAdiantamento
+					return flagRealizouAdiantamento == true
+				return false
+			fill apontamentoAdiantamentoEmail
+		VoltarSolicitarAdiantamento
+			isVisible
+				return telaPrincipal == %TelaAdiantamento
+			fill voltarSolicitarAdiantamento
+		IndicarCliente
+			isVisible
+				return telaPrincipal == %TelaPrincipal
+			fill apontamentoIndicacao
+		MenuRh
+			crud MenuRH
+		// ConsultarPonto
+		// 	isVisible
+		// 		if telaPrincipal == %TelaPrincipal
+		// 			return true
+		// 		if telaPrincipal == %TelaOS
+		// 			return true
+		// 		if telaPrincipal == %TelaApontamento
+		// 			return true
+		// 		return false
+		// 	_resumoPonto = Select * FROM ResumoPonto WHERE FUNCIONARIO_SEQ_DB == :seqFuncionario order by DATA_PONTO desc
+		// 	show ResumoPontoDetail		
+			// 	if funcionario.FLAG_CLT == true
+			// 		if telaPrincipal == %TelaPrincipal
+			// 			return true
+			// 		if telaPrincipal == %TelaOS
+			// 			return true
+			// 		if telaPrincipal == %TelaApontamento
+			// 			return true
+			// 		return false
+			// 	return false
+			// _resumoPonto = Select * FROM ResumoPonto WHERE FUNCIONARIO_SEQ_DB == :seqFuncionario order by DATA_PONTO desc
+			// show ResumoPontoDetail		
+		ApontamentoFinalizarTurno
+			isVisible
+				return telaPrincipal == %TelaPrincipal
+			finishRecord
+//Entidades usadas para criação das telas

@@ -1,0 +1,5 @@
+Filial sync=beforeInstall|in
+	SEQ_DB long
+	NOME String
+	EMPRESA_SEQ_DB Empresa
+//Busca de informações no BD antes da instalação

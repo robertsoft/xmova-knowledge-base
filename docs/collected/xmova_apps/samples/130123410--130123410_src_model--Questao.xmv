@@ -1,0 +1,7 @@
+Questao sync=in emptyVerify=false
+	SEQ_DB long hide
+	DESCRICAO Str
+	GRUPO_QUESTAO_SEQ_DB Grupo_Questao
+	TIPO_RESPOSTA_LOVN List<Tipo_Resposta>
+	flagRespondido boolean defaultValue=false
+	server name=Questao_Mobile

@@ -1,0 +1,10 @@
+Deslocamento cleanupDays=7
+	id inc
+	boletim Boletim hide
+	date Now
+	apontarDeslocamento boolean autoFill=boletim.apontarDeslocamento
+	apontamentoDeslocamento List<ApontamentoDeslocamento> transient loop autoInitializeNew finishOnEndLoop fillCondition="apontarDeslocamento == true"
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast from Boletim

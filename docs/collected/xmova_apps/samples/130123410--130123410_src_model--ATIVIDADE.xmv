@@ -1,0 +1,15 @@
+ATIVIDADE sync=in descriptionFields=CODIGO,DESCRICAO searchFields=CODIGO,DESCRICAO typeSearchContains
+	SEQ_DB long hide
+	CODIGO int
+	DESCRICAO Str
+	FLAG_MARTE boolean
+	FLAG_DESLOCAMENTO boolean
+	FLAG_ANTENA boolean
+	FLAG_LOCAL boolean
+	FLAG_LISTA_PRESENCA boolean
+	FLAG_SUB_OS boolean
+	FLAG_INSTALACAO boolean
+	FLAG_MANUTENCAO boolean
+	FLAG_EQUIPAMENTO boolean
+	FLAG_DESMOBILIZACAO boolean
+	server name=Atividade_Mobile

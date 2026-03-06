@@ -1,0 +1,3 @@
+TipoRefeicao descriptionFields=desc
+	id int
+	desc Str

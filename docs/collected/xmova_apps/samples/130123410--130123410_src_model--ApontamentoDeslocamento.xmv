@@ -1,0 +1,224 @@
+ApontamentoDeslocamento sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	apontar boolean ignoreExternal
+	todosApontados boolean notShowNo notShowYes fillCondition="apontar == false" ignoreExternal
+	seqApontamento long notFill
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	dataApt Now ignoreExternal
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE_APONTAMENTO long notFill
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	marte _MARTE_STATUS inlineData
+	flagMarte boolean notFill
+	pedeMarte boolean ignoreExternal
+	seqPonto long notFill
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	atividade ATIVIDADE autoFill=boletim.atividadeDeslocamento
+	detalheAtividade text autoFill=boletim.detalheAtividadeDeslocamento
+	veiculo VEICULO autoFillWhenOneItem fixedPoint notBack
+	flagProprio boolean autoFill=veiculo.FLAG_PROPRIO
+	valorReembolsoKM decimal autoFill=veiculo.VALOR_REEMBOLSO_KM
+	kmPercorrido int notFill
+	valorTotal decimal notFill
+	dataInicioDeslocamento Now
+	locationInicioDeslocamento Location inlineData
+	kmInicial int maxLength=10
+	tipoDeslocamento TipoDeslocamento fixedPoint notBack
+	dataAtualDeslocamento Now fillCondition="tipoDeslocamento == %TipoInterrupcao" externalName=dataFimDeslocamento
+	locationAtualDeslocamento Location inlineData fillCondition="tipoDeslocamento == %TipoInterrupcao" externalName=locationFimDeslocamento
+	kmAtual int maxLength=10 fillCondition="tipoDeslocamento == %TipoInterrupcao" externalName=kmFinal
+	tipoParada int notFill
+	parada Parada fillCondition="tipoDeslocamento == %TipoInterrupcao"
+	motivoInterrupcao Str autoFill=parada.DESCRICAO fillCondition="tipoDeslocamento == %TipoInterrupcao"
+	dataFimDeslocamento Now fillCondition="tipoDeslocamento == %TipoFimDeslocamento" ignoreExternal
+	locationFimDeslocamento Location inlineData fillCondition="tipoDeslocamento == %TipoFimDeslocamento"
+	kmFinal int maxLength=10 fillCondition="tipoDeslocamento == %TipoFimDeslocamento"
+	confirmaRegistroRefeicaoI boolean hide fillCondition="tipoParada == %TipoRefeicao"
+	retomarDeslocamento boolean fixedPoint notBack notShowNo fillCondition="tipoDeslocamento == %TipoInterrupcao" ignoreExternal
+	DESC1 String notFill ignoreExternal
+	motivoDesconectado text fillCondition="flagMarte == 0 && pedeMarte == true"
+	events
+		afterInsert
+			data = currentDate
+			if retomarDeslocamento == true
+				ResumoApontamento resumo = SelectFirst FROM ResumoApontamento WHERE flagApontouFim == false
+				if resumo != null
+					Long tempo = difDateMilli resumo.dataInicial data
+					String duracao = formatDateMilli tempo
+					resumo.tempo = tempo
+					resumo.duracao = duracao
+					resumo.dataFinal = data
+					resumo.flagApontouFim = true
+					save resumo
+				seqApontamento = generateUuid
+				seqPonto = generateuuid
+				dataApt = currentDate
+				INSERT INTO Apontamento (tipoApontamento, atividade, SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, ordemServico, cliente, data, flagDeslocamento,detalheAtividade) VALUES (%TipoAtividade, :atividade.SEQ_DB, :SEQ_DB_DEVICE_MASTER, :seqApontamento, :ordemServico, :cliente, :data, true, :detalheAtividade)
+				INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, ordemServico, dataInicial, flagApontouFim, flagDeslocamento) VALUES (:SEQ_DB_DEVICE, %TipoAtividade, :atividade.DESCRICAO, :ordemServico, :data, false, true)
+				INSERT INTO ApontamentoPontoAlt (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE_REFEICAO, SEQ_DB_DEVICE, data, tipoPonto) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :seqPonto, :dataApt, %PontoRefeicaoSaida)
+
+				sync background
+			Boletim b = boletim
+			if boletim.flagEmRefeicao == true
+				b.flagEmRefeicao = false
+			if retomarDeslocamento == true
+				b.kmAtual = kmAtual
+				b.deslocamentoInterrompido = true
+				b.apontarDeslocamento = true
+				b.finalizarDeslocamento = false
+				b.SEQ_DB_DEVICE_DESLOCAMENTO = seqApontamento
+			else
+				b.kmAtual = 0
+				b.deslocamentoInterrompido = false
+				b.apontarDeslocamento = false
+				b.telaPrincipal = %TelaApontamento
+				b.finalizarDeslocamento = true
+				b.seqUltDeslocamento = SEQ_DB_DEVICE
+				b.SEQ_DB_DEVICE_DESLOCAMENTO = null
+			b.dataApontamento = data
+			save b
+	fieldEvents
+		autoFill
+			apontar
+				return boletim.apontarDeslocamento
+			boletim
+				return SelectLast from Boletim
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false
+		getInputScreenLabel
+			retomarDeslocamento
+				return lang=custom.msgInterrupcao vars=motivo:motivoInterrupcao
+		fillCondition
+			kmInicial
+				dataInicioDeslocamento = boletim.dataApontamento
+				SEQ_DB_DEVICE_APONTAMENTO = boletim.SEQ_DB_DEVICE_DESLOCAMENTO
+				if boletim.deslocamentoInterrompido == true
+					kmInicial = boletim.kmAtual
+					return false
+				else
+					return true
+			veiculo
+				if boletim.deslocamentoInterrompido == true
+					veiculo = boletim.veiculo
+					return false
+				else
+					return true
+		onValidate
+			kmInicial
+				if kmInicial <= 0
+					toast Valor Inválido!
+					return false
+			kmAtual
+				if kmAtual <= 0
+					toast Valor Inválido!
+					return false
+				if kmAtual < kmInicial
+					return confirm lang=custom.deslocamentoKmAtualMenorKmInicial vars=kmInicial:kmInicial,kmAtual:kmAtual
+			kmFinal
+				if kmFinal <= 0
+					toast Valor Inválido!
+					return false
+				if kmFinal < kmInicial
+					return confirm lang=custom.deslocamentoKmFinalMenorKmInicial vars=kmInicial:kmInicial,kmFinal:kmFinal
+		onGetDefaultInputValue
+			kmInicial
+				if veiculo != null
+					return veiculo.kmVeiculo
+			kmAtual
+				if veiculo != null
+					return veiculo.kmVeiculo
+			kmFinal
+				if veiculo != null
+					return veiculo.kmVeiculo
+		afterFill
+			marte
+				Funcionario f = SelectFirst FROM Funcionario WHERE SEQ_DB == :seqFuncionario
+				if f != null
+					if f.FLAG_PEDE_MARTE == true
+						if marte == null
+							connectMarte
+							playSound name=AlertTimer loop=1
+							showDialog lang=custom.msgNotificarDeslocamentoComMarteDesconectado
+							flagMarte = 0
+						else
+							flagMarte = 1
+					else
+						flagMarte = 0
+			parada
+				tipoParada = parada.TIPO_PARADA
+				ResumoApontamento resumo = SelectFirst FROM ResumoApontamento WHERE flagApontouFim == false
+				if resumo != null
+					Long tempo = difDateMilli resumo.dataInicial dataAtualDeslocamento
+					String duracao = formatDateMilli tempo
+					resumo.tempo = tempo
+					resumo.duracao = duracao
+					resumo.dataFinal = dataAtualDeslocamento
+					resumo.flagApontouFim = true
+					save resumo
+				seqApontamento = generateUuid
+				INSERT INTO Apontamento (tipoApontamento, tipoParada, parada, SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, ordemServico, data, cliente) VALUES (%TipoParada, :tipoParada, :parada.SEQ_DB, :SEQ_DB_DEVICE_MASTER, :seqApontamento, :ordemServico, :dataAtualDeslocamento, :cliente)
+				INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, ordemServico, dataInicial, flagApontouFim) VALUES (:SEQ_DB_DEVICE, %TipoParada, :parada.DESCRICAO, :ordemServico, :dataAtualDeslocamento, false)
+				sync background
+			kmInicial
+				UPDATE Veiculo SET kmVeiculo = :kmInicial WHERE SEQ_DB == :veiculo.SEQ_DB
+				startWait
+				Boletim b = boletim
+				b.kmAtual = kmInicial
+				b.veiculo = veiculo
+				save b
+				INSERT INTO ApontamentoDeslocamento (SEQ_DB_DEVICE_MASTER,SEQ_DB_DEVICE, SEQ_DB_DEVICE_APONTAMENTO, marte, flagMarte, ordemServico, cliente, atividade, detalheAtividade, veiculo, dataInicioDeslocamento, locationInicioDeslocamento, kmInicial, dataFimDeslocamento) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, SEQ_DB_DEVICE_APONTAMENTO, :marte, :flagMarte, :ordemServico, :cliente, :atividade.SEQ_DB, :detalheAtividade, :veiculo.SEQ_DB, :dataInicioDeslocamento, :locationInicioDeslocamento, :kmInicial, null)
+			kmFinal
+				UPDATE Veiculo SET kmVeiculo = :kmFinal WHERE SEQ_DB == :veiculo.SEQ_DB
+				dataFimDeslocamento = currentDate
+				Boletim b = boletim
+				b.kmAtual = kmFinal
+				b.dataApontamento = dataFimDeslocamento
+				save b
+				kmPercorrido = kmFinal - kmInicial
+				valorTotal = valorReembolsoKM * kmPercorrido
+				INSERT INTO ApontamentoDespesa (boletim, data, SEQ_DB_DEVICE_MASTER, ordemServico, cliente, tipoDespesa, valorReembolsoKM, kmPercorrido, valor, valorFaturar, flagProprio, dataDespesa, SEQ_DB_DEVICE_DESLOCAMENTO, veiculo) VALUES (:boletim, :dataFimDeslocamento, :SEQ_DB_DEVICE_MASTER, :ordemServico, :cliente, %TipoDespesaKmPercorrido, :valorReembolsoKM, :kmPercorrido, :valorTotal, :valorTotal, :flagProprio, :dataFimDeslocamento, :SEQ_DB_DEVICE, :veiculo.SEQ_DB)
+			kmAtual
+				UPDATE Veiculo SET kmVeiculo = :kmAtual WHERE SEQ_DB == :veiculo.SEQ_DB
+				dataAtualDeslocamento = currentDate
+				Boletim b = boletim
+				b.kmAtual = kmAtual
+				b.dataApontamento = dataAtualDeslocamento
+				save b
+				kmPercorrido = kmAtual - kmInicial
+				valorTotal = valorReembolsoKM * kmPercorrido
+				INSERT INTO ApontamentoDespesa (boletim, data, SEQ_DB_DEVICE_MASTER, ordemServico, cliente, tipoDespesa, valorReembolsoKM, kmPercorrido, valor, valorFaturar, flagProprio, dataDespesa, SEQ_DB_DEVICE_DESLOCAMENTO, veiculo) VALUES (:boletim, :dataAtualDeslocamento, :SEQ_DB_DEVICE_MASTER, :ordemServico, :cliente, %TipoDespesaKmPercorrido, :valorReembolsoKM, :kmPercorrido, :valorTotal, :valorTotal, :flagProprio, :dataFimDeslocamento, :SEQ_DB_DEVICE, :veiculo.SEQ_DB)
+			confirmaRegistroRefeicaoI
+				if tipoParada == %TipoRefeicao
+					if confirmaRegistroRefeicaoI == true
+						Boletim b = boletim
+						b.flagEmRefeicao = true
+						b.flagRealizouRefeicao = true
+						b.SEQ_DB_DEVICE_REFEICAO = SEQ_DB_DEVICE
+						seqPonto = generateuuid
+						dataApt = currentDate
+						INSERT INTO ApontamentoPontoAlt (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE_REFEICAO, SEQ_DB_DEVICE, data, tipoPonto) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :seqPonto, :dataApt, %PontoRefeicaoEntrada)
+						INSERT INTO ResumoPonto (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, FUNCIONARIO_SEQ_DB, DATA_PONTO, TIPO_PONTO) VALUES (:SEQ_DB_DEVICE_MASTER, :seqPonto, :seqFuncionario, :dataApt, %PontoRefeicaoEntrada)
+						if ordemServico != NULL
+							DESC1 = @
+							DESC1 = concat @"OS: " :ordemServico.CODIGO
+							DESC1 = concat DESC1 @"::"
+							DESC1 = concat DESC1 :ordemServico.DESCRICAO
+							DESC1 = concat DESC1 @"\n"
+							DESC1 = concat DESC1 @"Último Ponto: "
+							DESC1 = concat DESC1 data
+							setInfoView DESC1
+						else
+							DESC1 = @
+							DESC1 = concat DESC1 @"Último Ponto: "
+							DESC1 = concat DESC1 data
+							setInfoView DESC1
+						b.DESC = DESC1
+						save b

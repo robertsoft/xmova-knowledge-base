@@ -1,0 +1,32 @@
+ApontamentoListaPresenca sync=out cleanupDays=7
+	id inc
+	menuListaPresenca MenuListaPresenca
+	boletim Boletim hide
+	apontar boolean notShowNo
+	seqFuncionario SeqFuncionario hide 
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autofill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE_APONTAMENTO long autoFill=boletim.SEQ_DB_DEVICE_LISTA_PRESENCA
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	nome Str fixedPoint notBack
+	documento Str
+	email Str
+	assinatura Binary Draw
+	events
+		afterInsert
+			MenuListaPresenca a = MenuListaPresenca
+			a.flagPrimeiroApontamento = 0
+			save a
+			UPDATE ORDEM_SERVICO SET flagListaRealizada = true where SEQ_DB == :ordemServico
+	fieldEvents
+		fillCondition
+			apontar
+				if menuListaPresenca.flagPrimeiroApontamento == 1
+					return false
+		autoFill
+			boletim
+				return SelectLast from Boletim

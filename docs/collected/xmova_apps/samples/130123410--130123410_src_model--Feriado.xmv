@@ -1,0 +1,7 @@
+Feriado sync=in emptyVerify=false
+	id int
+	DIA int
+	MES int
+	ANO int
+	DATA_FERIADO Date
+	server name=Feriado_Mobile

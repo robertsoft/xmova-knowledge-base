@@ -1,0 +1,6 @@
+ApontamentoDeslocamentoFim sync=out cleanupDays=7
+	id inc
+	SEQ_DB_DEVICE_MASTER long
+	SEQ_DB_DEVICE long
+	dataFimDeslocamento Date
+	server name=ApontamentoDeslocamento

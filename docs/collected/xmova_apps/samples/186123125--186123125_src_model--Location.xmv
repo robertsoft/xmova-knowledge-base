@@ -1,0 +1,8 @@
+Location sync=out cleanupDays=1
+	lat double
+	long double
+	alt double
+	gpsTime long
+	accuracy float
+	speed float
+	bearing float

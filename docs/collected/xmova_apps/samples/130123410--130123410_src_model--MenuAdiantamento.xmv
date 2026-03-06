@@ -1,0 +1,6 @@
+MenuAdiantamento cleanupDays=7
+	id inc
+	boletim Boletim hide
+	data Now
+	flagPrimeiroApontamento boolean autoFill=1
+	apontamentoAdiantamento List<ApontamentoAdiantamento> transient loop autoInitializeNew finishOnEndLoop

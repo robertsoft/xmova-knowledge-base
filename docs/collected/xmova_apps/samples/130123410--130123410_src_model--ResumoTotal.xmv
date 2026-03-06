@@ -1,0 +1,4 @@
+ResumoTotal
+	duracaoServico Str
+	duracaoParada Str
+	duracaoDeslocamento Str

@@ -1,0 +1,18 @@
+Apontamento sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	dataMobile Now timeTypeField=tipoData
+	data Date
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData
+	SEQ_DB_DEVICE long
+	SEQ_DB_DEVICE_MASTER long
+	ordemServico ORDEM_SERVICO notUseAsFilter
+	cliente long
+	parada long
+	atividade long
+	tipoApontamento TipoApontamento
+	tipoParada int
+	flagDeslocamento boolean
+	detalheAtividade text

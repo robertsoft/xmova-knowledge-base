@@ -1,0 +1,9 @@
+VEICULO sync=in descriptionFields=CODIGO,DESCRICAO,PLACA searchFields=CODIGO,DESCRICAO,PLACA typeSearchContains
+	SEQ_DB long hide
+	CODIGO int
+	DESCRICAO Str
+	PLACA Str
+	FLAG_PROPRIO boolean
+	VALOR_REEMBOLSO_KM decimal
+	kmVeiculo int notSync
+	server name=Veiculo_Mobile

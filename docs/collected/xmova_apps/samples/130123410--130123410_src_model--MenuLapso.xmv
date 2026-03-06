@@ -1,0 +1,83 @@
+MenuLapso notSavedMessage
+	boletim Boletim
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long uuid
+	vigencia Vigencia_Banco autoFill=boletim.vigencia
+	funcionario Funcionario autoFill=boletim.funcionario
+	seqFuncionario SeqFuncionario autoFill=boletim.seqFuncionario
+
+	FUNCIONARIO_SEQ_DB int autoFill=funcionario.SEQ_DB
+	location Location inlineData
+	dataSolicitacao Now
+
+	tipoLapso boolean
+	
+	dataMarcacao MarcacoesData fillCondition="tipoLapso == true"
+	ponto MarcacoesPonto fillCondition="dataMarcacao != null" fullDescription
+	data Date onlydate fillCondition="tipoLapso == false"
+	novoHorario Date onlytime
+	dataLapso Date
+
+	justificativa Justificativa
+	confirmaLapso boolean notShowNo
+
+	dataLapsoAux String notFill ignoreExternal
+	dataLapsoAux2 String notFill ignoreExternal
+
+	events
+		afterInsert
+			if tipoLapso == true
+				Date dataAtual = :ponto.INI_DH
+				INSERT INTO LapsoEnvio (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, SEQ_DB, novaData, dataAtual, justificativa, tipoLapso, dataSolicitacao, funcionario, vigencia, seqFuncionario) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :ponto.SEQ_DB, :dataLapso, dataAtual, :justificativa, :tipoLapso, :dataSolicitacao, :funcionario, :vigencia, :seqFuncionario)
+			else
+				INSERT INTO LapsoEnvio (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE,novoHorario, justificativa, tipoLapso, dataSolicitacao, funcionario, vigencia, seqFuncionario) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :dataLapso, :justificativa, :tipoLapso, :dataSolicitacao, :funcionario, :vigencia, :seqFuncionario)
+			toast @"Lapso enviado"
+	fieldEvents
+		filterListRecord
+			ponto
+				//String dataStr = DateFormat @"yyyy-MM-dd" data
+				return listRecord.DATA == :dataMarcacao.DATA
+		autoFill
+			dataLapso
+				if tipoLapso == false
+					String dataStr = DateFormat @"dd/MM/yyyy" data
+					String horaStr = DateFormat @"HH:mm:ss" novoHorario
+					String espaco = @" "
+					dataLapsoAux = @
+					dataLapsoAux = concat dataLapsoAux dataStr
+					dataLapsoAux = concat dataLapsoAux espaco
+					dataLapsoAux = concat dataLapsoAux horaStr
+					return dataLapsoAux
+				else
+					String dataStr2 = :dataMarcacao.DATA_FORMATADA
+					String horaStr2 = DateFormat @"HH:mm:ss" novoHorario
+					String espaco2 = @" "
+					dataLapsoAux2 = @
+					dataLapsoAux2 = concat dataLapsoAux2 dataStr2
+					dataLapsoAux2 = concat dataLapsoAux2 espaco2
+					dataLapsoAux2 = concat dataLapsoAux2 horaStr2
+					return dataLapsoAux2
+		getInputScreenLabel
+			confirmaLapso
+				if :tipoLapso == true
+					
+					String confirma = @"Confirma o lapso:\n\n"
+
+					confirma = concat confirma @"Data/hora atual:  "
+					confirma = concat confirma :ponto.INI_DH
+					
+					confirma = concat confirma @"\n"
+
+					confirma = concat confirma @"Data/hora alterada:  "
+					confirma = concat confirma :dataLapso
+
+					confirma = concat confirma @"\n\nEsse registro não será lançado automaticamente na folha de ponto. Ele será apenas encaminhado ao RH para conferência e inclusão no sistema, se aprovado."
+					
+					return confirma
+				else
+					String confirma2 = @"Confirma o lapso:\n\n"
+					confirma2 = concat confirma2 @"Data/hora:  "
+					confirma2 = concat confirma2 :dataLapso
+					confirma2 = concat confirma2 @"\n\nEsse registro não será lançado automaticamente na folha de ponto. Ele será apenas encaminhado ao RH para conferência e inclusão no sistema, se aprovado."
+					return confirma2
+

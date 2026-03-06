@@ -1,0 +1,9 @@
+ResumoBNCDetail tableLayout title="Resumo BNC"
+	views
+		recordList getRecords=_resumoBNC
+			recordDetail fields=descricaoAtividade,ordemServico,dataInicial,equipamento,irregularidade,tratativa,cliente labels
+	events
+		beforeInit
+			_resumoBNC = Select * FROM ResumoBNC
+		beforeClose
+			_resumoBNC = null

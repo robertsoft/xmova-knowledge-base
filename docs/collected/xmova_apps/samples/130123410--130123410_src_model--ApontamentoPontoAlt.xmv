@@ -1,0 +1,13 @@
+ApontamentoPontoAlt sync=out cleanupDays=7
+	id inc
+	seqFuncionario SeqFuncionario hide
+	dataMobile Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	SEQ_DB_DEVICE_MASTER long
+	SEQ_DB_DEVICE_APONTAMENTO long
+	SEQ_DB_DEVICE_REFEICAO long
+	SEQ_DB_DEVICE_STATUS_OS long
+	SEQ_DB_DEVICE long
+	data Date
+	tipoPonto int
+	server name=ApontamentoPonto

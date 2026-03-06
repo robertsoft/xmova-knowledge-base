@@ -1,0 +1,59 @@
+ApontamentoPonto sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	ordemServico ORDEM_SERVICO
+	seqFuncionario SeqFuncionario hide
+	dataMobile Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE_APONTAMENTO long autoFill=NULL
+	SEQ_DB_DEVICE_REFEICAO long autoFill=NULL
+	SEQ_DB_DEVICE_STATUS_OS long autoFill=boletim.SEQ_DB_DEVICE_STATUS_OS
+	SEQ_DB_DEVICE long autofill=generateuuid
+	data Now
+	tipoPonto int autofill=5
+	duracao String notFill ignoreExternal
+	confirmaPonto boolean notShowNo hide
+	DESC1 String notFill ignoreExternal
+	events
+		afterInsert
+			stopAlertTimer
+			stopSound
+			Boletim b = boletim
+			if boletim.flagEmRefeicao == true
+				b.flagEmRefeicao = false
+			INSERT INTO ResumoPonto (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, FUNCIONARIO_SEQ_DB, DATA_PONTO, TIPO_PONTO) VALUES (:SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, :seqFuncionario, :data, %PontoManual)
+			if ordemServico != NULL
+				DESC1 = @
+				DESC1 = concat @"OS: " :ordemServico.CODIGO
+				DESC1 = concat DESC1 @"::"
+				DESC1 = concat DESC1 :ordemServico.DESCRICAO
+				DESC1 = concat DESC1 @"\n"
+				DESC1 = concat DESC1 @"Último Ponto: "
+				DESC1 = concat DESC1 data
+				setInfoView DESC1
+			else
+				DESC1 = @
+				DESC1 = concat DESC1 @"Último Ponto: "
+				DESC1 = concat DESC1 data
+				setInfoView DESC1
+			b.DESC = DESC1
+			save b
+	fieldEvents
+		autoFill
+			ordemServico
+				if boletim.ordemServico != NULL
+					return boletim.ordemServico
+		getInputScreenLabel
+			confirmaPonto
+				ResumoPonto ultimoPonto = SelectFirst FROM ResumoPonto WHERE FUNCIONARIO_SEQ_DB == :seqFuncionario order by DATA_PONTO desc
+				if ultimoPonto != NULL
+					Long diferenca = difDateMilli ultimoPonto.DATA_PONTO  data
+					duracao = formatDateMilli diferenca
+					if diferenca < 1800000
+						return lang=custom.msgCustomConfirmaPonto2 vars=data:data,duracao:duracao
+					else
+						return lang=custom.msgCustomConfirmaPonto vars=data:data	
+				else
+					return lang=custom.msgCustomConfirmaPonto vars=data:data
+//------------TERMO CAUTELAR--------------------------

@@ -1,0 +1,4 @@
+TipoPonto
+	id int
+	desc Str
+//MARTE

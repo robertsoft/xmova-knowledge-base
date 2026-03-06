@@ -1,0 +1,7 @@
+Auth
+	idEmpresa Empresa
+	idFilial Filial
+	idLocal Local
+	codigoFuncionario int
+	seqFuncionario SeqFuncionario
+	nomeFuncionario Str

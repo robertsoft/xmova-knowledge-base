@@ -1,0 +1,6 @@
+App appCode=COLETOR offlineDate=Device
+	name Coletor
+	install type=fillAuth inputEntity=AuthInput
+	bluetooth receiver
+	clearOptionMenu password=123
+	logo name=cortezengenharia

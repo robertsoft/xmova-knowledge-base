@@ -1,0 +1,6 @@
+Grupo_Questao sync=in emptyVerify=false
+	SEQ_DB long hide
+	DESCRICAO Str
+	TIPO int
+	flagRespondido boolean defaultValue=false
+	server name=Grupo_Questao_Mobile

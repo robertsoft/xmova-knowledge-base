@@ -1,0 +1,9 @@
+Funcionario sync=in descriptionFields=CRACHA,NOME searchFields=CRACHA,NOME typeSearchContains
+	SEQ_DB long
+	CRACHA String
+	NOME String
+	FLAG_PEDE_MARTE boolean
+	FLAG_CLT boolean
+	DATA_INICIO_X date
+	DATA_FIM_X date
+	server name=Funcionario_Mobile

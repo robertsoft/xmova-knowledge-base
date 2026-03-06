@@ -1,0 +1,9 @@
+ResumoApontamentoSemanal sync=in emptyVerify=false cleanupDays=7
+    DIA String
+    ENTRADA String
+    SAIDA String
+    ENTRADA2 String
+    SAIDA2 String
+    ENTRADA3 String
+    SAIDA3 String
+    server name=ApontamentoPontoSemanal

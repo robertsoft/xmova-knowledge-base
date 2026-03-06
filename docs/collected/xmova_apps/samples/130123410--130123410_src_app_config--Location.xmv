@@ -1,0 +1,6 @@
+tracking
+minTime 60m
+maxCacheTime 60m
+minDistance 10000
+disableNotifyMessage
+required

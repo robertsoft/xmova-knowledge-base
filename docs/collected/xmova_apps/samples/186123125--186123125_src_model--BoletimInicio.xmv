@@ -1,0 +1,12 @@
+BoletimInicio sync=out cleanupDays=20 noFinishAction
+	id inc
+	SEQ_DB_DEVICE_MASTER long
+	SEQ_DB_DEVICE Long
+	flagOnlineInicio int notFill onlineFlagCreate
+	locationInicio Location inlineData
+	dataInicio Now timeTypeField=tipoDataInicio
+	efetivo_funcionario long
+	equipamento long
+	tipoEquipamento int
+	origem int
+	server name=EQP_BOLETIM

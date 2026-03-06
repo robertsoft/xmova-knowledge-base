@@ -1,0 +1,59 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoApontamentoDetail
+  labels:
+  - recordDetail fields=tipoApontamento,descricao,dataInicial,dataFinal,duracao labels
+  - recordDetail fields=duracaoServico,duracaoParada,duracaoDeslocamento labels
+pipeline:
+  tasks:
+  - id: get__resumoApontamento
+    name: get__resumoApontamento
+    run:
+      type: resource_query
+      resource: _resumoApontamento
+  - id: get__resumoTotal
+    name: get__resumoTotal
+    run:
+      type: resource_query
+      resource: _resumoTotal
+  - id: query__resumoApontamento
+    name: query__resumoApontamento
+    run:
+      type: sql
+      sql: Select * FROM ResumoApontamento
+  - id: query__resumoTotal
+    name: query__resumoTotal
+    run:
+      type: sql
+      sql: Select * FROM ResumoTotal
+  - id: recorddetail_fields_5
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: tipoApontamento
+    - name: descricao
+    - name: dataInicial
+    - name: dataFinal
+    - name: duracao
+  - id: recorddetail_fields_6
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: duracaoServico
+    - name: duracaoParada
+    - name: duracaoDeslocamento
+hooks:
+  beforeInit:
+  - _resumoApontamento: 'null'
+  - _resumoTotal: 'null'
+resources:
+- name: _resumoApontamento
+  type: sql
+  sql: Select * FROM ResumoApontamento
+- name: _resumoTotal
+  type: sql
+  sql: Select * FROM ResumoTotal
+secrets: {}

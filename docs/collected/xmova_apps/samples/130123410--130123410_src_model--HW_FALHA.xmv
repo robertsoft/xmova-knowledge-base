@@ -1,0 +1,5 @@
+HW_FALHA sync=in descriptionFields=CODIGO,DESCRICAO searchFields=CODIGO,DESCRICAO typeSearchContains emptyVerify=false
+	SEQ_DB long
+	CODIGO Str
+	DESCRICAO Str
+	server name=HW_Falha_Mobile

@@ -1,0 +1,46 @@
+ApontamentoLivre sync=out cleanupDays=20 notSavedMessage
+	id inc
+	menuLivre MenuLivre
+	boletim_rh Boletim_RH autoFill=menuLivre.boletim_rh ignoreExternal
+	SEQ_DB_DEVICE long uuid
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	locationInicio Location inlineData
+	primeiroApontamento boolean autoFill=menuLivre.primeiroApontamento
+	confirmaManutencao boolean notShowNo ignoreExternal fillCondition="primeiroApontamento == false"
+	equipamento EquipamentoLivre autoFill=menuLivre.equipamento
+	tipoEquipamento int autoFill=equipamento.TIPO
+	eqpDesc String autoFill=equipamento.CODIGO
+	SEQ_DB_DEVICE_MASTER long
+	oper Oper
+	operDesc String autoFill=oper.DESCRICAO
+	operTipo int autoFill=oper.FLAG_PRODUTIVA
+	oper_Grupo Oper_Grupo autoFill=oper.OPER_GRUPO_SEQ_DB
+	dataLimite Date onlyDate fillCondition="oper.FLAG_VISTORIA == false"
+	observacao text maxLength=500
+	registrarFoto boolean
+	foto Binary picture fillCondition="registrarFoto == true"
+	origem int autoFill=3
+	efetivo_funcionario Efetivo_Funcionario autoFill=boletim_rh.efetivo_funcionario
+	server name=ApontamentoProdutivo
+	events
+		afterInsert
+			UPDATE EquipamentoLivre SET flagMecanica = true, flagApontado = true, SEQ_DB_DEVICE_MASTER_SEQ_DB = :SEQ_DB_DEVICE_MASTER WHERE SEQ_DB == :equipamento.SEQ_DB
+			INSERT INTO ResumoApontamento(data,equipamento,oper) VALUES (:data,:eqpDesc,:operDesc)
+			MenuLivre m = menuLivre
+			m.primeiroApontamento = false
+			save m
+	fieldEvents
+		autoFill
+			SEQ_DB_DEVICE_MASTER
+				if equipamento.SEQ_DB_DEVICE_MASTER_SEQ_DB == null
+					return menuLivre.SEQ_DB_DEVICE_MASTER
+				else
+					return equipamento.SEQ_DB_DEVICE_MASTER_SEQ_DB
+		afterFill
+			dataLimite
+				save record
+		getInputScreenLabel
+			confirmaManutencao
+				return lang=custom.msgCustomConfirmaManutencao
+//------------------------ APONTAMENTO LIBERAÇÃO --------------------------

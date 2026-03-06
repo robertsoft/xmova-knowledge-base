@@ -1,0 +1,5 @@
+Justificativa sync=in emptyVerify=false descriptionFields=CODIGO,DESCRICAO
+	SEQ_DB long 
+	CODIGO Str
+	DESCRICAO Str
+	server name=Justificativa_Mobile

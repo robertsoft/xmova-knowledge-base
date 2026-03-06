@@ -1,0 +1,6 @@
+ResumoBancoHoras sync=in emptyVerify=false cleanupDays=7
+    SALDO String
+    HORAS_TRABALHADAS String
+    HORAS_EXTRAS String
+    HORAS_FALTANTES String
+    server name=BancoHoras

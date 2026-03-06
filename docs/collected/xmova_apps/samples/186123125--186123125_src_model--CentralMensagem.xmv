@@ -1,0 +1,27 @@
+CentralMensagem cleanupDays=7
+	id inc
+	boletim_rh Boletim_RH
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim_rh.SEQ_DB_DEVICE
+	mecanico long autoFill=boletim_rh.seqMecanico
+	data Now
+	tipoMensagens TipoMensagens
+	mensagemCadastro MensagemCadastro fillCondition="tipoMensagens == %TipoMensagemEnviar"
+	fieldEvents
+		afterFill
+			mensagemCadastro
+				INSERT INTO ApontamentoMensagem (SEQ_DB_DEVICE_MASTER, data, SEQ_DB_MENSAGEM_CADASTRO, DESCRICAO, efetivo_funcionario) VALUES (:SEQ_DB_DEVICE_MASTER, :data, :mensagemCadastro.SEQ_DB, :mensagemCadastro.DESCRICAO, :mecanico)
+				INSERT INTO ResumoMensagemEnviada (descricao,data) VALUES (:mensagemCadastro.DESCRICAO, :data)
+				sync background
+		onValidate
+			tipoMensagens
+				if tipoMensagens == %TipoMensagensEnviadas
+					_msgEnviadas = select * from ResumoMensagemEnviada
+					show MensagensEnviadasDetail
+					return false
+				if tipoMensagens == %TipoMensagensRecebidas
+					_msgRecebidas = select * from ResumoMensagemRecebida
+					show MensagensRecebidasDetail
+					return false
+//------------------------MENSAGEM FIM------------------------
+//-------------------------- SYNC=IN ----------------------------
+//------------------------ EQUIPAMENTO Livre --------------------------

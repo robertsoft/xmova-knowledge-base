@@ -16,4 +16,12 @@ if [ $missing -eq 1 ]; then
 fi
 
 echo "Repository structure OK."
+# Optionally validate example manifests if present
+if [ -x "scripts/validate_manifest.sh" ]; then
+  if [ -e "examples/starter-templates/manifest-example.yaml" ]; then
+    echo "Validating example manifest..."
+    scripts/validate_manifest.sh examples/starter-templates/manifest-example.yaml || exit 3
+  fi
+fi
+
 exit 0

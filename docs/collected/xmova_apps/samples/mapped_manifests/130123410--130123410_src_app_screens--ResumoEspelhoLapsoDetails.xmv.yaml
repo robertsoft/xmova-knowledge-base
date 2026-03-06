@@ -1,0 +1,36 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoEspelhoLapsoDetails
+  labels:
+  - recordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels
+pipeline:
+  tasks:
+  - id: get__resumoEspelhoLapso
+    name: get__resumoEspelhoLapso
+    run:
+      type: resource_query
+      resource: _resumoEspelhoLapso
+  - id: query__resumoEspelhoLapso
+    name: query__resumoEspelhoLapso
+    run:
+      type: sql
+      sql: select * from ResumoEspelhoLapso
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: DATA_REAL
+    - name: horarioPonto
+    - name: STATUS
+    - name: MOTIVO
+hooks:
+  beforeInit:
+  - _resumoEspelhoLapso: select * from ResumoEspelhoLapso
+  - _resumoEspelhoLapso: 'null'
+resources:
+- name: _resumoEspelhoLapso
+  type: sql
+  sql: select * from ResumoEspelhoLapso
+secrets: {}

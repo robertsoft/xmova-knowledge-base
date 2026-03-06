@@ -1,0 +1,9 @@
+ResumoTermoCautelarDetail tableLayout title="Termos Cautelares Realizados"
+	views
+		recordList getRecords=_resumoTermoCautelar
+			recordDetail fields=SEQ_DB_DEVICE,ordemServico,dataInicial,chamado,nomeRecebedor,matriculaRecebedor,eqpColetor,celular,email labels
+	events
+		beforeInit
+			_resumoTermoCautelar = Select * FROM ResumoTermoCautelar
+		beforeClose
+			_resumoTermoCautelar = null

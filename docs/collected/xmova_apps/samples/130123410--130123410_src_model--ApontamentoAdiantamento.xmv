@@ -1,0 +1,118 @@
+ApontamentoAdiantamento sync=out cleanupDays=7
+	id inc
+	menuAdiantamento MenuAdiantamento 
+	boletim Boletim hide
+	apontar boolean notShowNo
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	flagRealizouAdiantamento boolean autoFill=boletim.flagRealizouAdiantamento
+	SEQ_DB_DEVICE_ADIANTAMENTO long
+	SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO long
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	dataInicioViagem Date onlyDate timeTypeField=tipoData
+	dataFimViagem Date onlyDate timeTypeField=tipoData
+	dataInicioViagemAux Date onlyDate timeTypeField=tipoData
+	dataFimViagemAux Date onlyDate timeTypeField=tipoData
+	cliente long autoFill=boletim.cliente
+	despesa Despesa
+	observacao Str fillCondition="despesa.FLAG_APONTA_OBSERVACAO == 1"
+	tipoAdiantamento TipoAdiantamento
+	valor decimal
+	dataLiberacao Date onlyDate timeTypeField=tipoData
+	events
+		afterInsert
+			MenuAdiantamento a = menuAdiantamento
+			a.flagPrimeiroApontamento = 0
+			save a
+			Boletim b = boletim
+			b.SEQ_DB_DEVICE_ADIANTAMENTO = SEQ_DB_DEVICE_ADIANTAMENTO
+			b.SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO = SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO
+			b.flagRealizouAdiantamento = true
+			save b
+	fieldEvents
+		fillCondition
+			apontar
+				if menuAdiantamento.flagPrimeiroApontamento == 1
+					return false
+			tipoAdiantamento
+				if despesa.TIPO_DESPESA == 6
+					return true
+				return false
+			dataInicioViagem
+				if menuAdiantamento.flagPrimeiroApontamento == 1
+					return true
+				return false
+			dataFimViagem
+				if menuAdiantamento.flagPrimeiroApontamento == 1
+					return true
+				return false
+
+		autoFill
+			boletim
+				return SelectLast from Boletim
+			SEQ_DB_DEVICE_ADIANTAMENTO
+				if flagRealizouAdiantamento == false
+					return generateUuid
+				else
+					return boletim.SEQ_DB_DEVICE_ADIANTAMENTO
+			SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO
+				if menuAdiantamento.flagPrimeiroApontamento == 1
+					return generateUuid
+				else
+					return boletim.SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO
+			dataLiberacao
+				//data atual as 10:30 para comparação
+				String dataVerificacaoStr = simpleDateFormat @"dd/MM/yyyy 00:00:00" data
+				long dataVerificacaoMilli = dateToMilli dataVerificacaoStr
+				Date dataVerificacao = milliToDate dataVerificacaoMilli
+				dataVerificacao = addDate dataVerificacao 630 @m
+				Integer diaSemana = getWeekDay
+
+				Date dataLibAux = data
+
+				Long valorInicio = dateToMilli data
+				Long valorPermitido = dateToMilli dataVerificacao
+
+				if valorInicio > valorPermitido
+					if menuAdiantamento.flagPrimeiroApontamento == 1
+						toast @"Solicitação será atendida no proximo dia util."
+					dataLibAux = addDate dataLibAux 24 @h
+					if diaSemana == 7
+						diaSemana = 1
+					else
+						diaSemana = diaSemana + 1
+					if diaSemana == 7
+						dataLibAux = addDate dataLibAux 48 @h
+					if diaSemana == 1
+						dataLibAux = addDate dataLibAux 24 @h
+				else
+					if diaSemana == 7
+						dataLibAux = addDate dataLibAux 48 @h
+					if diaSemana == 1
+						dataLibAux = addDate dataLibAux 24 @h
+				
+				String dataLibAuxStr = simpleDateFormat @"dd/MM/yyyy 00:00:00" dataLibAux
+				long dataLibAuxMilli = dateToMilli dataLibAuxStr
+				dataLibAux = milliToDate dataLibAuxMilli
+
+				return dataLibAux
+			
+			dataInicioViagemAux
+				if menuAdiantamento.flagPrimeiroApontamento == 0
+					Boletim bodi = boletim
+					ApontamentoAdiantamento api = SelectFirst FROM ApontamentoAdiantamento WHERE SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO == bodi.SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO
+					return api.dataInicioViagem
+				else
+					return :dataInicioViagem
+			dataFimViagemAux
+				if menuAdiantamento.flagPrimeiroApontamento == 0
+					Boletim bodf = boletim
+					ApontamentoAdiantamento apf = SelectFirst FROM ApontamentoAdiantamento WHERE SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO == bodf.SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO
+					return apf.dataFimViagem
+				else
+					return :dataFimViagem
+			

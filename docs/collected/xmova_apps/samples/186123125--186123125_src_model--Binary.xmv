@@ -1,0 +1,5 @@
+Binary sync=out  cleanupDays=1 notSavedMessage
+	id String uuid
+	date now
+	data bytes
+//------------------------ APONTAMENTO PRODUTIVO LIVRE --------------------------

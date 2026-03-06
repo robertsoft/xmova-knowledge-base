@@ -1,0 +1,5 @@
+DIA_SEMANA sync=in EmptyVerify=false
+	SEQ_DB long
+	DIA Str
+	DESCRICAO Str
+	server name=Dia_Semana_Mobile

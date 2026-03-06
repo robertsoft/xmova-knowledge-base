@@ -1,0 +1,41 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoPontoDetail
+  labels:
+  - recordDetail fields=ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3,HORAS_A_TRABALHAR,SUJESTAO_SAIDA
+    labels
+pipeline:
+  tasks:
+  - id: get__resumoPontoPainel
+    name: get__resumoPontoPainel
+    run:
+      type: resource_query
+      resource: _resumoPontoPainel
+  - id: query__resumoPontoPainel
+    name: query__resumoPontoPainel
+    run:
+      type: sql
+      sql: select * from ResumoPontoPainel
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: ENTRADA
+    - name: SAIDA
+    - name: ENTRADA2
+    - name: SAIDA2
+    - name: ENTRADA3
+    - name: SAIDA3
+    - name: HORAS_A_TRABALHAR
+    - name: SUJESTAO_SAIDA
+hooks:
+  beforeInit:
+  - _resumoPontoPainel: select * from ResumoPontoPainel
+  - _resumoPontoPainel: 'null'
+resources:
+- name: _resumoPontoPainel
+  type: sql
+  sql: select * from ResumoPontoPainel
+secrets: {}

@@ -1,0 +1,3 @@
+Classificacao_Equipamento descriptionFields=desc
+	id int
+	desc Str

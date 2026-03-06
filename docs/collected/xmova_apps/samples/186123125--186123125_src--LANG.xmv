@@ -1,0 +1,167 @@
+//CUSTOM
+custom.msgCustomConfirmaConfig = Nome do Mecânico: %nomeMecanico \n\nConfirma?
+
+//MAIN SCREEN
+custom.FixedKeyAppNameFront = Manutenção
+ScreenActionLabel.main.boletim_RH = Iniciar Boletim
+
+//AUTH
+EntityLabel.AuthInput = Configuração
+FieldOnlineValidateFail.AuthInput.idEmpresa = Empresa inválida!
+FieldOnlineValidateError.AuthInput.idEmpresa = Erro na validação da empresa.
+FieldLabel.AuthInput.idEmpresa = Empresa
+FieldLabel.AuthInput.idFilial = Filial
+FieldLabel.AuthInput.idLocal = Obra
+
+FieldLabel.AuthInput.accessKey = Digite a Chave acesso
+FieldOnlineValidateError.AuthInput.accessKey = Erro na validação da chave acesso.
+FieldOnlineValidateFail.AuthInput.accessKey = Chave acesso inválida!
+
+FieldLabel.AuthInput.descricaoEmpresa = Empresa
+FieldLabel.AuthInput.descricaoFilial = Filial
+FieldLabel.AuthInput.descricaoLocal = Obra
+
+FieldLabel.AuthInput.codigoMecanico = Crachá do Mecânico
+FieldLabel.AuthInput.nomeMecanico = Mecânico
+FieldOnlineValidateError.AuthInput.codigoMecanico = Mecânico não cadastrado!
+FieldOnlineValidateFail.AuthInput.codigoMecanico = Mecânico não cadastrado!
+
+//BOLETIM
+EntityLabel.Boletim_RH = Boletim
+FieldLabel.Boletim_RH.efetivo_funcionario = Mecânico
+CrudFinishConfirmMessage.Boletim_RH = Confirma Finalizar Turno?
+CrudOptionsActionFinish.Boletim_RH = Fechar Boletim
+
+CrudOptionsActionLabel.Boletim_RH.MenuLivre = Apontar Manutenção
+CrudOptionsActionLabel.Boletim_RH.Checklist = Checklist Equipamento
+CrudOptionsActionLabel.Boletim_RH.ApontamentoLiberacao = Liberar Equipamento
+CrudOptionsActionLabel.Boletim_RH.FinalizarBoletim = Finalizar Turno
+CrudOptionsActionLabel.Boletim_RH.AtualizarDados = Atualizar Dados
+CrudOptionsActionLabel.Boletim_RH.CentralMensagem = Mensagem
+
+CrudOptionsActionLabel.Boletim_RH.ResumoCheckList = Resumo CheckList
+CrudOptionsActionLabel.Boletim_RH.Resumo = Resumo Manutenção
+
+//CrudOptionsActionLabel.Boletim_RH.MenuProdutivo = Lista Equipamento Apontado
+//CrudOptionsActionLabel.Boletim_RH.MenuLivre = Apontar Mecânica Corretiva
+
+custom.msgCustomconfirmaFinalizarBoletimRH = Confirma Finalizar Turno?\n\nOperador: %efetivo_funcionario
+
+CrudCreateConfirmMessage.Boletim_RH = Confirma Iniciar Turno?
+CrudCreateConfirmActionBack.Boletim_RH = Voltar
+CrudCreateConfirmActionOk.Boletim_RH = OK
+
+//RESUMO
+EntityLabel.ResumoApontamento = Resumo de Apontamentos
+FieldLabel.ResumoApontamento.data = Data
+FieldLabel.ResumoApontamento.equipamento = Equipamento
+FieldLabel.ResumoApontamento.oper = Operação
+
+//------------------------MENSAGEM INICIO------------------------
+
+EntityLabel.MensagemCadastro = Mensagens Pré-Cadastradas
+EntityLabel.TipoMensagens = Central Mensagens
+EntityLabel.TipoMensagemEnviar = Enviar
+
+EntityLabel.CentralMensagem = Central Mensagens
+FieldLabel.CentralMensagem.mensagemCadastro = Enviar 
+//FieldLabel.CentralMensagem.mensagemTexto = Mensagem
+
+EntityLabel.ResumoMensagemRecebida = Mensagens
+FieldLabel.ResumoMensagemRecebida.date = Data da Leitura:
+FieldLabel.ResumoMensagemRecebida.data = Data da mensagem:
+FieldLabel.ResumoMensagemRecebida.descricao = Descrição:
+FieldLabel.ResumoMensagemRecebida.remetente = De:
+
+EntityLabel.ResumoMensagemEnviada = Mensagens
+FieldLabel.ResumoMensagemEnviada.data = Data:
+FieldLabel.ResumoMensagemEnviada.descricao = Descrição:
+
+EntityLabel.MensagemRecebida = Mensagens ao Celular
+//------------------------MENSAGEM FIM--------------------------
+
+//APONTAMENTO PRODUTIVO
+//EntityLabel.apontamentoProdutivo = Boletim
+//FieldLabel.apontamentoProdutivo.registrarFoto = Deseja tirar foto?
+//FieldLabel.apontamentoProdutivo.dataLimite = Previsão de Liberação
+//FieldLabel.apontamentoProdutivo.observacao = Observação
+//FieldLabel.menuProdutivo.equipamento = Equipamento
+//BooleanInputScreenBackActionLabel.apontamentoProdutivo.confirmaManutencao = Não
+
+//APONTAMENTO LIVRE
+EntityLabel.apontamentoLivre = Boletim
+FieldLabel.apontamentoLivre.registrarFoto = Deseja tirar foto?
+FieldLabel.apontamentoLivre.dataLimite = Previsão de Liberação
+FieldLabel.apontamentoLivre.observacao = Observação
+FieldLabel.menuLivre.equipamento = Equipamento
+FieldLabel.menuLivre.lerQRCode = Ler com QrCode ou Lista de Equipamentos?
+BooleanInputScreenYesActionLabel.menuLivre.lerQRCode = QrCode
+BooleanInputScreenNoActionLabel.menuLivre.lerQRCode = Lista
+BooleanInputScreenBackActionLabel.apontamentoLivre.confirmaManutencao = Não
+custom.msgCustomConfirmaManutencao = Apontamento Realizado com Sucesso!\n\n Deseja adicionar mais operações?
+EntityLabel.MenuLivre = Equipamento
+
+// APONTAMENTO LIBERAÇÃO
+FieldLabel.ApontamentoLiberacao.lerQRCode = Ler com QrCode ou Lista de Equipamentos?
+BooleanInputScreenYesActionLabel.ApontamentoLiberacao.lerQRCode = QrCode
+FieldLabel.ApontamentoLiberacao.equipamento = Equipamento
+BooleanInputScreenNoActionLabel.ApontamentoLiberacao.lerQRCode = Lista
+
+//OPER
+EntityLabel.Oper = Operação
+FieldLabel.Oper.CODIGO = Código
+FieldLabel.Oper.DESCRICAO = Descrição
+
+// RESUMO CHECKLIST
+EntityLabel.ResumoCheckList = Resumo CheckList
+FieldLabel.ResumoCheckList.descricao = Questão
+FieldLabel.ResumoCheckList.tipoResposta = Resposta
+FieldLabel.ResumoCheckList.quantidadeAbastecida = Data
+FieldLabel.ResumoCheckList.observacao = Observação
+FieldLabel.ResumoCheckList.equipamento = Equipamento
+FieldLabel.ResumoCheckList.funcionario = Funcionário
+
+//APONTAMENTO CHECKLIST
+EntityLabel.ApontamentoChecklist = Questionário
+FieldLabel.ApontamentoChecklist.equipamento = Informar Equipamento
+FieldLabel.ApontamentoChecklist.grupo_questao = Questionário
+FieldLabel.ApontamentoChecklist.todosApontados = Não há mais Questões para Responder!\nBom trabalho!
+BooleanInputScreenBackActionLabel.ApontamentoChecklist.todosApontados = OK
+
+//MENU CHECKLIST
+EntityLabel.MenuChecklist = Questionário
+FieldLabel.MenuChecklist.todosApontados = Não há mais Grupo de Questões para Responder!\nBom trabalho!
+FieldLabel.MenuChecklist.lerQRCode = Ler com QrCode ou Lista de Equipamentos?
+BooleanInputScreenYesActionLabel.MenuChecklist.lerQRCode = QrCode
+BooleanInputScreenNoActionLabel.MenuChecklist.lerQRCode = Lista
+BooleanInputScreenBackActionLabel.MenuChecklist.todosApontados = OK
+
+custom.msgResponderQuestoes = Preencher questionário: %grupo ?
+custom.msgCustomconfirmaIniciarChecklist = Confirmar iniciar questionário \nEquipamento: %equipamento? 
+
+EntityLabel.Grupo_Questao = Grupo Questão
+EntityLabel.Questao = Questão
+
+EntityLabel.Tipo_Resposta = Resposta
+EntityLabel.Resposta = Resposta
+FieldLabel.Resposta.tipo_Resposta = Resposta
+FieldLabel.Resposta.quantidadeAbastecida = Quantidade abastecida
+FieldLabel.Resposta.OBSERVACAO = Observação
+FieldLabel.Resposta.binaryId = Foto
+
+//EQUIPAMENTO
+EntityLabel.Equipamento = Equipamento
+FieldLabel.Equipamento.codigo = Código Equipamento
+FieldLabel.Equipamento.descricao = Equipamento Descrição
+
+//FIXED
+FixedKeyAppVersion = Versão
+FixedKeyMsgEmptyList = Não há dados para serem exibidos!
+FixedKeyCrudCreateConfirmMessage = Confirmar apontamento?
+FixedKeyInputKeyboardDecimalSymbol = .
+
+//APONTAMENTO LIBERAÇÃO
+//FieldLabel.ApontamentoLiberacao.todosApontados = Equipamento Liberado
+EntityLabel.ApontamentoLiberacao = Equipamento Liberado
+custom.msgCustomConfirmaLiberacao = Confirma Equipamento? \nEquipamento: %equipamento?
+//BooleanInputScreenBackActionLabel.ApontamentoLiberacao.todosApontados = OK

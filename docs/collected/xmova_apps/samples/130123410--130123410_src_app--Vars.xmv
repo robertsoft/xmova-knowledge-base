@@ -1,0 +1,12 @@
+_resumoApontamento ResumoApontamento
+_resumoTotal ResumoTotal
+_resumoApontamentoSemanal ResumoApontamentoSemanal
+_resumoPonto ResumoPonto
+_resumoBancoHoras ResumoBancoHoras
+_resumoPontoPainel ResumoPontoPainel
+_resumoEspelhoPonto ResumoEspelhoPonto
+_resumoLapsosSemanal ResumoLapsosSemanal
+_resumoEspelhoLapso ResumoEspelhoLapso
+_resumoSubOS ResumoSubOS
+_resumoBNC ResumoBNC
+_resumoTermoCautelar ResumoTermoCautelar

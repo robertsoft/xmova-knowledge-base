@@ -1,0 +1,13 @@
+SUB_OS sync=in descriptionFields=CODIGO,DESCRICAO,DATA_ABERTURA,EQUIPAMENTO_SEQ_DB searchFields=CODIGO,DESCRICAO typeSearchContains emptyVerify=false
+	SEQ_DB long
+	CODIGO Str
+	DESCRICAO Str
+	DATA_ABERTURA_X Date
+	DATA_ABERTURA Str
+	DATA_FECHAMENTO Date
+	FUNCIONARIO_SEQ_DB long
+	ORDEM_SERVICO_SEQ_DB ORDEM_SERVICO notUseAsFilter
+	EQUIPAMENTO_SEQ_DB EQUIPAMENTO_LIST notUseAsFilter
+	TIPO_SUB_OS int
+	flag_finalizada boolean defaultValue=false notSync
+	server name=Sub_OS_Mobile

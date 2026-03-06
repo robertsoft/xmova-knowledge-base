@@ -1,0 +1,6 @@
+MarcacoesPonto sync=in emptyVerify=false descriptionFields=HORA
+	SEQ_DB long 
+	DATA Str
+	HORA Str
+	INI_DH Date
+	server name=Marcacoes_Ponto_Mobile

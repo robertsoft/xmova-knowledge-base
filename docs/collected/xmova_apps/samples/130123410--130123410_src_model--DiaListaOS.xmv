@@ -1,0 +1,5 @@
+DiaListaOS sync=in descriptionFields=DATA_INICIAL searchFields=DATA_INICIAL typeSearchContains typeSearchAfterPressButton emptyVerify=false 
+	DATA_INICIAL Str
+	ORDEM_SERVICO_LOVN List<ORDEM_SERVICO> notUseAsFilter
+	server name=OS_Agendada_Mobile
+//------------------------OS AGENDADA----------------------

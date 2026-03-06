@@ -1,0 +1,12 @@
+ResumoApontamento cleanupDays=7
+	id inc
+	SEQ_DB_DEVICE long
+	tipoApontamento TipoApontamento
+	descricao Str
+	ordemServico ORDEM_SERVICO
+	dataInicial Date
+	dataFinal Date
+	tempo long
+	duracao Str
+	flagApontouFim boolean
+	flagDeslocamento boolean

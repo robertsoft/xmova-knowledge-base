@@ -1,0 +1,14 @@
+ResumoEspelhoPontoDetails tableLayout title="Espelho de Ponto"
+	views
+		recordList getRecords=_resumoEspelhoPonto 
+			recordDetail fields=DATA,ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3,HORAS_A_TRABALHAR,HORAS_TRABALHADAS,HORAS_EXTRAS labels
+	events
+		beforeInit
+			_resumoEspelhoPonto = select * from ResumoEspelhoPonto  
+		beforeClose
+			_resumoEspelhoPonto = null
+        defineRowColor entity=ResumoEspelhoPonto
+            if FALTOU_HORAS == 1
+                return @#ffb6b6
+            if FALTOU_HORAS == 0
+                return @#a1ffa7

@@ -1,0 +1,69 @@
+ApontamentoOS sync=out cleanupDays=7 confirm=Create
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	diaAtual Date
+	tipoListaOS TipoListaOS
+	diaOS DiaListaOS fillCondition="tipoListaOS == %TipoOSAgendada"
+	ordemServico ORDEM_SERVICO descriptionFields=CODIGO,DESCRICAO,CLIENTE_SEQ_DB,CLIENTE_PROJETO_SEQ_DB,CLIENTE_LOCAL_SEQ_DB,PRODUTO_SEQ_DB,DATA_ABERTURA fullDescription
+	cliente CLIENTE autoFill=ordemServico.CLIENTE_SEQ_DB
+	nomeCliente text autoFill=cliente.DESCRICAO
+	projeto PROJETO autoFill=ordemServico.CLIENTE_PROJETO_SEQ_DB
+	clienteLocal CLIENTE_LOCAL autoFill=ordemServico.CLIENTE_LOCAL_SEQ_DB
+	statusOS int autoFill=%StatusAndamento
+	DESC1 String notFill ignoreExternal
+	server name=ApontamentoStatusOS
+	events
+		afterInsert
+			ResumoPonto ultimoRegistro = SelectFirst FROM ResumoPonto order by DATA_PONTO desc
+			if ultimoRegistro != null
+				TipoPonto tipo = SelectFirst FROM TipoPonto where id == ultimoRegistro.TIPO_PONTO
+				DESC1 = @
+				DESC1 = concat @"OS: " :ordemServico.CODIGO
+				DESC1 = concat DESC1 @"::"
+				DESC1 = concat DESC1 :ordemServico.DESCRICAO
+				DESC1 = concat DESC1 @"\n"
+				DESC1 = concat DESC1 @"Último Ponto: "
+				DESC1 = concat DESC1 ultimoRegistro.DATA_PONTO
+				setInfoView DESC1
+			else
+				DESC1 = @
+				DESC1 = concat @"OS: " :ordemServico.CODIGO
+				DESC1 = concat DESC1 @"::"
+				DESC1 = concat DESC1 :ordemServico.DESCRICAO
+				setInfoView DESC1
+			Boletim b = boletim
+			b.telaPrincipal = %TelaOS
+			b.ordemServico = ordemServico
+			b.cliente = cliente
+			b.nomeCliente = nomeCliente
+			b.projeto = projeto
+			b.clienteLocal = clienteLocal
+			b.flagPrimeiroAptOS = true
+			b.flagResponderChecklist = false
+			b.DESC = DESC1
+			save b
+			UPDATE ORDEM_SERVICO SET statusOS = :statusOS WHERE SEQ_DB == :ordemServico
+	fieldEvents
+		autoFill
+			diaAtual
+				String INICIO = simpleDateFormat @"dd/MM/yyyy 00:00:00" data
+				return milliToDate INICIO
+			boletim
+				Boletim bol = SelectLast FROM boletim
+				return bol
+		filterListRecord
+			diaOS
+				ORDEM_SERVICO os = SelectFirst FROM ORDEM_SERVICO WHERE statusOS != %StatusFechado  AND DATA_INICIO_PREVISTO <= :diaAtual AND DATA_FIM_PREVISTO >= :diaAtual AND SEQ_DB in listRecord.ORDEM_SERVICO_LOVN
+				return os != null
+			ordemServico
+				if tipoListaOS == %TipoOSAgendada
+					if listRecord.SEQ_DB not in diaOS.ORDEM_SERVICO_LOVN
+						return false
+				ORDEM_SERVICO os = SelectFirst FROM ORDEM_SERVICO WHERE SEQ_DB == listRecord.SEQ_DB AND statusOS != %StatusFechado  AND DATA_INICIO_PREVISTO <= :diaAtual AND DATA_FIM_PREVISTO >= :diaAtual
+				return os != null

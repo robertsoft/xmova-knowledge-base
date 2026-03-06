@@ -1,0 +1,8 @@
+//Mensagem
+TipoMensagensEnviadas 1
+TipoMensagensRecebidas 2
+TipoMensagemEnviar 3
+
+//Enviar Mensagem
+TipoMensagemEnviarSelecionar 1
+TipoMensagemEnviarEscrever 2

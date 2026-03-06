@@ -1,0 +1,34 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoBancoHorasDetails
+  labels:
+  - recordDetail fields=SALDO,HORAS_TRABALHADAS labels
+pipeline:
+  tasks:
+  - id: get__resumoBancoHoras
+    name: get__resumoBancoHoras
+    run:
+      type: resource_query
+      resource: _resumoBancoHoras
+  - id: query__resumoBancoHoras
+    name: query__resumoBancoHoras
+    run:
+      type: sql
+      sql: select * from ResumoBancoHoras
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: SALDO
+    - name: HORAS_TRABALHADAS
+hooks:
+  beforeInit:
+  - _resumoBancoHoras: select * from ResumoBancoHoras
+  - _resumoBancoHoras: 'null'
+resources:
+- name: _resumoBancoHoras
+  type: sql
+  sql: select * from ResumoBancoHoras
+secrets: {}

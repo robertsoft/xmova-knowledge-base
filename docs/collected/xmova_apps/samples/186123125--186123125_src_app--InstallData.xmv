@@ -1,0 +1,7 @@
+TipoMensagens
+    1	Enviadas
+    2	Recebidas
+    3	Enviar
+TipoMensagemEnviar
+    1	Selecionar
+    2	Escrever

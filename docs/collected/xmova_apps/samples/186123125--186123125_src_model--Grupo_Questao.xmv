@@ -1,0 +1,7 @@
+Grupo_Questao sync=in memory searchFields=DESCRICAO descriptionFields=DESCRICAO TypeSearchContains
+	SEQ_DB long
+	DESCRICAO Str
+	FLAG_PREENCHIMENTO boolean
+	EQP_CLASSE_LOVN List<Eqp_Classe>
+	flagRespondido boolean defaultValue=false notSync
+	server name=Grupo_Questao_Mecanico_Mobile
