@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123415--320123415_src_model--PARAMETRO_TECNICO
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

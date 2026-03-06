@@ -1,0 +1,35 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 363123201--363123201_src_app_screens--ResumoAtividadeDetail
+  labels:
+  - recordDetail fields=atividadeDesc,duracao,quantidade labels
+pipeline:
+  tasks:
+  - id: get__lastAtividade
+    name: get__lastAtividade
+    run:
+      type: resource_query
+      resource: _lastAtividade
+  - id: query__lastAtividade
+    name: query__lastAtividade
+    run:
+      type: sql
+      sql: select * from ResumoAtividade order by atividadeDesc
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: atividadeDesc
+    - name: duracao
+    - name: quantidade
+hooks:
+  beforeInit:
+  - _lastAtividade: select * from ResumoAtividade order by atividadeDesc
+  - _lastAtividade: 'null'
+resources:
+- name: _lastAtividade
+  type: sql
+  sql: select * from ResumoAtividade order by atividadeDesc
+secrets: {}

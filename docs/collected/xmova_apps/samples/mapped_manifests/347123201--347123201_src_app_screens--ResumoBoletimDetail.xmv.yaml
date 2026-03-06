@@ -1,0 +1,41 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 347123201--347123201_src_app_screens--ResumoBoletimDetail
+  labels:
+  - recordDetail fields=data,encarregado,funcionarios,atividades,tempoProdutivo,tempoImprodutivo,perdas,tempoTotal
+    labels
+pipeline:
+  tasks:
+  - id: get__lastBoletim
+    name: get__lastBoletim
+    run:
+      type: resource_query
+      resource: _lastBoletim
+  - id: query__lastBoletim
+    name: query__lastBoletim
+    run:
+      type: sql
+      sql: select * from ResumoBoletim
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: data
+    - name: encarregado
+    - name: funcionarios
+    - name: atividades
+    - name: tempoProdutivo
+    - name: tempoImprodutivo
+    - name: perdas
+    - name: tempoTotal
+hooks:
+  beforeInit:
+  - _lastBoletim: select * from ResumoBoletim
+  - _lastBoletim: 'null'
+resources:
+- name: _lastBoletim
+  type: sql
+  sql: select * from ResumoBoletim
+secrets: {}

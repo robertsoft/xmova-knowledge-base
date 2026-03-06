@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 347123201--347123201_src_model--Questao
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

@@ -1,0 +1,24 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123415--186123415_src_app_screens--ResumoObservacaoDetail
+  labels:
+  - recordDetail fields=observacao labels
+pipeline:
+  tasks:
+  - id: get__resumoObservacao
+    name: get__resumoObservacao
+    run:
+      type: query
+      source: _resumoObservacao
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: observacao
+hooks:
+  beforeInit:
+  - _resumoObservacao: 'null'
+resources: []
+secrets: {}

@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 318123203--318123203_src_model--MensagemAgendada
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

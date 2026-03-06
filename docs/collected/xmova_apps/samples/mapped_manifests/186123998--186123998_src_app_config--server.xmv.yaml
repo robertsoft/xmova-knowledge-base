@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123998--186123998_src_app_config--server
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

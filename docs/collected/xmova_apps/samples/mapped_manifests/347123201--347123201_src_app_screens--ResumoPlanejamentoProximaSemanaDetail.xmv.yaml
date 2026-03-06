@@ -1,0 +1,42 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 347123201--347123201_src_app_screens--ResumoPlanejamentoProximaSemanaDetail
+  labels:
+  - recordDetail fields=atividade,tipoProd,total,segunda,terca,quarta,quinta,sexta,sabado,domingo
+    labels
+pipeline:
+  tasks:
+  - id: get__dadosPlanejamentoProximaSemana
+    name: get__dadosPlanejamentoProximaSemana
+    run:
+      type: resource_query
+      resource: _dadosPlanejamentoProximaSemana
+  - id: query__dadosPlanejamentoProximaSemana
+    name: query__dadosPlanejamentoProximaSemana
+    run:
+      type: sql
+      sql: select * from ResumoPlanejamentoProximaSemana
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: atividade
+    - name: tipoProd
+    - name: total
+    - name: segunda
+    - name: terca
+    - name: quarta
+    - name: quinta
+    - name: sexta
+    - name: sabado
+    - name: domingo
+hooks:
+  beforeInit:
+  - _dadosPlanejamentoProximaSemana: select * from ResumoPlanejamentoProximaSemana
+resources:
+- name: _dadosPlanejamentoProximaSemana
+  type: sql
+  sql: select * from ResumoPlanejamentoProximaSemana
+secrets: {}

@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 369123201--369123201_src_model--Boletim
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

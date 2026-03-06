@@ -1,0 +1,36 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 347123201--347123201_src_app_screens--ResumoEquipDetail
+  labels:
+  - recordDetail fields=data,equipamento,tipo,atividade labels
+pipeline:
+  tasks:
+  - id: get__lastEquip
+    name: get__lastEquip
+    run:
+      type: resource_query
+      resource: _lastEquip
+  - id: query__lastEquip
+    name: query__lastEquip
+    run:
+      type: sql
+      sql: select * from ResumoApropEquip
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: data
+    - name: equipamento
+    - name: tipo
+    - name: atividade
+hooks:
+  beforeInit:
+  - _lastEquip: select * from ResumoApropEquip
+  - _lastEquip: 'null'
+resources:
+- name: _lastEquip
+  type: sql
+  sql: select * from ResumoApropEquip
+secrets: {}

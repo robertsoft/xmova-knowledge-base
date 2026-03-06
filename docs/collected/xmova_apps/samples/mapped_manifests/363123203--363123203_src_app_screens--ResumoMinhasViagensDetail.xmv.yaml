@@ -1,0 +1,29 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 363123203--363123203_src_app_screens--ResumoMinhasViagensDetail
+  labels:
+  - recordDetail fields=CODIGO_EQUIPAMENTO,DESCRICAO_EQUIPAMENTO,NOME_OPERADOR,QTD,VOLUME
+    labels
+pipeline:
+  tasks:
+  - id: get__resumoMinhasViagens
+    name: get__resumoMinhasViagens
+    run:
+      type: query
+      source: _resumoMinhasViagens
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: CODIGO_EQUIPAMENTO
+    - name: DESCRICAO_EQUIPAMENTO
+    - name: NOME_OPERADOR
+    - name: QTD
+    - name: VOLUME
+hooks:
+  beforeInit:
+  - _resumoMinhasViagens: 'null'
+resources: []
+secrets: {}

@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 408123125--408123125_src_model--BoletimInicio
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

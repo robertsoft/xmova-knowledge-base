@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123415--186123415_src_model--Location
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

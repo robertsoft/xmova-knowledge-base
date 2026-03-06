@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123415--320123415_src_model--OS_SERVICO_GRUPO_QUESTAO
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

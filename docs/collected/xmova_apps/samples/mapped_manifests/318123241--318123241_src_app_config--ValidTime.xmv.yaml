@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 318123241--318123241_src_app_config--ValidTime
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

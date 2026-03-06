@@ -1,0 +1,45 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 407123302--407123302_src_app_screens--ResumoApontamentoDetail
+  labels:
+  - recordDetail fields=atividade,data,eqpDesc,operadorDesc,quantidade,comboioDesc,encerranteInicial,encerranteFinal,horimetroInicial,horimetroFinal,kmInicial,kmFinal
+    labels
+pipeline:
+  tasks:
+  - id: get__lastApontamento
+    name: get__lastApontamento
+    run:
+      type: resource_query
+      resource: _lastApontamento
+  - id: query__lastApontamento
+    name: query__lastApontamento
+    run:
+      type: sql
+      sql: select * from ResumoApontamento
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: atividade
+    - name: data
+    - name: eqpDesc
+    - name: operadorDesc
+    - name: quantidade
+    - name: comboioDesc
+    - name: encerranteInicial
+    - name: encerranteFinal
+    - name: horimetroInicial
+    - name: horimetroFinal
+    - name: kmInicial
+    - name: kmFinal
+hooks:
+  beforeInit:
+  - _lastApontamento: select * from ResumoApontamento
+  - _lastApontamento: 'null'
+resources:
+- name: _lastApontamento
+  type: sql
+  sql: select * from ResumoApontamento
+secrets: {}

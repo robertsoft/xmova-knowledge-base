@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 257123240--257123240_src_model--ChecklistPreenchido
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

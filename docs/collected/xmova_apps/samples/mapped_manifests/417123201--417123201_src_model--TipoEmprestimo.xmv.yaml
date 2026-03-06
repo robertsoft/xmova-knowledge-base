@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 417123201--417123201_src_model--TipoEmprestimo
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

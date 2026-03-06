@@ -1,0 +1,42 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 363123202--363123202_src_app_screens--ResumoPlanejamentoDetail
+  labels:
+  - recordDetail fields=atividade,tipoProd,total,segunda,terca,quarta,quinta,sexta,sabado,domingo
+    labels
+pipeline:
+  tasks:
+  - id: get__dadosPlanejamento
+    name: get__dadosPlanejamento
+    run:
+      type: resource_query
+      resource: _dadosPlanejamento
+  - id: query__dadosPlanejamento
+    name: query__dadosPlanejamento
+    run:
+      type: sql
+      sql: select * from ResumoPlanejamento
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: atividade
+    - name: tipoProd
+    - name: total
+    - name: segunda
+    - name: terca
+    - name: quarta
+    - name: quinta
+    - name: sexta
+    - name: sabado
+    - name: domingo
+hooks:
+  beforeInit:
+  - _dadosPlanejamento: select * from ResumoPlanejamento
+resources:
+- name: _dadosPlanejamento
+  type: sql
+  sql: select * from ResumoPlanejamento
+secrets: {}

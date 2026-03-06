@@ -1,0 +1,34 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 379123201--379123201_src_app_screens--ResumoFuncionarioDetail
+  labels:
+  - recordDetail fields=data,nomeFuncionario labels
+pipeline:
+  tasks:
+  - id: get__lastFuncionario
+    name: get__lastFuncionario
+    run:
+      type: resource_query
+      resource: _lastFuncionario
+  - id: query__lastFuncionario
+    name: query__lastFuncionario
+    run:
+      type: sql
+      sql: select * from ResumoFuncionario
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: data
+    - name: nomeFuncionario
+hooks:
+  beforeInit:
+  - _lastFuncionario: select * from ResumoFuncionario
+  - _lastFuncionario: 'null'
+resources:
+- name: _lastFuncionario
+  type: sql
+  sql: select * from ResumoFuncionario
+secrets: {}

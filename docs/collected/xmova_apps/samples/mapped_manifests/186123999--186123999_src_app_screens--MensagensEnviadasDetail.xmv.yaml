@@ -1,0 +1,23 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123999--186123999_src_app_screens--MensagensEnviadasDetail
+  labels:
+  - recordDetail fields=data,descricao labels
+pipeline:
+  tasks:
+  - id: get__msgEnviadas
+    name: get__msgEnviadas
+    run:
+      type: query
+      source: _msgEnviadas
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: data
+    - name: descricao
+hooks: {}
+resources: []
+secrets: {}

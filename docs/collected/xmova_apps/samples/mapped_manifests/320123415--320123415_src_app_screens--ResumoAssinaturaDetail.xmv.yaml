@@ -1,0 +1,26 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123415--320123415_src_app_screens--ResumoAssinaturaDetail
+  labels:
+  - recordDetail fields=NOME_CLIENTE1,NOME_CLIENTE2,NOME_CLIENTE3 labels
+pipeline:
+  tasks:
+  - id: get__resumoAssinatura
+    name: get__resumoAssinatura
+    run:
+      type: query
+      source: _resumoAssinatura
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: NOME_CLIENTE1
+    - name: NOME_CLIENTE2
+    - name: NOME_CLIENTE3
+hooks:
+  beforeInit:
+  - _resumoAssinatura: 'null'
+resources: []
+secrets: {}

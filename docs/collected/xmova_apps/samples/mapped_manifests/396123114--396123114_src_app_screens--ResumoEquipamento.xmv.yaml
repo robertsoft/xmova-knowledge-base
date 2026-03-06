@@ -1,0 +1,29 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 396123114--396123114_src_app_screens--ResumoEquipamento
+  labels:
+  - recordDetail fields=hora,operacao,perda labels
+pipeline:
+  tasks:
+  - id: get__apontsEquip
+    name: get__apontsEquip
+    run:
+      type: query
+      source: _apontsEquip
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: hora
+    - name: operacao
+    - name: perda
+hooks:
+  beforeInit:
+  - _lastApontamentoResumo: selectLast from ApontamentoResumoMulti
+  - _idEquip: _lastApontamentoResumo.equip
+  - _lastApontamentoResumo: 'null'
+  - _idEquip: 'null'
+resources: []
+secrets: {}

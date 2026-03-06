@@ -1,0 +1,40 @@
+query,count
+select * from ResumoApontamento,44
+select * from ResumoCheckList,29
+select * from MensagemAgendada,18
+select * from ResumoFuncionario,10
+"select * from ResumoApropEquip order by encarregado, data",4
+select * from ResumoEquipamento,3
+select * from ResumoPlanejamento,3
+select * from ResumoPlanejamentoProximaSemana,3
+select * from TitleOS,2
+select * from TitleTecnico,2
+select * from TitleEquipamento,2
+select * from TitleHorasTrabalhadas,2
+select * from TitleDeslocamento,2
+select * from ResumoAtividade order by atividadeDesc,2
+"select * from ResumoApontamento order by nomeEncarregado, data",2
+select * from ResumoApropEquip order by data,2
+Select * FROM ResumoApontamento,1
+Select * FROM ResumoTotal,1
+select * from ResumoApontamentoSemanal,1
+select * from ResumoBancoHoras,1
+Select * FROM ResumoBNC,1
+select * from ResumoEspelhoLapso,1
+select * from ResumoEspelhoPonto,1
+select * from ResumoLapsosSemanal,1
+select * from ResumoPontoPainel,1
+Select * FROM ResumoTermoCautelar,1
+select * from ResumoFerramenta,1
+select * from TitleSOS,1
+select * from TitleObs,1
+select * from TitleResult,1
+select * from TitleArquivo,1
+select * from ResumoCheckListEntrada,1
+select * from ResumoCheckListSaida,1
+select * from ResumoBoletim,1
+select * from ResumoApropEquip,1
+"select * from ResumoProducao order by grupoSeqDb,ativSeqDb,flagTotal",1
+Select * from ResumoPonto,1
+select * from ResumoApontamento order by data,1
+select * from ResumoDetalhe order by data,1

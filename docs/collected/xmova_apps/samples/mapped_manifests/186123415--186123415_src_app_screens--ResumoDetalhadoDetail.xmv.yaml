@@ -1,0 +1,215 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123415--186123415_src_app_screens--ResumoDetalhadoDetail
+  labels:
+  - recordDetail fields=codigoOS,statusOS labels
+  - recordDetail fields=crachaFuncionario,nomeFuncionario labels
+  - recordDetail fields=equipamento labels
+  - recordDetail fields=data,descAtividade,horaInicial,horaFinal,duracao labels
+  - recordDetail fields=duracaoServico labels
+  - recordDetail fields=data,placa,kmInicial,kmFinal,kmTotal labels
+  - recordDetail fields=kmTotal labels
+pipeline:
+  tasks:
+  - id: get__titleOS
+    name: get__titleOS
+    run:
+      type: resource_query
+      resource: _titleOS
+  - id: get__resumoOS
+    name: get__resumoOS
+    run:
+      type: query
+      source: _resumoOS
+  - id: get__titleTecnico
+    name: get__titleTecnico
+    run:
+      type: resource_query
+      resource: _titleTecnico
+  - id: get__resumoTecnico
+    name: get__resumoTecnico
+    run:
+      type: query
+      source: _resumoTecnico
+  - id: get__titleEquipamento
+    name: get__titleEquipamento
+    run:
+      type: resource_query
+      resource: _titleEquipamento
+  - id: get__resumoEquipamento
+    name: get__resumoEquipamento
+    run:
+      type: query
+      source: _resumoEquipamento
+  - id: get__titleHorasTrabalhadas
+    name: get__titleHorasTrabalhadas
+    run:
+      type: resource_query
+      resource: _titleHorasTrabalhadas
+  - id: get__resumoAtividadeOS
+    name: get__resumoAtividadeOS
+    run:
+      type: query
+      source: _resumoAtividadeOS
+  - id: get__resumoTotal
+    name: get__resumoTotal
+    run:
+      type: query
+      source: _resumoTotal
+  - id: get__titleDeslocamento
+    name: get__titleDeslocamento
+    run:
+      type: resource_query
+      resource: _titleDeslocamento
+  - id: get__resumoDeslocamento
+    name: get__resumoDeslocamento
+    run:
+      type: query
+      source: _resumoDeslocamento
+  - id: get__resumoDeslocamentoTotal
+    name: get__resumoDeslocamentoTotal
+    run:
+      type: query
+      source: _resumoDeslocamentoTotal
+  - id: query__titleOS
+    name: query__titleOS
+    run:
+      type: sql
+      sql: select * from TitleOS
+  - id: query__titleTecnico
+    name: query__titleTecnico
+    run:
+      type: sql
+      sql: select * from TitleTecnico
+  - id: query__titleEquipamento
+    name: query__titleEquipamento
+    run:
+      type: sql
+      sql: select * from TitleEquipamento
+  - id: query__titleHorasTrabalhadas
+    name: query__titleHorasTrabalhadas
+    run:
+      type: sql
+      sql: select * from TitleHorasTrabalhadas
+  - id: query__titleDeslocamento
+    name: query__titleDeslocamento
+    run:
+      type: sql
+      sql: select * from TitleDeslocamento
+  - id: recorddetail_fields_18
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_19
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: codigoOS
+    - name: statusOS
+  - id: recorddetail_fields_20
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_21
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: crachaFuncionario
+    - name: nomeFuncionario
+  - id: recorddetail_fields_22
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_23
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: equipamento
+  - id: recorddetail_fields_24
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_25
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: data
+    - name: descAtividade
+    - name: horaInicial
+    - name: horaFinal
+    - name: duracao
+  - id: recorddetail_fields_26
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: duracaoServico
+  - id: recorddetail_fields_27
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_28
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: data
+    - name: placa
+    - name: kmInicial
+    - name: kmFinal
+    - name: kmTotal
+  - id: recorddetail_fields_29
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: kmTotal
+hooks:
+  beforeInit:
+  - _titleOS: select * from TitleOS
+  - _titleTecnico: select * from TitleTecnico
+  - _titleEquipamento: select * from TitleEquipamento
+  - _titleHorasTrabalhadas: select * from TitleHorasTrabalhadas
+  - _titleDeslocamento: select * from TitleDeslocamento
+  - _titleOS: 'null'
+  - _titleTecnico: 'null'
+  - _titleEquipamento: 'null'
+  - _titleHorasTrabalhadas: 'null'
+  - _titleDeslocamento: 'null'
+  - _resumoOS: 'null'
+  - _resumoTecnico: 'null'
+  - _resumoEquipamento: 'null'
+  - _resumoAtividadeOS: 'null'
+  - _resumoTotal: 'null'
+resources:
+- name: _titleOS
+  type: sql
+  sql: select * from TitleOS
+- name: _titleTecnico
+  type: sql
+  sql: select * from TitleTecnico
+- name: _titleEquipamento
+  type: sql
+  sql: select * from TitleEquipamento
+- name: _titleHorasTrabalhadas
+  type: sql
+  sql: select * from TitleHorasTrabalhadas
+- name: _titleDeslocamento
+  type: sql
+  sql: select * from TitleDeslocamento
+secrets: {}

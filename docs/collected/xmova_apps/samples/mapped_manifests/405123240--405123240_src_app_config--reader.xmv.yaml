@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 405123240--405123240_src_app_config--reader
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

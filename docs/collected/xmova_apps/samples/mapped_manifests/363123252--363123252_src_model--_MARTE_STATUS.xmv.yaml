@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 363123252--363123252_src_model--_MARTE_STATUS
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

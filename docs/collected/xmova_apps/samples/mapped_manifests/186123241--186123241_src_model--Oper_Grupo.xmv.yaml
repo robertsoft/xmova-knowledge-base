@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123241--186123241_src_model--Oper_Grupo
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

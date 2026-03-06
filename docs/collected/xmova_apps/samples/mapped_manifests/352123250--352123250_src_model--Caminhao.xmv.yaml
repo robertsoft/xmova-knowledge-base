@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 352123250--352123250_src_model--Caminhao
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

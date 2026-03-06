@@ -1,0 +1,22 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 417123201--417123201_src_app_screens--ResumoFotoDetail
+pipeline:
+  tasks:
+  - id: get__resumoFoto
+    name: get__resumoFoto
+    run:
+      type: query
+      source: _resumoFoto
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: descricao
+hooks:
+  beforeInit:
+  - _resumoFoto: 'null'
+resources: []
+secrets: {}

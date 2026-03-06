@@ -1,0 +1,36 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123201--186123201_src_app_screens--ResumoFerramentaDetail
+  labels:
+  - recordDetail fields=data,prefixo,ferramenta,atividade labels
+pipeline:
+  tasks:
+  - id: get__lastFerramenta
+    name: get__lastFerramenta
+    run:
+      type: resource_query
+      resource: _lastFerramenta
+  - id: query__lastFerramenta
+    name: query__lastFerramenta
+    run:
+      type: sql
+      sql: select * from ResumoFerramenta
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: data
+    - name: prefixo
+    - name: ferramenta
+    - name: atividade
+hooks:
+  beforeInit:
+  - _lastFerramenta: select * from ResumoFerramenta
+  - _lastFerramenta: 'null'
+resources:
+- name: _lastFerramenta
+  type: sql
+  sql: select * from ResumoFerramenta
+secrets: {}

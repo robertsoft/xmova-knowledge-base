@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 313123201--313123201_src_model--TrocaFolha
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

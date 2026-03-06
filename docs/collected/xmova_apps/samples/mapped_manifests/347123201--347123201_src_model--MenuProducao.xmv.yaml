@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 347123201--347123201_src_model--MenuProducao
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

@@ -1,0 +1,33 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123415--320123415_src_app_screens--ResumoApontamentoDetail
+  labels:
+  - recordDetail fields=tipoAtividade,descAtividade,dataInicial,dataFinal,duracao,kmInicial,kmFinal,kmTotal,codigoOS
+    labels
+pipeline:
+  tasks:
+  - id: get__resumoAtividade
+    name: get__resumoAtividade
+    run:
+      type: query
+      source: _resumoAtividade
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: tipoAtividade
+    - name: descAtividade
+    - name: dataInicial
+    - name: dataFinal
+    - name: duracao
+    - name: kmInicial
+    - name: kmFinal
+    - name: kmTotal
+    - name: codigoOS
+hooks:
+  beforeInit:
+  - _resumoAtividade: 'null'
+resources: []
+secrets: {}

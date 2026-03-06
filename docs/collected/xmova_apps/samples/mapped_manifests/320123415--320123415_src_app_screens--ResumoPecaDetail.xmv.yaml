@@ -1,0 +1,29 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123415--320123415_src_app_screens--ResumoPecaDetail
+  labels:
+  - recordDetail fields=CODIGO_PECA,DESCRICAO_PECA,QTD_REQUISITADA,QTD_UTILIZADA,QTD_DEVOLVIDA
+    labels
+pipeline:
+  tasks:
+  - id: get__resumoPeca
+    name: get__resumoPeca
+    run:
+      type: query
+      source: _resumoPeca
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: CODIGO_PECA
+    - name: DESCRICAO_PECA
+    - name: QTD_REQUISITADA
+    - name: QTD_UTILIZADA
+    - name: QTD_DEVOLVIDA
+hooks:
+  beforeInit:
+  - _resumoPeca: 'null'
+resources: []
+secrets: {}

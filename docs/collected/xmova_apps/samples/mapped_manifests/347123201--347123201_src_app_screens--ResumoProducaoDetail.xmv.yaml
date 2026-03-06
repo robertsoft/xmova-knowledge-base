@@ -1,0 +1,35 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 347123201--347123201_src_app_screens--ResumoProducaoDetail
+  labels:
+  - recordDetail fields=grupo,atividade,producao labels
+pipeline:
+  tasks:
+  - id: get__lastApontamentoProducao
+    name: get__lastApontamentoProducao
+    run:
+      type: resource_query
+      resource: _lastApontamentoProducao
+  - id: query__lastApontamentoProducao
+    name: query__lastApontamentoProducao
+    run:
+      type: sql
+      sql: select * from ResumoProducao order by grupoSeqDb,ativSeqDb,flagTotal
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: grupo
+    - name: atividade
+    - name: producao
+hooks:
+  beforeInit:
+  - _lastApontamentoProducao: select * from ResumoProducao order by grupoSeqDb,ativSeqDb,flagTotal
+  - _lastApontamentoProducao: 'null'
+resources:
+- name: _lastApontamentoProducao
+  type: sql
+  sql: select * from ResumoProducao order by grupoSeqDb,ativSeqDb,flagTotal
+secrets: {}

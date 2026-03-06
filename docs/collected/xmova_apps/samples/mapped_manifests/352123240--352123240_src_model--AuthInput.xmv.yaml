@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 352123240--352123240_src_model--AuthInput
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}
