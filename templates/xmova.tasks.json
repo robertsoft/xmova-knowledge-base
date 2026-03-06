@@ -1,0 +1,37 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Xmova: Build",
+      "type": "shell",
+      "command": "${input:xmovaCommand}",
+      "options": {
+        "cwd": "${input:projectFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "projectFolder",
+      "type": "promptString",
+      "description": "Caminho do projeto (ex: C:/dev/projects/xMova Apps/MyApp). Deixe vazio para usar a raiz do workspace do projeto.",
+      "default": ""
+    },
+    {
+      "id": "xmovaCommand",
+      "type": "promptString",
+      "description": "Comando para compilar (ex: ./xmova_compiler.exe --compile ou python build.py)",
+      "default": "./xmova_compiler.exe --compile"
+    }
+  ]
+}
