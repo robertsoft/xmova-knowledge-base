@@ -1,0 +1,35 @@
+TipoApontamento
+    1	Atividade
+    2	Parada
+TipoDeslocamento
+    1	Interrupção
+    2	Fim Deslocamento
+TipoMarte
+    1	CAN FIO
+    2	CAN SEM FIO
+    3	PULSO
+TipoChip
+    1	Allcom
+    2	Eseye
+TipoPonto
+    1	Entrada
+    2	Início de Refeição
+    3	Fim de Refeição
+    4	Saída
+    5	Registro Manual
+TipoRefeicao
+    1	Café da Manhã
+    2	Almoço
+    3	Janta
+Classificacao_Equipamento
+    1	Equipamento
+    2	Motor estacionário
+FlagProprio_Equipamento
+    1	Próprio
+    2	Terceiro
+TipoListaOS
+    1	Todas OSs
+    2	OSs Agendadas
+TipoAdiantamento
+    1   Dinheiro
+    2   Ticket Log

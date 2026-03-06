@@ -1,0 +1,41 @@
+# Generated BNF from patterns
+- R1: (23) `/<PATH>`
+- R2: (11) `events`
+- R3: (10) `views`
+- R4: (10) `beforeClose`
+- R5: (9) `beforeInit`
+- R6: (7) `if menuAdiantamento.flagPrimeiroApontamento == <NUM>`
+- R7: (6) `else`
+- R8: (5) `return false`
+- R9: (5) `dataLibAux = addDate dataLibAux <NUM> @h`
+- R10: (5) `if diaSemana == <NUM>`
+- R11: (4) `return true`
+- R12: (2) `/<PATH> OS`
+- R13: (2) `/<PATH> TERMO CAUTELAR`
+- R14: (2) `/<PATH> DESPESA`
+- R15: (2) `/<PATH> INSTALACAO`
+- R16: (2) `sync`
+- R17: (2) `recordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels`
+- R18: (2) `if FALTOU_HORAS == <NUM>`
+- R19: (2) `id inc`
+- R20: (2) `boletim Boletim hide`
+- R21: (2) `seqFuncionario SeqFuncionario hide`
+- R22: (2) `flagOnline int notFill onlineFlagCreate`
+- R23: (2) `return generateUuid`
+- R24: (1) `/<PATH> que podem ser definidas para serem apresentadas no Mobile`
+- R25: (1) `custom.msgCustomConfirmaConfig = Funcionário: %nomeFuncionario\n\nDeseja Confirmar a Configuração?`
+- R26: (1) `custom.msgCustomConfirmaRegistroRefeicaoI = Deseja Registrar o ponto de inicio de refeição?\n\nData do Ponto: %data`
+- R27: (1) `custom.msgCustomConfirmaPonto = Confirmar o Registro de Ponto?\n\nData do Ponto: %data`
+- R28: (1) `custom.msgCustomConfirmaPonto2 = Confirmar o Registro de Ponto?\n\nData do Ponto: %data\n\nO tempo mínimo de <NUM> minutos entre um ponto e outro não foi atingido\n\nO intervalo entre esse registro e o anterior será de: %duracao`
+- R29: (1) `custom.msgBloqueiaFim = Para encerrar a OS é necessário a assinatura do Cliente`
+- R30: (1) `custom.msgInterrupcao = Deslocamento interrompido pelo motivo <%motivo>.\nAo finalizar interrupção pressione "<STR>" para retomar o deslocamento.`
+- R31: (1) `custom.deslocamentoKmFinalMenorKmInicial = Km Final informado (%kmFinal) menor que o KM Inicial (%kmInicial). Confirma?`
+- R32: (1) `custom.deslocamentoKmAtualMenorKmInicial = Km Atual informado (%kmAtual) menor que o KM Inicial (%kmInicial). Confirma?`
+- R33: (1) `custom.msgBloqueiaHorimetroMarte = Necessária pelo menos <NUM> foto para prosseguir.`
+- R34: (1) `custom.msgBloqueiaFimMarte = Para pausar<PATH> a OS é necessário finalizar a instalação do Marte`
+- R35: (1) `custom.msgHodometroInvalido = Hodômetro inválido!`
+- R36: (1) `custom.msgManutSucesso = Manutenção Realizada Com Sucesso!`
+- R37: (1) `custom.msgCustomInstSucesso = Instalação Realizada com Sucesso!`
+- R38: (1) `custom.msgCustomDesmSucesso = Desmobilização Realizada com Sucesso!`
+- R39: (1) `custom.msgTermoCautelarSucesso = Termo Cautelar realizado com sucesso!`
+- R40: (1) `custom.msgNotificarNenhumRegistro = Tempo de boletim iniciado sem Registro de ponto excedido. Por favor, registre o ponto!`

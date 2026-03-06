@@ -1,0 +1,6 @@
+Vigencia_Banco sync=in descriptionFields=CODIGO searchFields=CODIGO
+	SEQ_DB long hide
+	CODIGO Str
+	DATA_INICIO_X Date
+	DATA_FIM_X Date
+	server name=Vigencia_Banco_Mobile

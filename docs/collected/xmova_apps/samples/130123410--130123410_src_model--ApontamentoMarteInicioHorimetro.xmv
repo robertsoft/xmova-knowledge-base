@@ -1,0 +1,44 @@
+ApontamentoMarteInicioHorimetro sync=out cleanupDays=7 confirm=Create
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	SEQ_DB_DEVICE long autoFill=boletim.SEQ_DB_DEVICE_MARTE
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	horimetro decimal decimalSize=1 maxLength=6 notFormatThousand
+	horimetroAuxiliar decimal decimalSize=1 maxLength=6 notFormatThousand
+	odometro decimal decimalSize=1 maxLength=8 notFormatThousand
+	menuChecklist MenuChecklist transient notFill add ignoreExternal
+	marte _MARTE_STATUS inlineData
+	pedeMarte boolean ignoreExternal
+	flagMarteConectado boolean notFill
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	server name=Apontamento_Marte
+	events
+		afterInsert
+			dropTable Resposta
+			UPDATE Grupo_Questao SET flagRespondido = false
+			UPDATE Questao SET flagRespondido = false
+			Grupo_Questao q = SelectFirst FROM Grupo_Questao WHERE TIPO == %TipoInstalacaoMarte AND flagRespondido == false
+			Boletim b = boletim
+			b.flagMarteHorimetroApontado = true
+			if q != null				
+				b.telaPrincipal = %TelaMarteChecklist
+				b.tipoChecklist = %TipoInstalacaoMarte
+				save b
+				fill MenuChecklist
+			else
+				b.telaPrincipal = %TelaMarte
+				save b
+	fieldEvents
+		afterFill
+			marte
+				if marte == null
+					flagMarteConectado = 0
+				else
+					flagMarteConectado = 1
+		autoFill
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false

@@ -1,0 +1,46 @@
+ApontamentoEncerrarOS sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE_APONTAMENTO long uuid
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	produto PRODUTO autoFill=ordemServico.PRODUTO_SEQ_DB  fillCondition="ordemServico.PRODUTO_SEQ_DB != null"
+	cliente long autoFill=boletim.cliente
+	assinatura Binary Draw
+	statusOS int autoFill=%StatusFechado
+	seqPonto long notFill
+	server name=ApontamentoStatusOS
+	events
+		afterInsert
+			Boletim b = boletim
+			if boletim.flagRealizouAdiantamento == true
+				if produto != null
+					INSERT INTO ApontamentoAdiantamentoEmail (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, data, ordemServico, produto, cliente) VALUES (:SEQ_DB_DEVICE_MASTER, b.SEQ_DB_DEVICE_ADIANTAMENTO, :data, :ordemServico, :produto, :cliente)
+				else
+					INSERT INTO ApontamentoAdiantamentoEmail (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, data, ordemServico, cliente) VALUES (:SEQ_DB_DEVICE_MASTER, b.SEQ_DB_DEVICE_ADIANTAMENTO, :data, :ordemServico, :cliente)
+			b.flagRealizouAdiantamento = false
+			b.telaPrincipal = %TelaPrincipal
+			b.flagMarte = false
+			b.SEQ_DB_DEVICE_STATUS_OS = SEQ_DB_DEVICE
+			b.dataStatusOS = data
+			save b
+			ParadaPadrao p = SelectFirst from ParadaPadrao where TIPO == 1
+			if p != null
+				ResumoApontamento resumo = SelectFirst FROM ResumoApontamento WHERE flagApontouFim == false
+				if resumo != null
+					Long tempo = difDateMilli resumo.dataInicial data
+					String duracao = formatDateMilli tempo
+					resumo.tempo = tempo
+					resumo.duracao = duracao
+					resumo.dataFinal = data
+					resumo.flagApontouFim = true
+					save resumo
+				INSERT INTO Apontamento (tipoApontamento, parada, SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, data) VALUES (%TipoParada, p.PARADA_SEQ_DB, :SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE_APONTAMENTO, :data)
+				INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, dataInicial, flagApontouFim) VALUES (:SEQ_DB_DEVICE_APONTAMENTO, %TipoParada, p.PARADA_DESCRICAO, :data, false)		
+				sync background
+			UPDATE ORDEM_SERVICO SET statusOS = :statusOS WHERE SEQ_DB == :ordemServico

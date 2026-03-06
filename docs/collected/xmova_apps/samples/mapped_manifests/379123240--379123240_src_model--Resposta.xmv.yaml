@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 379123240--379123240_src_model--Resposta
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

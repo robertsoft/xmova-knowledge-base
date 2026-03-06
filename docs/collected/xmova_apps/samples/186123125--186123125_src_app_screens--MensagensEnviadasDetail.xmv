@@ -1,0 +1,4 @@
+MensagensEnviadasDetail tableLayout title="Mensagens Enviadas"
+	views
+		recordList getRecords=_msgEnviadas
+			recordDetail fields=data,descricao labels

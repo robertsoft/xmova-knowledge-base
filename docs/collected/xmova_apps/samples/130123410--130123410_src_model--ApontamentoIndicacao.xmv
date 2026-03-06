@@ -1,0 +1,14 @@
+ApontamentoIndicacao sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	nomeEmpresa text
+	contato text
+	telefone String numericKeyboard
+    email text
+    segmento text
+    flagFoto boolean
+    foto Binary picture fillCondition="flagFoto == true"

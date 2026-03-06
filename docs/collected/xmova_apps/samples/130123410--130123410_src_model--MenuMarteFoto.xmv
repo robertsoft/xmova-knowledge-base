@@ -1,0 +1,5 @@
+MenuMarteFoto sync=out cleanupDays=1
+	id inc
+	dateMobile Now
+	apresentarFlagApontarNovo boolean autoFill=false
+	apontamentoFoto List<ApontamentoMarteFoto> transient loop autoInitializeNew finishOnEndLoop ignoreExternal

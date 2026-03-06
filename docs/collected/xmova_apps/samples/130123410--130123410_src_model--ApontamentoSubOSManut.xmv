@@ -1,0 +1,156 @@
+ApontamentoSubOSManut sync=out cleanupDays=7
+	id inc ignoreExternal
+	boletim Boletim ignoreExternal
+	seqFuncionario SeqFuncionario
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long uuid
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente_projeto PROJETO autoFill=ordemServico.CLIENTE_PROJETO_SEQ_DB
+	apontamentoAtividade ApontamentoAtividade ignoreExternal
+	atividade Atividade autoFill=apontamentoAtividade.atividade
+	flagResponderChecklistFimEquipamento boolean autoFill=atividade.FLAG_EQUIPAMENTO ignoreExternal
+	tipoSubOS int autoFill=%SUBManutencao
+	tipoApontamento TipoApontamento autoFill=%TipoAtividade ignoreExternal
+	flagSubOS boolean ignoreExternal
+	contador int autoFill=0 ignoreExternal
+	finalizaLoop boolean notShowNo notShowYes ignoreExternal fillCondition="contador > 0"
+	subOS SUB_OS fullDescription ignoreExternal fillCondition="flagSubOS == true"	
+	subOS_SEQ_DB long autoFill=subOS.SEQ_DB fillCondition="flagSubOS == true"
+	subOSCodigo String ignoreExternal
+	subOSDesc String ignoreExternal
+	chamado Str fillCondition="flagSubOS == false"
+	equipamento EQUIPAMENTO_LIST autoFillWhenOneItem
+	hardware HARDWARE
+	hwFalhaIdentificada HW_FALHA
+	hwFalhaIdentificadaDesc String autoFill=hwFalhaIdentificada.DESCRICAO ignoreExternal
+	fotoFalha boolean ignoreExternal
+	apontamentoFotoFalha List<ApontamentoFotoSubOS> loop autoInitializeNew fillCondition="fotoFalha == true" ignoreExternal fixedPoint
+	hwSolucao HW_SOLUCAO
+	hwSolucaoDesc String autoFill=hwSolucao.DESCRICAO ignoreExternal
+	fotoSolucao boolean ignoreExternal
+	apontamentoFotoSolucao List<ApontamentoFotoSubOS> loop autoInitializeNew fillCondition="fotoSolucao == true" ignoreExternal fixedPoint
+	flagTroca boolean
+	flagTrocaMotivo boolean fillCondition="flagTroca == true"
+	registraOBS boolean ignoreExternal
+	observacao text maxLength=5000 fillCondition="registraOBS==true"
+	finalizaSubOS boolean
+	identificacaoCliente Str fillCondition="finalizaSubOS==true"
+	assinatura Binary Draw fillCondition="finalizaSubOS==true"
+	manutSucesso boolean notShowNo notBack 
+	menuChecklist MenuChecklist transient notFill add ignoreExternal
+	marte _MARTE_STATUS inlineData
+	flagMarteConectado boolean notFill
+	pedeMarte boolean ignoreExternal
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	server name=apontamentoSubOS
+	events
+		afterInsert
+			ResumoApontamento resumo = SelectFirst FROM ResumoApontamento WHERE flagApontouFim == false
+			if resumo != null
+				Long tempo = difDateMilli resumo.dataInicial data
+				String duracao = formatDateMilli tempo
+				resumo.tempo = tempo
+				resumo.duracao = duracao
+				resumo.dataFinal = data
+				resumo.flagApontouFim = true
+				save resumo
+			INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, ordemServico, dataInicial, flagApontouFim, flagDeslocamento) VALUES (:SEQ_DB_DEVICE, :tipoApontamento, :atividade.DESCRICAO, :ordemServico, :data, false, :atividade.FLAG_DESLOCAMENTO)
+			if flagSubOS == true
+				INSERT INTO ApontamentoBNC (boletim, seqFuncionario, data, flagOnline, location, SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, ordemServico, cliente_projeto, chamado, atividade, equipamento, hardware, irregularidade, tratativa, flagTroca, flagTrocaMotivo, identificacaoCliente, assinatura,subOS_SEQ_DB, flagMarteConectado) VALUES (:boletim, :seqFuncionario, :data, :flagOnline, :location, :SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :ordemServico, :cliente_projeto, :subOSCodigo, :atividade, :equipamento, :hardware, :hwFalhaIdentificadaDesc, :hwSolucaoDesc, :flagTroca, :flagTrocaMotivo, :identificacaoCliente, :assinatura,subOS_SEQ_DB, :flagMarteConectado)
+			else
+				INSERT INTO ApontamentoBNC (boletim, seqFuncionario, data, flagOnline, location, SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, ordemServico, cliente_projeto, chamado, atividade, equipamento, hardware, irregularidade, tratativa, flagTroca, flagTrocaMotivo, identificacaoCliente, assinatura, flagMarteConectado) VALUES (:boletim, :seqFuncionario, :data, :flagOnline, :location, :SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :ordemServico, :cliente_projeto, :chamado, :atividade, :equipamento, :hardware, :hwFalhaIdentificadaDesc, :hwSolucaoDesc, :flagTroca, :flagTrocaMotivo, :identificacaoCliente, :assinatura, :flagMarteConectado)
+			Boletim b = boletim
+			if flagResponderChecklistFimEquipamento == true
+				dropTable Resposta
+				UPDATE Grupo_Questao SET flagRespondido = false
+				UPDATE Questao SET flagRespondido = false
+				Grupo_Questao qes = SelectFirst FROM Grupo_Questao WHERE TIPO == %TipoFimEquipamento AND flagRespondido == false
+				if qes != null
+					b.flagResponderChecklistFimEquipamento = false
+					b.telaPrincipal = %TelaFimEquipamentoChecklist
+					b.tipoChecklist = %TipoFimEquipamento
+					save b
+					fill MenuChecklist
+			sync background
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast FROM Boletim
+			subOSCodigo
+				if flagSubOS == true
+					SUB_OS sub = SelectFirst FROM SUB_OS WHERE SEQ_DB == :subOS
+					if sub != null
+						return sub.CODIGO
+				return @"-"
+			subOSDesc
+				if flagSubOS == true
+					SUB_OS sub = SelectFirst FROM SUB_OS WHERE SEQ_DB == :subOS
+					if sub != null
+						return sub.DESCRICAO
+				return @"-"
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false
+		fillCondition
+		afterFill
+			marte
+				if marte == null
+					toast @"desconectado"
+					flagMarteConectado = 0
+				else
+					toast @"conectado"
+					flagMarteConectado = 1
+			boletim
+				if boletim.flagResponderChecklistInicioEquipamento == true
+					dropTable Resposta
+					UPDATE Grupo_Questao SET flagRespondido = false
+					UPDATE Questao SET flagRespondido = false
+					Grupo_Questao qe = SelectFirst FROM Grupo_Questao WHERE TIPO == %TipoInicioEquipamento AND flagRespondido == false	
+					if qe != null	
+						boletim.flagResponderChecklistInicioEquipamento = false
+						boletim.telaPrincipal = %TelaInicioEquipamentoChecklist
+						boletim.tipoChecklist = %TipoInicioEquipamento
+						save boletim
+						fill MenuChecklist
+			finalizaSubOS
+				if finalizaSubOS == true
+					if flagSubOS == true
+						if subOS != null
+							UPDATE SUB_OS SET flag_finalizada = true WHERE SEQ_DB == :subOS
+							UPDATE ResumoSubOS SET STATUS_SUB_OS = 2, STATUS_SUB_OS_DESC = @"Fechada" WHERE SEQ_DB == :subOS_SEQ_DB
+			hwSolucao
+				contador = 0
+		filterListRecord
+			subOS
+				if listRecord.ORDEM_SERVICO_SEQ_DB == :ordemServico
+					if listRecord.flag_finalizada == false
+						return listRecord.TIPO_SUB_OS == %SUBManutencao
+				return false
+			equipamento
+				// filterEquipamentoOS: merged with ORDEM_SERVICO.CLIENTE_SEQ_DB
+				if ordemServico != null
+					if listRecord.CLIENTE_SEQ_DB != ordemServico.CLIENTE_SEQ_DB
+						return false
+				if flagSubOS == true
+					SUB_OS sub = SelectFirst FROM SUB_OS WHERE SEQ_DB == :subOS
+					if sub != null
+						if sub.EQUIPAMENTO_SEQ_DB != null
+							return listRecord.SEQ_DB == sub.EQUIPAMENTO_SEQ_DB
+				return true
+			hardware
+				if equipamento != null
+					return listRecord.EQUIPAMENTO_SEQ_DB == :equipamento.SEQ_DB
+				return true
+		getInputScreenLabel
+			finalizaSubOS
+				if flagSubOS == true
+					return lang=custom.msgCustomFinalizaSubOSManut
+				else
+					return lang=custom.msgCustomFinalizaSubOSManutSemSub
+			manutSucesso
+				return lang=custom.msgManutSucesso

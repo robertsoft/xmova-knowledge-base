@@ -1,0 +1,4 @@
+TipoChip
+	id int
+	desc Str
+//----------------Novos Sync=in's-------------------

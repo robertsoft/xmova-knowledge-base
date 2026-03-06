@@ -1,0 +1,6 @@
+ResumoPonto cleanupDays=30
+	SEQ_DB_DEVICE_MASTER long
+	SEQ_DB_DEVICE long
+	DATA_PONTO Date
+	FUNCIONARIO_SEQ_DB SeqFuncionario
+	TIPO_PONTO TipoPonto

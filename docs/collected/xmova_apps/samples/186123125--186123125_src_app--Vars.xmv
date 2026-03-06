@@ -1,0 +1,5 @@
+_checklistRespondido ResumoCheckList
+_lastApontamento ResumoApontamento
+_msgEnviadas ResumoMensagemEnviada
+_msgRecebidas ResumoMensagemRecebida
+_msgAgendada MensagemAgendada

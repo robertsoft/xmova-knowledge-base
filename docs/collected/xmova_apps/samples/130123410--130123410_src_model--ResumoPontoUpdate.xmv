@@ -1,0 +1,12 @@
+ResumoPontoUpdate sync=in emptyVerify=false
+	SEQ_DB_DEVICE_MASTER long
+	SEQ_DB_DEVICE long
+	DATA_PONTO Date
+	FUNCIONARIO_SEQ_DB SeqFuncionario
+	TIPO_PONTO TipoPonto
+	server name=ResumoPontoUpdate_Mobile
+	events
+		beforeSyncSave
+			ResumoPonto rp = selectFirst from ResumoPonto WHERE SEQ_DB_DEVICE == :SEQ_DB_DEVICE
+			if  rp == null
+				INSERT INTO ResumoPonto (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, DATA_PONTO, FUNCIONARIO_SEQ_DB, TIPO_PONTO) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :DATA_PONTO, :FUNCIONARIO_SEQ_DB, :TIPO_PONTO)

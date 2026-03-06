@@ -1,0 +1,9 @@
+MensagensAgendadaDetail tableLayout title="Mensagens Agendada"
+	views
+		recordList getRecords=_msgAgendada
+			recordDetail fields=id,title,text,hora,DIA_SEMANA,FLAG_TURNO_ABERTO labels
+	events
+		beforeInit
+			_msgAgendada = select * from MensagemAgendada
+		beforeClose
+			_msgAgendada = null

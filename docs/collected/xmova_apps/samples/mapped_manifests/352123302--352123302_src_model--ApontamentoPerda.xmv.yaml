@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 352123302--352123302_src_model--ApontamentoPerda
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

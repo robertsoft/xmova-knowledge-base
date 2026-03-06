@@ -1,0 +1,3 @@
+TipoDeslocamento
+	id int
+	desc Str

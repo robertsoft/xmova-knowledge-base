@@ -1,0 +1,57 @@
+ApontamentoTermoCautelar sync=out cleanupDays=7
+	id inc ignoreExternal
+	boletim Boletim ignoreExternal
+	seqFuncionario SeqFuncionario
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long uuid
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente_projeto PROJETO autoFill=ordemServico.CLIENTE_PROJETO_SEQ_DB
+	chamado Str
+	contador int autoFill=0 ignoreExternal
+	finalizaLoop boolean notShowNo notShowYes ignoreExternal fillCondition="contador > 0"
+	local CLIENTE_LOCAL
+	nomeRecebedor Str
+	matriculaRecebedor Str
+	funcao FUNCAO
+	eqpColetor Str
+	celular Str mask="(99)\99999-9999"
+	email Str
+	//ITENS ENTREGUES
+	aparelhoCelular boolean
+	marcaAparelhoCelular Str fillCondition="aparelhoCelular == true"
+	modeloAparelhoCelular Str fillCondition="aparelhoCelular == true"
+	idAparelhoCelular Str fillCondition="aparelhoCelular == true"
+	tablet boolean
+	marcaTablet Str fillCondition="tablet == true"
+	modeloTablet Str fillCondition="tablet == true"
+	idTablet Str fillCondition="tablet == true"
+	carregador boolean
+	caboUsb boolean
+	suporte boolean
+	outros boolean
+	outrosObs text maxLength=1000 fillCondition="outros == true"
+	fotoTermoCautelar boolean ignoreExternal
+	apontamentoFotoTermoCautelar List<ApontamentoFotoTermoCautelar> loop autoInitializeNew fillCondition="fotoTermoCautelar == true" ignoreExternal fixedPoint
+	assinatura Binary Draw
+	termoCautelarSucesso boolean notShowNo notBack
+	server name=apontamentoTermoCautelar
+	events
+		afterInsert
+			INSERT INTO ResumoTermoCautelar (SEQ_DB_DEVICE, ordemServico, dataInicial, chamado, nomeRecebedor, matriculaRecebedor, eqpColetor, celular, email) VALUES (:SEQ_DB_DEVICE, :ordemServico, :data, :chamado, :nomeRecebedor, :matriculaRecebedor, :eqpColetor, :celular, :email)
+			Boletim b = boletim
+			b.telaPrincipal = %TelaApontamento
+			save b
+			sync background
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast FROM Boletim
+		filterListRecord
+			local
+				return listRecord.CLIENTE_PROJETO_SEQ_DB == :ordemServico.CLIENTE_PROJETO_SEQ_DB
+		getInputScreenLabel
+			termoCautelarSucesso
+				return lang=custom.msgTermoCautelarSucesso

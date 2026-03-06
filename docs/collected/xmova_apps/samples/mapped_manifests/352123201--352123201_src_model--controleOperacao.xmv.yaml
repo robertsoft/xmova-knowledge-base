@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 352123201--352123201_src_model--controleOperacao
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

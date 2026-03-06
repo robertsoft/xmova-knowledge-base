@@ -1,0 +1,38 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 352123114--352123114_src_app_screens--MensagensAgendadaDetail
+  labels:
+  - recordDetail fields=id,title,text,hora,DIA_SEMANA,FLAG_TURNO_ABERTO labels
+pipeline:
+  tasks:
+  - id: get__msgAgendada
+    name: get__msgAgendada
+    run:
+      type: resource_query
+      resource: _msgAgendada
+  - id: query__msgAgendada
+    name: query__msgAgendada
+    run:
+      type: sql
+      sql: select * from MensagemAgendada
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: id
+    - name: title
+    - name: text
+    - name: hora
+    - name: DIA_SEMANA
+    - name: FLAG_TURNO_ABERTO
+hooks:
+  beforeInit:
+  - _msgAgendada: select * from MensagemAgendada
+  - _msgAgendada: 'null'
+resources:
+- name: _msgAgendada
+  type: sql
+  sql: select * from MensagemAgendada
+secrets: {}

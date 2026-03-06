@@ -1,0 +1,4 @@
+Main main entity=AuthInput fields=descricaoEmpresa
+	actions
+		Sair Back
+			exit

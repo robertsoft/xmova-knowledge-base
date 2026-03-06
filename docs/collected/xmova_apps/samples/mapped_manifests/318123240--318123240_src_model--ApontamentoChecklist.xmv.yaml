@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 318123240--318123240_src_model--ApontamentoChecklist
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

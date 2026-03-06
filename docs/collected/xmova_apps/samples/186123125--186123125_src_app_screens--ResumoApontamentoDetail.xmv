@@ -1,0 +1,9 @@
+ResumoApontamentoDetail tableLayout title="Resumo"
+	views
+		recordList getRecords=_lastApontamento
+			recordDetail fields=data,equipamento,oper labels
+	events
+		beforeInit
+			_lastApontamento = select * from ResumoApontamento
+		beforeClose
+			_lastApontamento = null

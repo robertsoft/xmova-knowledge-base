@@ -1,0 +1,17 @@
+# Mapped Manifests Report
+
+- 130123410--130123410_src_app_screens--ResumoApontamentoDetail.xmv -> 130123410--130123410_src_app_screens--ResumoApontamentoDetail.xmv.yaml (tasks: 6)
+- 130123410--130123410_src_app_screens--ResumoApontamentoSemanalDetails.xmv -> 130123410--130123410_src_app_screens--ResumoApontamentoSemanalDetails.xmv.yaml (tasks: 3)
+- 130123410--130123410_src_app_screens--ResumoBancoHorasDetails.xmv -> 130123410--130123410_src_app_screens--ResumoBancoHorasDetails.xmv.yaml (tasks: 3)
+- 130123410--130123410_src_app_screens--ResumoBNCDetail.xmv -> 130123410--130123410_src_app_screens--ResumoBNCDetail.xmv.yaml (tasks: 3)
+- 130123410--130123410_src_app_screens--ResumoEspelhoLapsoDetails.xmv -> 130123410--130123410_src_app_screens--ResumoEspelhoLapsoDetails.xmv.yaml (tasks: 3)
+- 130123410--130123410_src_app_screens--ResumoEspelhoPontoDetails.xmv -> 130123410--130123410_src_app_screens--ResumoEspelhoPontoDetails.xmv.yaml (tasks: 3)
+- 130123410--130123410_src_app_screens--ResumoLapsosSemanalDetails.xmv -> 130123410--130123410_src_app_screens--ResumoLapsosSemanalDetails.xmv.yaml (tasks: 3)
+- 130123410--130123410_src_app_screens--ResumoPontoDetail.xmv -> 130123410--130123410_src_app_screens--ResumoPontoDetail.xmv.yaml (tasks: 3)
+- 130123410--130123410_src_app_screens--ResumoSubOSDetail.xmv -> 130123410--130123410_src_app_screens--ResumoSubOSDetail.xmv.yaml (tasks: 2)
+- 130123410--130123410_src_app_screens--ResumoTermoCautelarDetail.xmv -> 130123410--130123410_src_app_screens--ResumoTermoCautelarDetail.xmv.yaml (tasks: 3)
+- 186123125--186123125_src_app_screens--MensagensAgendadaDetail.xmv -> 186123125--186123125_src_app_screens--MensagensAgendadaDetail.xmv.yaml (tasks: 3)
+- 186123125--186123125_src_app_screens--MensagensEnviadasDetail.xmv -> 186123125--186123125_src_app_screens--MensagensEnviadasDetail.xmv.yaml (tasks: 2)
+- 186123125--186123125_src_app_screens--MensagensRecebidasDetail.xmv -> 186123125--186123125_src_app_screens--MensagensRecebidasDetail.xmv.yaml (tasks: 2)
+- 186123125--186123125_src_app_screens--ResumoApontamentoDetail.xmv -> 186123125--186123125_src_app_screens--ResumoApontamentoDetail.xmv.yaml (tasks: 3)
+- 186123125--186123125_src_app_screens--ResumoCheckListDetail.xmv -> 186123125--186123125_src_app_screens--ResumoCheckListDetail.xmv.yaml (tasks: 3)

@@ -1,0 +1,77 @@
+TipoAtividade 1
+TipoParada 2
+
+//Status OS
+StatusAberto 1
+StatusAndamento 2
+StatusFechado 3
+StatusPausado 4
+
+//Tipo Deslocamento
+TipoInterrupcao 1
+TipoFimDeslocamento 2
+
+//Tipo Despesa
+TipoDespesaRefeicaoCliente 3
+TipoDespesaRefeicao 4
+TipoDespesaKmPercorrido 9
+
+//Tipo Parada
+TipoAbastecimento 2
+TipoRefeicao 3
+
+//Tipo Checklist
+TipoInstalacaoMarte 1
+TipoFinalizacaoMarte 2
+TipoSaidaACampo 3
+TipoInicioEquipamento 4
+TipoFimEquipamento 5
+TipoBNC 6
+
+//Tela
+TelaPrincipal 0
+TelaOS 1
+TelaApontamento 2
+TelaDeslocamento 3
+TelaMarte 4
+TelaMarteInicio 5
+TelaMarteChecklist 6
+TelaMarteFim 7
+TelaDeslocamentoChecklist 8
+TelaAdiantamento 9
+TelaSubOS 10
+TelaInicioEquipamentoChecklist 11
+TelaFimEquipamentoChecklist 12
+TelaBNCChecklist 13
+
+//Tipo Ponto
+PontoEntrada 1
+PontoRefeicaoEntrada 2
+PontoRefeicaoSaida 3
+PontoSaida 4
+PontoManual 5
+
+//Tipo Combustivel
+TipoGasolina 1
+TipoEtanol 2
+TipoDiesel 3
+
+//Tipo Hardware
+HWMarte 1
+HWChip 2
+HWAcessrio 3
+HWDevice 4
+
+//Tipo Sub OS
+SUBInstalacao 1
+SUBManutencao 2
+SUBOutros 3
+SUBDesmobilizacao 4
+
+//Tipo Lista OS
+TipoOSTotal 1
+TipoOSAgendada 2
+
+//Tipo Pagamento combustivel
+TipoDinheiro 1
+TipoTicketLog 2

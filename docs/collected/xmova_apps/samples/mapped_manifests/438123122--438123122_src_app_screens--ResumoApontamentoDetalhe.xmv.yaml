@@ -1,0 +1,35 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 438123122--438123122_src_app_screens--ResumoApontamentoDetalhe
+  labels:
+  - recordDetail fields=data,furo,detalhe labels
+pipeline:
+  tasks:
+  - id: get__lastApontamentoDetalhe
+    name: get__lastApontamentoDetalhe
+    run:
+      type: resource_query
+      resource: _lastApontamentoDetalhe
+  - id: query__lastApontamentoDetalhe
+    name: query__lastApontamentoDetalhe
+    run:
+      type: sql
+      sql: select * from ResumoDetalhe order by data
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: data
+    - name: furo
+    - name: detalhe
+hooks:
+  beforeInit:
+  - _lastApontamentoDetalhe: select * from ResumoDetalhe order by data
+  - _lastApontamentoDetalhe: 'null'
+resources:
+- name: _lastApontamentoDetalhe
+  type: sql
+  sql: select * from ResumoDetalhe order by data
+secrets: {}

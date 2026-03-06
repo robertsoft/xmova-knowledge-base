@@ -1,0 +1,52 @@
+ApontamentoMarteFim sync=out cleanupDays=7 confirm=Create
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	dataFim Now timeTypeField=tipoDataFim
+	flagOnlineFim int notFill onlineFlagCreate
+	locationFim Location inlineData hide
+	marte _MARTE_STATUS inlineData
+	pedeMarte boolean ignoreExternal
+	flagMarteConectado boolean notFill
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	apt MarteEmInstalacao fullDescription
+	SEQ_DB_DEVICE long autoFill=apt.SEQ_DB_DEVICE
+	marteInstalado int maxLength=4 notFormatThousand
+	marteAnterior int maxLength=4 notFormatThousand
+	tipoMarte TipoMarte
+	chipID int maxLength=10 notFormatThousand
+	tipoChip TipoChip
+	menuChecklist MenuChecklist transient notFill add ignoreExternal
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	server name=Apontamento_Marte
+	events
+		afterInsert
+			DELETE FROM MarteEmInstalacao WHERE SEQ_DB_DEVICE == :SEQ_DB_DEVICE
+			dropTable Resposta
+			UPDATE Grupo_Questao SET flagRespondido = false
+			UPDATE Questao SET flagRespondido = false
+			Grupo_Questao q = SelectFirst FROM Grupo_Questao WHERE TIPO == %TipoFinalizacaoMarte AND flagRespondido == false
+			Boletim b = boletim
+			if q != null				
+				b.telaPrincipal = %TelaMarteChecklist
+				b.tipoChecklist = %TipoFinalizacaoMarte
+				b.SEQ_DB_DEVICE_MARTE = SEQ_DB_DEVICE
+				b.flagMarteAssinaturaApontada = false
+				save b
+				fill MenuChecklist
+			else
+				b.telaPrincipal = %TelaMarteFim
+				save b
+	fieldEvents
+		afterFill
+			marte
+				if marte == null
+					flagMarteConectado = 0
+				else
+					flagMarteConectado = 1
+		autoFill
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false

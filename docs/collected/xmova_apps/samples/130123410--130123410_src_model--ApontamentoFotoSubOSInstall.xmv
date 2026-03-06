@@ -1,0 +1,35 @@
+ApontamentoFotoSubOSInstall sync=out cleanupDays=7
+	id inc ignoreExternal
+	boletim Boletim ignoreExternal
+	seqFuncionario SeqFuncionario
+	apontamentoSubOSInstall ApontamentoSubOSInstall ignoreExternal
+	contador int autoFill=apontamentoSubOSInstall.contador ignoreExternal
+	novaFoto boolean notShowNo ignoreExternal fillCondition="contador > 0"
+	flagSubOS boolean autoFill=apontamentoSubOSInstall.flagSubOS ignoreExternal
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_SUB_OS long autoFill=apontamentoSubOSInstall.SEQ_DB_DEVICE
+	subOS SUB_OS autoFill=apontamentoSubOSInstall.subOS ignoreExternal fillCondition="flagSubOS==true"
+	subOS_SEQ_DB long autoFill=subOS.SEQ_DB fillCondition="flagSubOS==true"
+	hardware HARDWARE autoFill=apontamentoSubOSInstall.hardware
+	equipamento EQUIPAMENTO_LIST autoFill=apontamentoSubOSInstall.equipamento
+	cliente_projeto PROJETO autoFill=apontamentoSubOSInstall.cliente_projeto
+	tipo_sub_os int autofill=apontamentoSubOSInstall.tipoSubOS
+	foto Binary picture
+	registraOBS boolean ignoreExternal
+	observacao text maxLength=5000 fillCondition="registraOBS==true"
+	server name=apontamentoFotoSubOS
+	events
+		afterInsert
+			contador = contador + 1
+			ApontamentoSubOSInstall apt = apontamentoSubOSInstall
+			apt.contador = contador
+			save apt
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast FROM Boletim
+//----------------APT TIPO DESMOBILIZAÇÃO--NOVO-----------------

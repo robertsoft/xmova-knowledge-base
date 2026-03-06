@@ -1,0 +1,6 @@
+MenuListaPresenca cleanupDays=7
+	id inc
+	boletim Boletim hide
+	data Now
+	flagPrimeiroApontamento boolean autoFill=1
+	apontamentoTesteLoop List<ApontamentoListaPresenca> transient loop autoInitializeNew finishOnEndLoop

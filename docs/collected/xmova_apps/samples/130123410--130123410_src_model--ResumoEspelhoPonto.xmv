@@ -1,0 +1,14 @@
+ResumoEspelhoPonto sync=in emptyVerify=false cleanupDays=7
+    DATA String
+    ENTRADA String
+    SAIDA String
+    ENTRADA2 String
+    SAIDA2 String
+    ENTRADA3 String
+    SAIDA3 String
+    LAPSO int
+    HORAS_A_TRABALHAR String
+    HORAS_TRABALHADAS String
+    HORAS_EXTRAS String
+    FALTOU_HORAS int
+    server name=ResumoEspelhoPonto

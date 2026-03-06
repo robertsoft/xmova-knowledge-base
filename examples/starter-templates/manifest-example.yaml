@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pipeline
+metadata:
+  name: example-pipeline
+  version: 0.1.0
+pipeline:
+  description: Pipeline exemplo com ingestão e transformação
+  tasks:
+    - id: ingest
+      run:
+        image: alpine:latest
+        command: ["sh", "-c", "echo 'ingestando...'; sleep 1; echo 'data' > /tmp/data.txt"]
+      outputs:
+        - name: raw_data
+          path: /tmp/data.txt
+      resources:
+        cpu: "100m"
+        memory: "128Mi"
+    - id: transform
+      run:
+        image: alpine:latest
+        command: ["sh", "-c", "cat /tmp/data.txt | tr a-z A-Z > /tmp/data_transformed.txt"]
+      inputs:
+        - name: raw_data
+          source: ingest.raw_data
+      outputs:
+        - name: transformed_data
+          path: /tmp/data_transformed.txt
+      resources:
+        cpu: "200m"
+        memory: "256Mi"
+      secrets:
+        - name: MY_SECRET
+          mountPath: /etc/secrets
+hooks:
+  post:
+    - echo 'Pipeline concluída'
+triggers:
+  - type: schedule
+    schedule: "@daily"

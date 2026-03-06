@@ -1,0 +1,26 @@
+AuthInput notSavedMessage
+	idEmpresa Empresa
+	descricaoEmpresa Str autoFill=idEmpresa.NOME
+	idFilial Filial autoFillWhenOneItem
+	descricaoFilial Str autoFill=idFilial.NOME
+	idLocal Local autoFillWhenOneItem
+	descricaoLocal Str autoFill=idLocal.NOME
+	accessKey Str numerickeyboard notFormatThousand onlineValidate=simovaapps
+	codigoMecanico Str numerickeyboard notFormatThousand onlineValidate=Valida_Mecanico_Mobile
+	seqMecanico long notFill
+	nomeMecanico Str notFill
+	confirmaConfig boolean notShowNo
+	fieldEvents
+		fillCondition
+			codigoMecanico
+				seqMecanico = null
+				nomeMecanico = null
+				return true
+		filterListRecord
+			idFilial
+				return listRecord.EMPRESA_SEQ_DB == :idEmpresa
+			idLocal
+				return listRecord.FILIAL_SEQ_DB == :idFilial
+		getInputScreenLabel
+			confirmaConfig
+				return custom.msgCustomConfirmaConfig vars=nomeMecanico:nomeMecanico

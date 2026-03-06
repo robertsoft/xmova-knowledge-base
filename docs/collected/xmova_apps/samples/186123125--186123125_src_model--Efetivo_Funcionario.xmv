@@ -1,0 +1,6 @@
+Efetivo_Funcionario sync=in memory descriptionFields=CRACHA,NOME searchFields=CRACHA,NOME
+	SEQ_DB long
+	CRACHA String
+	NOME String
+	server name=Efetivo_Funcionario_Mecanico_Mobile
+//------------------------CHECKLIST --------------------------

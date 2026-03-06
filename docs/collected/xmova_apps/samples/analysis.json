@@ -1,0 +1,863 @@
+[
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src--LANG.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 52,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [
+        {
+          "line": 53,
+          "snippet": "BooleanInputScreenYesActionLabel.Boletim.confirmaFinalizarBoletim = Sim",
+          "context": "EntityLabel.Boletim = Boletim\nFieldLabel.Boletim.confirmaFinalizarBoletim = Finalizar Boletim?\nBooleanInputScreenYesActionLabel.Boletim.confirmaFinalizarBoletim = Sim\nBooleanInputScreenBackActionLabel.Boletim.confirmaFinalizarBoletim = N\u00c3\u00a3o"
+        },
+        {
+          "line": 54,
+          "snippet": "BooleanInputScreenBackActionLabel.Boletim.confirmaFinalizarBoletim = N\u00c3\u00a3o",
+          "context": "FieldLabel.Boletim.confirmaFinalizarBoletim = Finalizar Boletim?\nBooleanInputScreenYesActionLabel.Boletim.confirmaFinalizarBoletim = Sim\nBooleanInputScreenBackActionLabel.Boletim.confirmaFinalizarBoletim = N\u00c3\u00a3o\n\nCrudOptionsActionLabel.Boletim.ApontamentoOS = Apontar OS"
+        },
+        {
+          "line": 162,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoAtividade.flagConfirmaDeslocamento = SIM",
+          "context": "FieldLabel.ApontamentoAtividade.flagListaPresenca = Deseja informar a lista de presen\u00c3\u00a7a?\nFieldLabel.ApontamentoAtividade.flagConfirmaDeslocamento = Deseja iniciar o deslocamento?\nBooleanInputScreenYesActionLabel.ApontamentoAtividade.flagConfirmaDeslocamento = SIM\nBooleanInputScreenBackActionLabel.ApontamentoAtividade.flagConfirmaDeslocamento = N\u00c3\u0192O"
+        },
+        {
+          "line": 163,
+          "snippet": "BooleanInputScreenBackActionLabel.ApontamentoAtividade.flagConfirmaDeslocamento = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoAtividade.flagConfirmaDeslocamento = Deseja iniciar o deslocamento?\nBooleanInputScreenYesActionLabel.ApontamentoAtividade.flagConfirmaDeslocamento = SIM\nBooleanInputScreenBackActionLabel.ApontamentoAtividade.flagConfirmaDeslocamento = N\u00c3\u0192O\n\n//APONTAMENTO BNC"
+        },
+        {
+          "line": 227,
+          "snippet": "BooleanInputScreenBackActionLabel.ApontamentoListaPresenca.apontar = N\u00c3\u00a3o",
+          "context": "FieldLabel.ApontamentoListaPresenca.assinatura = Assinatura\nFieldLabel.ApontamentoListaPresenca.apontar = Adicionar mais um participante?\nBooleanInputScreenBackActionLabel.ApontamentoListaPresenca.apontar = N\u00c3\u00a3o\n\nCrudOptionsActionLabel.Boletim.ApontamentoListaPresencaEmail = Lista de Presen\u00c3\u00a7a"
+        },
+        {
+          "line": 232,
+          "snippet": "BooleanInputScreenBackActionLabel.ApontamentoListaPresencaEmail.apontar = N\u00c3\u00a3o",
+          "context": "EntityLabel.ApontamentoListaPresencaEmail = Lista de Presen\u00c3\u00a7a\nFieldLabel.ApontamentoListaPresencaEmail.apontar = Confirma enviar e-mail com a lista de presen\u00c3\u00a7a para os respons\u00c3\u00a1veis pelo produto?\nBooleanInputScreenBackActionLabel.ApontamentoListaPresencaEmail.apontar = N\u00c3\u00a3o"
+        },
+        {
+          "line": 250,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoDeslocamento.retomarDeslocamento = Retomar",
+          "context": "FieldLabel.ApontamentoDeslocamento.kmFinal = Km Final\nFieldLabel.ApontamentoDeslocamento.confirmaRegistroRefeicaoI = Deseja Registrar o ponto de inicio de refei\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoDeslocamento.retomarDeslocamento = Retomar\nFieldLabel.ApontamentoDeslocamento.todosApontados = Para finalizar o deslocamento, realize um novo apontamento!"
+        },
+        {
+          "line": 366,
+          "snippet": "BooleanInputScreenBackActionLabel.ApontamentoDespesa.apontar = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoDespesa.litroCombustivel = Quantidade de Litros Abastecidos\nFieldLabel.ApontamentoDespesa.hodometro = Quilometragem do hodometro:\nBooleanInputScreenBackActionLabel.ApontamentoDespesa.apontar = N\u00c3\u0192O"
+        },
+        {
+          "line": 379,
+          "snippet": "BooleanInputScreenYesActionLabel.MenuLapso.tipoLapso = Ajuste",
+          "context": "FieldLabel.MenuLapso.justificativa = Justificativa\nFieldLabel.MenuLapso.novoHorario = Novo Hor\u00c3\u00a1rio\nBooleanInputScreenYesActionLabel.MenuLapso.tipoLapso = Ajuste\nBooleanInputScreenNoActionLabel.MenuLapso.tipoLapso = Inclus\u00c3\u00a3o\n//FieldLabel.MenuLapso"
+        },
+        {
+          "line": 380,
+          "snippet": "BooleanInputScreenNoActionLabel.MenuLapso.tipoLapso = Inclus\u00c3\u00a3o",
+          "context": "FieldLabel.MenuLapso.novoHorario = Novo Hor\u00c3\u00a1rio\nBooleanInputScreenYesActionLabel.MenuLapso.tipoLapso = Ajuste\nBooleanInputScreenNoActionLabel.MenuLapso.tipoLapso = Inclus\u00c3\u00a3o\n//FieldLabel.MenuLapso"
+        },
+        {
+          "line": 387,
+          "snippet": "BooleanInputScreenYesActionLabel.LapsoInicio.lapso = Ajustar",
+          "context": "FieldLabel.LapsoInicio.novoHorario = Novo Horario\nFieldLabel.LapsoInicio.justificativa = Justificativa\nBooleanInputScreenYesActionLabel.LapsoInicio.lapso = Ajustar"
+        },
+        {
+          "line": 395,
+          "snippet": "BooleanInputScreenYesActionLabel.LapsoFim.pontoFaltante = Registrar Ponto",
+          "context": "FieldLabel.LapsoFim.justificativa = Justificativa\n\nBooleanInputScreenYesActionLabel.LapsoFim.pontoFaltante = Registrar Ponto\nBooleanInputScreenNoActionLabel.LapsoFim.pontoFaltante = Enviar Lapso\n//DESPESA"
+        },
+        {
+          "line": 396,
+          "snippet": "BooleanInputScreenNoActionLabel.LapsoFim.pontoFaltante = Enviar Lapso",
+          "context": "BooleanInputScreenYesActionLabel.LapsoFim.pontoFaltante = Registrar Ponto\nBooleanInputScreenNoActionLabel.LapsoFim.pontoFaltante = Enviar Lapso\n//DESPESA\nEntityLabel.DESPESA = Despesa"
+        },
+        {
+          "line": 438,
+          "snippet": "BooleanInputScreenBackActionLabel.ApontamentoAdiantamentoEmail.apontar = N\u00c3\u00a3o",
+          "context": "EntityLabel.ApontamentoAdiantamentoEmail = Enviar para ADM\nFieldLabel.ApontamentoAdiantamentoEmail.apontar = Confirma enviar e-mail de adiantamento para os respons\u00c3\u00a1veis pelo produto?\nBooleanInputScreenBackActionLabel.ApontamentoAdiantamentoEmail.apontar = N\u00c3\u00a3o\n\nEntityLabel.MenuAdiantamento = Solicita\u00c3\u00a7\u00c3\u00a3o de Adiantamento"
+        },
+        {
+          "line": 448,
+          "snippet": "BooleanInputScreenBackActionLabel.ApontamentoAdiantamento.apontar = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoAdiantamento.dataFimViagem = Data final da viagem\nFieldLabel.ApontamentoAdiantamento.observacao = Observa\u00c3\u00a7\u00c3\u00a3o\nBooleanInputScreenBackActionLabel.ApontamentoAdiantamento.apontar = N\u00c3\u0192O\nEntityLabel.TipoAdiantamento = Tipo de adiantamento"
+        },
+        {
+          "line": 515,
+          "snippet": "BooleanInputScreenBackActionLabel.ApontamentoMarteFoto.flagApontarNovo = N\u00c3\u00a3o",
+          "context": "FieldLabel.ApontamentoMarteFoto.observacao = Observa\u00c3\u00a7\u00c3\u00a3o\nFieldLabel.ApontamentoMarteFoto.flagApontarNovo = Deseja registrar outra foto?\nBooleanInputScreenBackActionLabel.ApontamentoMarteFoto.flagApontarNovo = N\u00c3\u00a3o\n\n//HORIMETRO"
+        },
+        {
+          "line": 607,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoFalha = SIM",
+          "context": "FieldLabel.ApontamentoSubOSManut.chamado = Chamado\n\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoFalha = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoFalha = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSManut.fotoSolucao = Registrar Solu\u00c3\u00a7\u00c3\u00a3o?"
+        },
+        {
+          "line": 608,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoFalha = N\u00c3\u0192O",
+          "context": "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoFalha = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoFalha = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSManut.fotoSolucao = Registrar Solu\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoSolucao = SIM"
+        },
+        {
+          "line": 610,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoSolucao = SIM",
+          "context": "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoFalha = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSManut.fotoSolucao = Registrar Solu\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoSolucao = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoSolucao = N\u00c3\u0192O"
+        },
+        {
+          "line": 611,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoSolucao = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSManut.fotoSolucao = Registrar Solu\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoSolucao = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoSolucao = N\u00c3\u0192O\n\nFieldLabel.ApontamentoSubOSManut.finalizaSubOS = Deseja Encerrar a Sub OS?"
+        },
+        {
+          "line": 614,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.finalizaSubOS = SIM",
+          "context": "FieldLabel.ApontamentoSubOSManut.finalizaSubOS = Deseja Encerrar a Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.finalizaSubOS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.finalizaSubOS = N\u00c3\u0192O"
+        },
+        {
+          "line": 615,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.finalizaSubOS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSManut.finalizaSubOS = Deseja Encerrar a Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.finalizaSubOS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.finalizaSubOS = N\u00c3\u0192O\n\nFieldLabel.ApontamentoSubOSManut.observacao = Observa\u00c3\u00a7\u00c3\u00a3o"
+        },
+        {
+          "line": 619,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.registraOBS = SIM",
+          "context": "FieldLabel.ApontamentoSubOSManut.observacao = Observa\u00c3\u00a7\u00c3\u00a3o\nFieldLabel.ApontamentoSubOSManut.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.registraOBS = N\u00c3\u0192O"
+        },
+        {
+          "line": 620,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.registraOBS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSManut.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.registraOBS = N\u00c3\u0192O\n\nFieldLabel.ApontamentoSubOSManut.flagTroca = Algum item foi trocado?"
+        },
+        {
+          "line": 624,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.flagTrocaMotivo = MAU USO",
+          "context": "FieldLabel.ApontamentoSubOSManut.flagTroca = Algum item foi trocado?\nFieldLabel.ApontamentoSubOSManut.flagTrocaMotivo = Qual o motivo da troca?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.flagTrocaMotivo = MAU USO\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.flagTrocaMotivo = DESGASTE"
+        },
+        {
+          "line": 625,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.flagTrocaMotivo = DESGASTE",
+          "context": "FieldLabel.ApontamentoSubOSManut.flagTrocaMotivo = Qual o motivo da troca?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.flagTrocaMotivo = MAU USO\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.flagTrocaMotivo = DESGASTE\n\nFieldLabel.ApontamentoSubOSManut.identificacaoCliente = Respons\u00c3\u00a1vel"
+        },
+        {
+          "line": 631,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.flagSubOS = Com Sub OS",
+          "context": "FieldLabel.ApontamentoSubOSManut.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.flagSubOS = Com Sub OS\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.flagSubOS = Sem Sub OS\nFieldLabel.ApontamentoSubOSManut.finalizaLoop = N\u00c3\u00a3o Existe Sub OS para ser Apontada! Deseja Realizar uma Manuten\u00c3\u00a7\u00c3\u00a3o N\u00c3\u00a3o Agendada?"
+        },
+        {
+          "line": 632,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.flagSubOS = Sem Sub OS",
+          "context": "FieldLabel.ApontamentoSubOSManut.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSManut.flagSubOS = Com Sub OS\nBooleanInputScreenNoActionLabel.ApontamentoSubOSManut.flagSubOS = Sem Sub OS\nFieldLabel.ApontamentoSubOSManut.finalizaLoop = N\u00c3\u00a3o Existe Sub OS para ser Apontada! Deseja Realizar uma Manuten\u00c3\u00a7\u00c3\u00a3o N\u00c3\u00a3o Agendada?"
+        },
+        {
+          "line": 639,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoFotoSubOS.registraOBS = SIM",
+          "context": "FieldLabel.ApontamentoFotoSubOS.foto = Foto\nFieldLabel.ApontamentoFotoSubOS.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?\nBooleanInputScreenYesActionLabel.ApontamentoFotoSubOS.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoFotoSubOS.registraOBS = N\u00c3\u0192O\nFieldLabel.ApontamentoFotoSubOS.observacao = Observa\u00c3\u00a7\u00c3\u00a3o"
+        },
+        {
+          "line": 640,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoFotoSubOS.registraOBS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoFotoSubOS.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?\nBooleanInputScreenYesActionLabel.ApontamentoFotoSubOS.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoFotoSubOS.registraOBS = N\u00c3\u0192O\nFieldLabel.ApontamentoFotoSubOS.observacao = Observa\u00c3\u00a7\u00c3\u00a3o\nFieldLabel.ApontamentoFotoSubOS.novaFoto = Registrar Nova Foto?"
+        },
+        {
+          "line": 651,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.fotoInstall = SIM",
+          "context": "FieldLabel.ApontamentoSubOSInstall.fotoInstall = Registrar Instala\u00c3\u00a7\u00c3\u00a3o?\nFieldLabel.ApontamentoSubOSInstall.chamado = Chamado\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.fotoInstall = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.fotoInstall = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSInstall.finalizaSubOS = Deseja Encerrar a Sub OS?"
+        },
+        {
+          "line": 652,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.fotoInstall = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSInstall.chamado = Chamado\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.fotoInstall = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.fotoInstall = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSInstall.finalizaSubOS = Deseja Encerrar a Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.finalizaSubOS = SIM"
+        },
+        {
+          "line": 654,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.finalizaSubOS = SIM",
+          "context": "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.fotoInstall = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSInstall.finalizaSubOS = Deseja Encerrar a Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.finalizaSubOS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.finalizaSubOS = N\u00c3\u0192O"
+        },
+        {
+          "line": 655,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.finalizaSubOS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSInstall.finalizaSubOS = Deseja Encerrar a Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.finalizaSubOS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.finalizaSubOS = N\u00c3\u0192O\n\nFieldLabel.ApontamentoSubOSInstall.identificacaoCliente = Respons\u00c3\u00a1vel"
+        },
+        {
+          "line": 661,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.flagSubOS = Com Sub OS",
+          "context": "FieldLabel.ApontamentoSubOSInstall.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.flagSubOS = Com Sub OS\nBooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.flagSubOS = Sem Sub OS"
+        },
+        {
+          "line": 662,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.flagSubOS = Sem Sub OS",
+          "context": "FieldLabel.ApontamentoSubOSInstall.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.flagSubOS = Com Sub OS\nBooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.flagSubOS = Sem Sub OS"
+        },
+        {
+          "line": 669,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.registraOBS = SIM",
+          "context": "FieldLabel.ApontamentoSubOSInstall.observacao = Observa\u00c3\u00a7\u00c3\u00a3o\nFieldLabel.ApontamentoSubOSInstall.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.registraOBS = N\u00c3\u0192O"
+        },
+        {
+          "line": 670,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.registraOBS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSInstall.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.registraOBS = N\u00c3\u0192O\n\n//APONTAMENTO FOTO SUB_OS Install"
+        },
+        {
+          "line": 676,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoFotoSubOSInstall.registraOBS = SIM",
+          "context": "FieldLabel.ApontamentoFotoSubOSInstall.foto = Foto\nFieldLabel.ApontamentoFotoSubOSInstall.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?\nBooleanInputScreenYesActionLabel.ApontamentoFotoSubOSInstall.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoFotoSubOSInstall.registraOBS = N\u00c3\u0192O\nFieldLabel.ApontamentoFotoSubOSInstall.observacao = Observa\u00c3\u00a7\u00c3\u00a3o"
+        },
+        {
+          "line": 677,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoFotoSubOSInstall.registraOBS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoFotoSubOSInstall.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?\nBooleanInputScreenYesActionLabel.ApontamentoFotoSubOSInstall.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoFotoSubOSInstall.registraOBS = N\u00c3\u0192O\nFieldLabel.ApontamentoFotoSubOSInstall.observacao = Observa\u00c3\u00a7\u00c3\u00a3o\nFieldLabel.ApontamentoFotoSubOSInstall.novaFoto = Registrar Nova Foto?"
+        },
+        {
+          "line": 689,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = SIM",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = Registrar Desmobiliza\u00c3\u00a7\u00c3\u00a3o?\nFieldLabel.ApontamentoSubOSDesmobilizacao.chamado = Chamado\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = Deseja Encerr"
+        },
+        {
+          "line": 690,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.chamado = Chamado\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = Deseja Encerrar a Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS "
+        },
+        {
+          "line": 692,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = SIM",
+          "context": "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = N\u00c3\u0192O\nFieldLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = Deseja Encerrar a Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = N\u00c3\u0192O"
+        },
+        {
+          "line": 693,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = Deseja Encerrar a Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = N\u00c3\u0192O\n\nFieldLabel.ApontamentoSubOSDesmobilizacao.identificacaoCliente = Respons\u00c3\u00a1vel"
+        },
+        {
+          "line": 699,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Com Sub OS",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Com Sub OS\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Sem Sub OS"
+        },
+        {
+          "line": 700,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Sem Sub OS",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Com Sub OS\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Sem Sub OS\n\nFieldLabel.ApontamentoSubOSDesmobilizacao.finalizaLoop = N\u00c3\u00a3o Existe Sub OS para ser Apontada! Deseja Realizar uma Instala\u00c3\u00a7\u00c3\u00a3o N\u00c3\u00a3o Agend"
+        },
+        {
+          "line": 706,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.registraOBS = SIM",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.observacao = Observa\u00c3\u00a7\u00c3\u00a3o\nFieldLabel.ApontamentoSubOSDesmobilizacao.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.registraOBS = N\u00c3\u0192O"
+        },
+        {
+          "line": 707,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.registraOBS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.registraOBS = N\u00c3\u0192O\n\nFieldLabel.ApontamentoSubOSDesmobilizacao.pendencia = Descreva a pend\u00c3\u00aancia"
+        },
+        {
+          "line": 711,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = SIM",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.pendencia = Descreva a pend\u00c3\u00aancia\nFieldLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = Registrar alguma pend\u00c3\u00aancia da Desmobiliza\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = N\u00c3\u0192O"
+        },
+        {
+          "line": 712,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = Registrar alguma pend\u00c3\u00aancia da Desmobiliza\u00c3\u00a7\u00c3\u00a3o?\nBooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = SIM\nBooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = N\u00c3\u0192O\n\n//APONTAMENTO FOTO SUB_OS Desmobiliza\u00c3\u00a7\u00c3\u00a3o"
+        },
+        {
+          "line": 718,
+          "snippet": "BooleanInputScreenYesActionLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = SIM",
+          "context": "FieldLabel.ApontamentoFotoSubOSDesmobilizacao.foto = Foto\nFieldLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?\nBooleanInputScreenYesActionLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = N\u00c3\u0192O\nFieldLabel.ApontamentoFotoSubOSDesmobilizacao.observacao = Observa\u00c3\u00a7\u00c3\u00a3o"
+        },
+        {
+          "line": 719,
+          "snippet": "BooleanInputScreenNoActionLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = N\u00c3\u0192O",
+          "context": "FieldLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?\nBooleanInputScreenYesActionLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = SIM\nBooleanInputScreenNoActionLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = N\u00c3\u0192O\nFieldLabel.ApontamentoFotoSubOSDesmobilizacao.observacao = Observa\u00c3\u00a7\u00c3\u00a3o\nFieldLabel.ApontamentoFotoSubOSDesmobilizacao.novaFoto = Registr"
+        }
+      ],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app--APP.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app--Constants.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app--InstallData.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app--Vars.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_config--Location.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_config_Marte_events--BeforeConnect.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--Main.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoApontamentoDetail.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoApontamentoSemanalDetails.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoBancoHorasDetails.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoBNCDetail.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoEspelhoLapsoDetails.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoEspelhoPontoDetails.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoLapsosSemanalDetails.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoPontoDetail.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoSubOSDetail.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_app_screens--ResumoTermoCautelarDetail.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_model--Apontamento.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  },
+  {
+    "path": "c:\\xmova-knowledge-base\\docs\\collected\\xmova_apps\\samples\\130123410--130123410_src_model--ApontamentoAdiantamento.xmv",
+    "keywords": {
+      "pipeline": 0,
+      "task": 0,
+      "job": 0,
+      "artifact": 0,
+      "inputs": 0,
+      "outputs": 0,
+      "run": 0,
+      "command": 0,
+      "resource": 0,
+      "secret": 0,
+      "trigger": 0
+    },
+    "samples": {
+      "pipeline": [],
+      "task": [],
+      "job": [],
+      "artifact": [],
+      "inputs": [],
+      "outputs": [],
+      "run": [],
+      "command": [],
+      "resource": [],
+      "secret": [],
+      "trigger": []
+    },
+    "blocks_count": 0
+  }
+]

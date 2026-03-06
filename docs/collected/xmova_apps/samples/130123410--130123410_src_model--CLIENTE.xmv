@@ -1,0 +1,5 @@
+CLIENTE sync=in descriptionFields=CODIGO,DESCRICAO searchFields=CODIGO,DESCRICAO typeSearchContains
+	SEQ_DB long hide
+	CODIGO int
+	DESCRICAO Str
+	server name=Cliente_Mobile

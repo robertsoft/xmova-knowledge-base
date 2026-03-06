@@ -1,0 +1,22 @@
+MensagemAgendada sync=in EmptyVerify=false messageScheduled
+	SEQ_DB long
+	TITLE Str
+	TEXT Str
+	hour Str externalName=HORA
+	FLAG_TURNO_ABERTO int
+	DIA_SEMANA_LOVN List<DIA_SEMANA>
+	EFETIVO_FUNCIONARIO long
+	server name=Mensagem_Agendada_Mobile
+	events
+		onShowScheduledMessage
+			Integer dia = getWeekDay
+			if dia in DIA_SEMANA_LOVN
+				if hasFixedPoint == 1
+					if FLAG_TURNO_ABERTO == 1
+						playSound name=AlertTimer loop=5
+						return true
+				else
+					if FLAG_TURNO_ABERTO == 0
+						playSound name=AlertTimer loop=5
+						return true
+			return false

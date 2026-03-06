@@ -1,0 +1,5 @@
+MarcacoesData sync=in emptyVerify=false descriptionFields=DATA_FORMATADA
+	DATA Str
+	DATA_FORMATADA Str
+	INI_DH Date
+	server name=Marcacoes_Data_Mobile

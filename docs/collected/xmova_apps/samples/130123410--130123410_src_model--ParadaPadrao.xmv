@@ -1,0 +1,5 @@
+ParadaPadrao sync=in
+	TIPO int
+	PARADA_SEQ_DB long
+	PARADA_DESCRICAO Str
+	server name=Parametro_Mobile

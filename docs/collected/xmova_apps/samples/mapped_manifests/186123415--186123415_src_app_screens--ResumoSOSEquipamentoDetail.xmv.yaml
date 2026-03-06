@@ -1,0 +1,158 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123415--186123415_src_app_screens--ResumoSOSEquipamentoDetail
+  labels:
+  - recordDetail fields=obraDesc,sistemaDesc labels
+  - recordDetail fields=subsistemaDesc,componenteDesc labels
+  - recordDetail fields=resultadoSOS labels
+  - recordDetail fields=observacaoSOS labels
+  - recordDetail fields=arquivoSOS labels
+pipeline:
+  tasks:
+  - id: get__titleSOS
+    name: get__titleSOS
+    run:
+      type: resource_query
+      resource: _titleSOS
+  - id: get__resumoSOS
+    name: get__resumoSOS
+    run:
+      type: query
+      source: _resumoSOS
+  - id: get__resumoSOS
+    name: get__resumoSOS
+    run:
+      type: query
+      source: _resumoSOS
+  - id: get__titleResult
+    name: get__titleResult
+    run:
+      type: resource_query
+      resource: _titleResult
+  - id: get__resumoSOS
+    name: get__resumoSOS
+    run:
+      type: query
+      source: _resumoSOS
+  - id: get__titleObs
+    name: get__titleObs
+    run:
+      type: resource_query
+      resource: _titleObs
+  - id: get__resumoSOS
+    name: get__resumoSOS
+    run:
+      type: query
+      source: _resumoSOS
+  - id: get__titleArquivo
+    name: get__titleArquivo
+    run:
+      type: resource_query
+      resource: _titleArquivo
+  - id: get__resumoSOS
+    name: get__resumoSOS
+    run:
+      type: query
+      source: _resumoSOS
+  - id: query__titleSOS
+    name: query__titleSOS
+    run:
+      type: sql
+      sql: select * from TitleSOS
+  - id: query__titleObs
+    name: query__titleObs
+    run:
+      type: sql
+      sql: select * from TitleObs
+  - id: query__titleResult
+    name: query__titleResult
+    run:
+      type: sql
+      sql: select * from TitleResult
+  - id: query__titleArquivo
+    name: query__titleArquivo
+    run:
+      type: sql
+      sql: select * from TitleArquivo
+  - id: recorddetail_fields_14
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_15
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: obraDesc
+    - name: sistemaDesc
+  - id: recorddetail_fields_16
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: subsistemaDesc
+    - name: componenteDesc
+  - id: recorddetail_fields_17
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_18
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: resultadoSOS
+  - id: recorddetail_fields_19
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_20
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: observacaoSOS
+  - id: recorddetail_fields_21
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: desc
+  - id: recorddetail_fields_22
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: arquivoSOS
+hooks:
+  beforeInit:
+  - _titleSOS: select * from TitleSOS
+  - _titleObs: select * from TitleObs
+  - _titleResult: select * from TitleResult
+  - _titleArquivo: select * from TitleArquivo
+  - _titleSOS: 'null'
+  - _resumoSOS: 'null'
+  - _titleObs: 'null'
+  - _titleResult: 'null'
+  - _titleArquivo: 'null'
+resources:
+- name: _titleSOS
+  type: sql
+  sql: select * from TitleSOS
+- name: _titleObs
+  type: sql
+  sql: select * from TitleObs
+- name: _titleResult
+  type: sql
+  sql: select * from TitleResult
+- name: _titleArquivo
+  type: sql
+  sql: select * from TitleArquivo
+secrets: {}

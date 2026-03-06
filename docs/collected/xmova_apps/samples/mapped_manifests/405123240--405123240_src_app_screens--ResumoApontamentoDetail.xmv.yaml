@@ -1,0 +1,47 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 405123240--405123240_src_app_screens--ResumoApontamentoDetail
+  labels:
+  - recordDetail fields=viagens,dataInicial,dataFinal,duracao,efetivo_funcionario,oper,fase,acessoOrigem,acessoDestino,combDesc,quantidadeAbastecida,escavadeira,medicaoAtual,observacao
+    labels
+pipeline:
+  tasks:
+  - id: get__lastApontamento
+    name: get__lastApontamento
+    run:
+      type: resource_query
+      resource: _lastApontamento
+  - id: query__lastApontamento
+    name: query__lastApontamento
+    run:
+      type: sql
+      sql: select * from ResumoApontamento
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: viagens
+    - name: dataInicial
+    - name: dataFinal
+    - name: duracao
+    - name: efetivo_funcionario
+    - name: oper
+    - name: fase
+    - name: acessoOrigem
+    - name: acessoDestino
+    - name: combDesc
+    - name: quantidadeAbastecida
+    - name: escavadeira
+    - name: medicaoAtual
+    - name: observacao
+hooks:
+  beforeInit:
+  - _lastApontamento: select * from ResumoApontamento
+  - _lastApontamento: 'null'
+resources:
+- name: _lastApontamento
+  type: sql
+  sql: select * from ResumoApontamento
+secrets: {}

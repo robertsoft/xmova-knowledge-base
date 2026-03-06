@@ -1,0 +1,26 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123415--320123415_src_app_screens--ResumoDescricaoServicoDetail
+  labels:
+  - recordDetail fields=RECLAMACAO_CLIENTE,CAUSA,SOLUCAO labels
+pipeline:
+  tasks:
+  - id: get__resumoDescricaoServico
+    name: get__resumoDescricaoServico
+    run:
+      type: query
+      source: _resumoDescricaoServico
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: RECLAMACAO_CLIENTE
+    - name: CAUSA
+    - name: SOLUCAO
+hooks:
+  beforeInit:
+  - _resumoDescricaoServico: 'null'
+resources: []
+secrets: {}

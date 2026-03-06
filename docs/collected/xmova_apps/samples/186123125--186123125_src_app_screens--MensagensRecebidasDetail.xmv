@@ -1,0 +1,4 @@
+MensagensRecebidasDetail tableLayout title="Mensagens Recebidas"
+	views
+		recordList getRecords=_msgRecebidas
+			recordDetail fields=date,data,descricao,remetente labels

@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 318123251--318123251_src_model--_SCHEDULED_ACTION
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

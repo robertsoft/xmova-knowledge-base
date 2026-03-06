@@ -1,0 +1,7 @@
+ResumoSubOSDetail tableLayout title="Lista de Sub OS's"
+	views
+		recordList getRecords=_resumoSubOS
+			recordDetail fields=OS_DESC,CODIGO,DESCRICAO,DATA_ABERTURA,TIPO_SUB_OS,OS_SEQ_DB,EQP_DESC,STATUS_SUB_OS_DESC labels
+	events
+		beforeClose
+			_resumoSubOS = null

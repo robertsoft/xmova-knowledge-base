@@ -1,0 +1,11 @@
+ResumoPontoDetail tableLayout title="PONTOS DO DIA"
+	views
+		recordList getRecords=_resumoPontoPainel ResumoPontoPainel
+
+			recordDetail fields=ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3,HORAS_A_TRABALHAR,SUJESTAO_SAIDA labels
+	events
+		beforeInit
+            sync
+			_resumoPontoPainel = select * from ResumoPontoPainel
+		beforeClose
+			_resumoPontoPainel = null

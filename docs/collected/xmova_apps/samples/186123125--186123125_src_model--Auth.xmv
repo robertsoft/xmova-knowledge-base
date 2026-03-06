@@ -1,0 +1,6 @@
+Auth
+	idEmpresa Empresa
+	idFilial Filial
+	idLocal Local
+	seqMecanico SeqMecanico
+	nomeMecanico Str

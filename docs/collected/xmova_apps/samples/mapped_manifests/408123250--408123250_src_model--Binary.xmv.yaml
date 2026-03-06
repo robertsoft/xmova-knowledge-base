@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 408123250--408123250_src_model--Binary
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

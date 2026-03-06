@@ -1,0 +1,54 @@
+ApontamentoMarteInicio sync=out cleanupDays=7 confirm=Create
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	pedeMarte boolean ignoreExternal
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	marte _MARTE_STATUS inlineData
+	flagMarteConectado boolean notFill
+	nomeCliente text autoFill=boletim.nomeCliente
+	projeto long autoFill=boletim.projeto
+	clienteLocal long autoFill=boletim.clienteLocal
+	nomeEPS text maxValue=30
+	frente Str
+	equipamento EQUIPAMENTO_LIST descriptionFields=FROTA,DESCRICAO,MARCA_SEQ_DB,MODELO_SEQ_DB,TIPO_EQUIPAMENTO_SEQ_DB,CLASSE_OPERACIONAL_SEQ_DB fullDescription
+	frota Str autoFill="equipamento.FROTA"
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	server name=Apontamento_Marte
+	events
+		afterInsert
+			INSERT INTO MarteEmInstalacao (SEQ_DB_DEVICE, nomeCliente, nomeEPS, frota) VALUES (:SEQ_DB_DEVICE, :nomeCliente, :nomeEPS, :frota)
+			Boletim b = boletim
+			b.telaPrincipal = %TelaMarteInicio
+			b.SEQ_DB_DEVICE_MARTE = SEQ_DB_DEVICE
+			b.flagMarteFotoApontada = false
+			b.flagMarteHorimetroApontado = false
+			save b
+			crud MenuMarteFoto
+	fieldEvents
+		filterListRecord
+			equipamento
+				// filterEquipamentoOS: merged with ORDEM_SERVICO.CLIENTE_SEQ_DB
+				EQUIPAMENTO_LIST eqp = SelectFirst FROM EQUIPAMENTO_LIST WHERE SEQ_DB == listRecord.SEQ_DB AND CLIENTE_SEQ_DB == :cliente AND CLIENTE_PROJETO_SEQ_DB == :projeto AND CLIENTE_LOCAL_SEQ_DB == :clienteLocal
+				if ordemServico != null
+					if listRecord.CLIENTE_SEQ_DB != ordemServico.CLIENTE_SEQ_DB
+						return false
+				return eqp != null
+		afterFill
+			marte
+				if marte == null
+					flagMarteConectado = 0
+				else
+					flagMarteConectado = 1
+		autoFill
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false

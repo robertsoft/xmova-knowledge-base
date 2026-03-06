@@ -1,0 +1,14 @@
+EQUIPAMENTO_LIST sync=backgroundIn descriptionFields=FROTA,DESCRICAO searchFields=FROTA,DESCRICAO typeSearchContains
+	SEQ_DB long
+	FROTA Str
+	DESCRICAO Str
+	CLIENTE_SEQ_DB CLIENTE notUseAsFilter
+	CLIENTE_PROJETO_SEQ_DB PROJETO notUseAsFilter
+	CLIENTE_LOCAL_SEQ_DB CLIENTE_LOCAL notUseAsFilter
+	CLASSIFICACAO Classificacao_Equipamento notUseAsFilter
+	MARCA_SEQ_DB MARCA notUseAsFilter
+	MODELO_SEQ_DB MODELO notUseAsFilter
+	TIPO_EQUIPAMENTO_SEQ_DB TIPO_EQUIPAMENTO notUseAsFilter
+	CLASSE_OPERACIONAL_SEQ_DB CLASSE_OPERACIONAL notUseAsFilter
+	FLAG_PROPRIO FlagProprio_Equipamento notUseAsFilter
+	server name=Equipamento_Mobile

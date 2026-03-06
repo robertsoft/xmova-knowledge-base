@@ -1,0 +1,51 @@
+ApontamentoLiberacao sync=out cleanupDays=20 notSavedMessage
+	boletim_rh Boletim_RH
+	SEQ_DB_DEVICE long uuid
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData
+	efetivo_funcionario Efetivo_Funcionario autoFill=boletim_rh.efetivo_funcionario
+	id inc
+	lerQRCode boolean ignoreExternal
+	qrEquipamento String reader=cam ignoreExternal fillCondition="lerQRCode == true"
+	equipamento EquipamentoLivre fillCondition="lerQRCode == false"
+	tipoEquipamento int autoFill=equipamento.TIPO
+	eqpDesc String autoFill=equipamento.CODIGO ignoreExternal
+	SEQ_DB_DEVICE_MASTER long autoFill=equipamento.SEQ_DB_DEVICE_MASTER_SEQ_DB
+	oper OperLiberacao autoFillWhenOneItem
+	operDesc Str autoFill=oper.DESCRICAO ignoreExternal
+	oper_Grupo Oper_Grupo autoFill=oper.OPER_GRUPO_SEQ_DB
+	//flagAvaria boolean
+	operTipo int autoFill=oper.FLAG_PRODUTIVA
+	origem int autoFill=3
+	confirmaLiberacao boolean notShowNo ignoreExternal
+//	events
+//		afterInsert
+//			UPDATE EquipamentoLivre SET flagApontado = false, flagMecanica = false, SEQ_DB_DEVICE_MASTER_SEQ_DB = null WHERE SEQ_DB == :equipamento.SEQ_DB
+//			INSERT INTO ResumoApontamento(data,equipamento,oper) values (:dataInicio,:eqpDesc,:operDesc)
+//			toast @"Equipamento liberado com sucesso!"
+	fieldEvents
+		filterListRecord
+			equipamento
+				return listRecord.flagMecanica == true
+		afterFill
+			confirmaLiberacao
+				if confirmaLiberacao == true	
+					INSERT INTO BoletimFim (SEQ_DB_DEVICE, efetivo_funcionario, equipamento, tipoEquipamento, origem) VALUES (:SEQ_DB_DEVICE_MASTER, :efetivo_funcionario.SEQ_DB, :equipamento.SEQ_DB, :tipoEquipamento, 3)
+					UPDATE EquipamentoLivre SET flagApontado = false, flagMecanica = false, flagAvaria = false, SEQ_DB_DEVICE_MASTER_SEQ_DB = null WHERE SEQ_DB == :equipamento.SEQ_DB
+					INSERT INTO ResumoApontamento(data,equipamento,oper) values (:data,:eqpDesc,:operDesc)
+					DELETE FROM ChecklistPreenchido WHERE equipamento == :equipamento.SEQ_DB
+					toast @"Equipamento liberado com sucesso!"
+					sync background
+		onValidate
+			qrEquipamento
+				EquipamentoLivre e = SelectFirst FROM EquipamentoLivre WHERE CODIGO == :qrEquipamento and flagMecanica == true
+				if e == null
+					toast @"Equipamento Não Encontrado na lista de Equipamentos para Liberação!"
+					return false
+				else
+					equipamento = e
+		getInputScreenLabel
+			confirmaLiberacao
+				return lang=custom.msgCustomConfirmaLiberacao vars=equipamento:equipamento
+//------------------------ APONTAMENTO CHECKLIST --------------------------	

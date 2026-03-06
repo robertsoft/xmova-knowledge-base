@@ -1,0 +1,8 @@
+Main main entity=AuthInput fields=descricaoEmpresa,descricaoFilial,descricaoLocal,nomeMecanico
+	actions
+		Boletim_RH Ok
+			Integer resultadoListaVazia = verifyEmptyEntity 
+			if resultadoListaVazia == 0
+				crud Boletim_RH
+		Sair Back
+			exit

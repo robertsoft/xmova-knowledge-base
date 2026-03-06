@@ -1,0 +1,40 @@
+
+%import common.WS
+%import common.NUMBER
+%import common.CNAME -> NAME
+%import common.ESCAPED_STRING -> STRING
+%ignore WS
+
+start: stmt*
+
+?stmt: view_stmt
+    | fieldlabel_stmt
+    | entitylabel_stmt
+    | if_stmt
+    | recordlist_stmt
+    | recorddetail_stmt
+    | custom_stmt
+    | path_stmt
+    | assign_stmt
+    | generic
+
+view_stmt: "views"
+fieldlabel_stmt: "fieldlabel" NAME
+entitylabel_stmt: "entitylabel" NAME
+if_stmt: "if" NAME comp_op (NUMBER|NAME)
+comp_op: "=="|"!="|">"|"<"|"="
+recordlist_stmt: "recordlist" NAME
+recorddetail_stmt: "recorddetail" NAME ("fields" "=" name_list)?
+name_list: NAME ("," NAME)*
+custom_stmt: "custom" ("." NAME)+ ("=" STRING)?
+path_stmt: /\/\S+/
+assign_stmt: NAME (":"|"=") (STRING|NUMBER|NAME|PATH)
+generic: NAME ("." NAME)*
+
+PATH: /\/[A-Za-z0-9_\.\/\-]+/
+
+kv_number: NAME (":"|"=") NUMBER
+
+kv_name: NAME (":"|"=") NAME
+
+command_like: NAME (NAME|STRING|NUMBER)*

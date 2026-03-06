@@ -1,0 +1,68 @@
+ApontamentoDespesa sync=out cleanupDays=7
+	id inc
+	menuDespesa MenuDespesa
+	boletim Boletim hide autoFill=menuDespesa.boletim
+	apontamentoDeslocamento ApontamentoDeslocamento hide
+	apontar boolean notShowNo
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	despesa Despesa
+	tipoPagamento TIPO_PAGAMENTO fillCondition="despesa.SOLICITA_TIPO == 1"
+	tipoDespesa int autoFill=despesa.TIPO_DESPESA
+	tipoRefeicao TipoRefeicao fillCondition="tipoDespesa == 4"
+	combustivel COMBUSTIVEL fillCondition="tipoDespesa == 6"
+	litroCombustivel int fillCondition="tipoDespesa == 6"
+	hodometro int numericKeyboard fillCondition="tipoDespesa == 6"
+	flagInformarQtdPessoas boolean
+	qtdPessoas int acceptEmpty fillCondition="flagInformarQtdPessoas == true"
+	dataDespesa Date onlyDate
+	valor decimal
+	valorFaturar decimal autoFill=valor
+	foto Binary picture
+	flagInformarObservacao boolean
+	observacao text acceptEmpty fillCondition="flagInformarObservacao == true"
+	valorReembolsoKM decimal notFill
+	kmPercorrido int notFill
+	flagProprio boolean notFill
+	SEQ_DB_DEVICE_DESLOCAMENTO long notFill
+	veiculo Str hide
+	events
+		afterInsert
+			MenuDespesa a = menuDespesa
+			a.flagPrimeiroApontamento = 0
+			save a
+	fieldEvents
+		filterListRecord
+			tipoPagamento
+				if listRecord.SEQ_DB in despesa.TIPO_PAGAMENTO_LOVN
+					return true
+				return false
+		autoFill
+			veiculo
+				ApontamentoDeslocamento apt = SelectLast FROM ApontamentoDeslocamento where ordemServico == :ordemServico AND :SEQ_DB_DEVICE_MASTER == SEQ_DB_DEVICE_MASTER
+				if apt != null 
+					return apt.VEICULO
+				return false
+		fillCondition
+			apontar
+				if menuDespesa.flagPrimeiroApontamento == 1
+					return false
+			flagInformarQtdPessoas
+				qtdPessoas = null
+				if tipoDespesa == %TipoDespesaRefeicao || tipoDespesa == %TipoDespesaRefeicaoCliente
+					return true
+				return false
+			flagInformarObservacao
+				observacao = @
+		onValidate
+			flagInformarQtdPessoas
+				if flagInformarQtdPessoas == false 
+					qtdPessoas = 1 
+				return true
+//ADIANTAMENTO

@@ -1,0 +1,25 @@
+ApontamentoFotoTermoCautelar sync=out cleanupDays=7 noFinishAction
+	id inc ignoreExternal
+	boletim Boletim ignoreExternal
+	seqFuncionario SeqFuncionario
+	apontamentoTermoCautelar ApontamentoTermoCautelar ignoreExternal
+	contador int autoFill=apontamentoTermoCautelar.contador ignoreExternal
+	novaFoto boolean notShowNo ignoreExternal fillCondition="contador > 0"
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_TERMO_CAUTELAR long autoFill=apontamentoTermoCautelar.SEQ_DB_DEVICE
+	foto Binary picture
+	server name=apontamentoFotoTermoCautelar
+	events
+		afterInsert
+			contador = contador + 1
+			ApontamentoTermoCautelar apt = apontamentoTermoCautelar
+			apt.contador = contador
+			save apt
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast FROM Boletim	

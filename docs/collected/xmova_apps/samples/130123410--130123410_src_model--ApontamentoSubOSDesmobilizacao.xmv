@@ -1,0 +1,205 @@
+ApontamentoSubOSDesmobilizacao sync=out cleanupDays=7
+	id inc ignoreExternal
+	boletim Boletim ignoreExternal
+	seqFuncionario SeqFuncionario
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long uuid
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente_projeto PROJETO autoFill=ordemServico.CLIENTE_PROJETO_SEQ_DB
+	apontamentoAtividade ApontamentoAtividade ignoreExternal
+	atividade Atividade autoFill=apontamentoAtividade.atividade
+	flagResponderChecklistFimEquipamento boolean autoFill=atividade.FLAG_EQUIPAMENTO ignoreExternal
+	tipoSubOS int autoFill=%SUBDesmobilizacao
+	tipoApontamento TipoApontamento autoFill=%TipoAtividade ignoreExternal
+	flagSubOS boolean ignoreExternal
+	contador int autoFill=0 ignoreExternal	
+	finalizaLoop boolean notShowNo notShowYes ignoreExternal fillCondition="contador > 0"
+	subOS SUB_OS fullDescription ignoreExternal fillCondition="flagSubOS == true"	
+	subOS_SEQ_DB long autoFill=subOS.SEQ_DB fillCondition="flagSubOS == true"
+	subOSCodigo String ignoreExternal
+	chamado Str fillCondition="flagSubOS == false"
+	equipamento EQUIPAMENTO_LIST 
+	hardware HARDWARE fullDescription
+	registraPendencia boolean ignoreExternal
+	pendencia text maxLength=5000 fillCondition="registraPendencia==true"
+	registraOBS boolean ignoreExternal
+	observacao text maxLength=5000 fillCondition="registraOBS==true"
+	fotoDesmobilizacao boolean ignoreExternal
+	apontamentoFotoDesmobilizacao List<ApontamentoFotoSubOSDesmobilizacao> loop autoInitializeNew fillCondition="fotoDesmobilizacao == true" ignoreExternal fixedPoint
+	subOSDesc Str ignoreExternal
+	eqpDesc Str ignoreExternal
+	instalado Str ignoreExternal
+	finalizaSubOS boolean
+	identificacaoCliente Str fillCondition="finalizaSubOS==true"
+	assinatura Binary Draw fillCondition="finalizaSubOS==true"
+	desmSucesso boolean notShowNo notBack
+	menuChecklist MenuChecklist transient notFill add ignoreExternal
+	marte _MARTE_STATUS inlineData
+	flagMarteConectado boolean notFill
+	pedeMarte boolean ignoreExternal
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	server name=apontamentoSubOS
+	events
+		afterInsert
+			UPDATE HARDWARE SET HW_INSTALADO = 1, EQUIPAMENTO_SEQ_DB = :equipamento WHERE SEQ_DB == :hardware
+			ResumoApontamento resumo = SelectFirst FROM ResumoApontamento WHERE flagApontouFim == false
+			if resumo != null
+				Long tempo = difDateMilli resumo.dataInicial data
+				String duracao = formatDateMilli tempo
+				resumo.tempo = tempo
+				resumo.duracao = duracao
+				resumo.dataFinal = data
+				resumo.flagApontouFim = true
+				save resumo
+			INSERT INTO ResumoApontamento (SEQ_DB_DEVICE, tipoApontamento, descricao, ordemServico, dataInicial, flagApontouFim, flagDeslocamento) VALUES (:SEQ_DB_DEVICE, :tipoApontamento, :atividade.DESCRICAO, :ordemServico, :data, false, :atividade.FLAG_DESLOCAMENTO)
+			if flagSubOS == true
+				toast @"Aponamento sub os desmobilizada"
+				INSERT INTO ApontamentoBNC (boletim, seqFuncionario, data, flagOnline, location, SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, ordemServico, cliente_projeto, chamado, atividade, equipamento, hardware, irregularidade, tratativa, flagTroca, flagTrocaMotivo, identificacaoCliente, assinatura,subOS_SEQ_DB, flagMarteConectado) VALUES (:boletim, :seqFuncionario, :data, :flagOnline, :location, :SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :ordemServico, :cliente_projeto, :subOSCodigo, :atividade, :equipamento, :hardware, @"DESMOBILIZAÇÃO DE EQUIPAMENTO", :observacao, 0, 9, :identificacaoCliente, :assinatura,subOS_SEQ_DB, :flagMarteConectado)
+			else
+				toast @"Aponamento sub os desmobilizada"
+				INSERT INTO ApontamentoBNC (boletim, seqFuncionario, data, flagOnline, location, SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE, ordemServico, cliente_projeto, chamado, atividade, equipamento, hardware, irregularidade, tratativa, flagTroca, flagTrocaMotivo, identificacaoCliente, assinatura, flagMarteConectado) VALUES (:boletim, :seqFuncionario, :data, :flagOnline, :location, :SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :ordemServico, :cliente_projeto, :chamado, :atividade, :equipamento, :hardware, @"DESMOBILIZAÇÃO DE EQUIPAMENTO", :observacao, 0, 9, :identificacaoCliente, :assinatura, :flagMarteConectado)
+			//checklist fim equipamento
+			Boletim b = boletim
+			if flagResponderChecklistFimEquipamento == true
+				dropTable Resposta
+				UPDATE Grupo_Questao SET flagRespondido = false
+				UPDATE Questao SET flagRespondido = false
+				Grupo_Questao qes = SelectFirst FROM Grupo_Questao WHERE TIPO == %TipoFimEquipamento AND flagRespondido == false
+				if qes != null
+					b.flagResponderChecklistFimEquipamento = false
+					b.telaPrincipal = %TelaFimEquipamentoChecklist
+					b.tipoChecklist = %TipoFimEquipamento
+					save b
+					fill MenuChecklist
+			sync background
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast FROM Boletim
+			subOSCodigo
+				if flagSubOS == true
+					SUB_OS sub = SelectFirst FROM SUB_OS WHERE SEQ_DB == :subOS
+					if sub != null
+						return sub.CODIGO
+				return @"-"
+			subOSDesc
+				String subApontada = @
+				if flagSubOS == true
+					SUB_OS sub = SelectFirst FROM SUB_OS WHERE SEQ_DB == :subOS
+					if sub != null
+						subApontada = @"\nCódigo: "
+						subApontada = concat subApontada subOS.CODIGO
+						subApontada = concat subApontada @"\nDescrição: "
+						subApontada = concat subApontada subOS.DESCRICAO
+					else
+						subApontada = @"Sem SubOS"
+				return subApontada
+			eqpDesc
+				String eqpApontado = @
+				eqpApontado = @"\nFrota: "
+				eqpApontado = concat eqpApontado equipamento.FROTA
+				eqpApontado = concat eqpApontado @"\nDescrição: "
+				eqpApontado = concat eqpApontado equipamento.DESCRICAO
+				return eqpApontado
+			instalado
+				String hwApontada = @
+				hwApontada = @"\nTipo de Hardware: "
+				hwApontada = concat hwApontada hardware.TIPO_HARDWARE_STR
+				if hardware.TIPO_HARDWARE == 1//tipo marte
+					hwApontada = concat hwApontada @"\nNúmero Patrimonial: "
+					hwApontada = concat hwApontada hardware.NUM_PATRIMONIAL
+					hwApontada = concat hwApontada @"\nSerial Number: "
+					hwApontada = concat hwApontada hardware.SERIAL_NUMBER
+					hwApontada = concat hwApontada @"\nCódigo Marte: "
+					hwApontada = concat hwApontada hardware.CODIGO_MARTE
+					hwApontada = concat hwApontada @"\nModelo Marte: "
+					hwApontada = concat hwApontada hardware.MODELO_MARTE
+					hwApontada = concat hwApontada @"\nTipo Marte: "
+					hwApontada = concat hwApontada hardware.TIPO_MARTE
+					hwApontada = concat hwApontada @"\nLote: "
+					hwApontada = concat hwApontada hardware.LOTE
+				if hardware.TIPO_HARDWARE == 2//tipo chip
+					hwApontada = concat hwApontada @"\nSSID: "
+					hwApontada = concat hwApontada hardware.SSID
+					hwApontada = concat hwApontada @"\nAPN: "
+					hwApontada = concat hwApontada hardware.APN
+					hwApontada = concat hwApontada @"\nOperadora: "
+					hwApontada = concat hwApontada hardware.OPERADORA				
+				if hardware.TIPO_HARDWARE == 3//tipo acessório
+					hwApontada = concat hwApontada @"\nCódigo: "
+					hwApontada = concat hwApontada hardware.CODIGO_ACESSORIO
+					hwApontada = concat hwApontada @"\nDescrição: "
+					hwApontada = concat hwApontada hardware.DESCRICAO_ACESSORIO				
+				if hardware.TIPO_HARDWARE == 4//tipo device
+					hwApontada = concat hwApontada @"\nNúmero Patrimonial: "
+					hwApontada = concat hwApontada hardware.NUM_PATRIMONIAL
+					hwApontada = concat hwApontada @"\nIMEI 1: "
+					hwApontada = concat hwApontada hardware.IMEI_PRIMARIO
+					hwApontada = concat hwApontada @"\nIMEI 2: "
+					hwApontada = concat hwApontada hardware.IMEI_SECUNDARIO
+					hwApontada = concat hwApontada @"\nMarca Device: "
+					hwApontada = concat hwApontada hardware.MARCA_DEVICE
+					hwApontada = concat hwApontada @"\nModelo Device: "
+					hwApontada = concat hwApontada hardware.MODELO_DEVICE				
+				return hwApontada
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false
+		afterFill
+			marte
+				if marte == null
+					toast @"desconectado"
+					flagMarteConectado = 0
+				else
+					toast @"conectado"
+					flagMarteConectado = 1
+			boletim
+				if boletim.flagResponderChecklistInicioEquipamento == true
+					dropTable Resposta
+					UPDATE Grupo_Questao SET flagRespondido = false
+					UPDATE Questao SET flagRespondido = false
+					Grupo_Questao qe = SelectFirst FROM Grupo_Questao WHERE TIPO == %TipoInicioEquipamento AND flagRespondido == false
+					if qe != null
+						boletim.flagResponderChecklistInicioEquipamento = false
+						boletim.telaPrincipal = %TelaInicioEquipamentoChecklist
+						boletim.tipoChecklist = %TipoInicioEquipamento
+						save boletim
+						fill MenuChecklist
+			finalizaSubOS
+				if finalizaSubOS == true
+					if flagSubOS == true
+						UPDATE SUB_OS set flag_finalizada = true WHERE SEQ_DB == :subOS.SEQ_DB
+		filterListRecord
+			subOS
+				if listRecord.ORDEM_SERVICO_SEQ_DB == :ordemServico
+					if listRecord.flag_finalizada == false
+						return listRecord.TIPO_SUB_OS == %SUBDesmobilizacao
+				return false
+			hardware
+				if equipamento != null
+					return listRecord.EQUIPAMENTO_SEQ_DB == :equipamento.SEQ_DB
+				return true
+			equipamento
+				// filterEquipamentoOS: merged with ORDEM_SERVICO.CLIENTE_SEQ_DB
+				if ordemServico != null
+					if listRecord.CLIENTE_SEQ_DB != ordemServico.CLIENTE_SEQ_DB
+						return false
+				if flagSubOS == true
+					SUB_OS sub = SelectFirst FROM SUB_OS WHERE SEQ_DB == :subOS.SEQ_DB
+					if sub != null
+						if sub.EQUIPAMENTO_SEQ_DB != null
+							return listRecord.SEQ_DB == sub.EQUIPAMENTO_SEQ_DB
+				return true
+		getInputScreenLabel
+			finalizaSubOS
+				if flagSubOS == true
+					return lang=custom.msgCustomFinalizaSubOSDesmobilizacao
+				else
+					return lang=custom.msgCustomFinalizaSubOSDesmobilizacaoSemSub
+			desmSucesso
+				return lang=custom.msgCustomDesmSucesso

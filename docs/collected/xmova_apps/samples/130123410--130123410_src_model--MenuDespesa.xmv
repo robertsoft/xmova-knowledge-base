@@ -1,0 +1,6 @@
+MenuDespesa cleanupDays=7
+	id inc
+	boletim Boletim hide
+	data Now
+	flagPrimeiroApontamento boolean autoFill=1
+	apontamentoDespesa List<ApontamentoDespesa> transient loop autoInitializeNew finishOnEndLoop

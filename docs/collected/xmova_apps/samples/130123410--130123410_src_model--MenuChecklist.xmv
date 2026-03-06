@@ -1,0 +1,31 @@
+MenuChecklist sync=out cleanupDays=7
+	id inc ignoreExternal
+	date Now ignoreExternal
+	boletim Boletim hide ignoreExternal
+	TIPO int autoFill=boletim.tipoChecklist
+	apontar boolean ignoreExternal
+	todosApontados boolean notShowNo notShowYes fillCondition="apontar == false" ignoreExternal
+	mobChecklist List<ApontamentoChecklist> transient loop autoInitializeNew finishOnEndLoop fillCondition="apontar == true" ignoreExternal
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast FROM Boletim
+			apontar
+				Grupo_Questao q1 = SelectFirst FROM Grupo_Questao WHERE TIPO == :TIPO AND flagRespondido == false
+				if q1 != null
+					return true
+				else
+					Boletim b = boletim
+					b.flagChecklistRespondido = true
+					if TIPO == %TipoSaidaACampo
+						b.telaPrincipal = %TelaDeslocamento
+					else
+						if TIPO == %TipoInicioEquipamento || TIPO == %TipoFimEquipamento
+							b.telaPrincipal = %TelaApontamento
+						else
+							if boletim.flagMarteAssinaturaApontada == false
+								b.telaPrincipal = %TelaMarteFim
+							else
+								b.telaPrincipal = %TelaMarte
+					save b
+				return false

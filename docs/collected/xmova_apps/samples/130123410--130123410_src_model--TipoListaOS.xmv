@@ -1,0 +1,3 @@
+TipoListaOS
+	id int
+	desc Str

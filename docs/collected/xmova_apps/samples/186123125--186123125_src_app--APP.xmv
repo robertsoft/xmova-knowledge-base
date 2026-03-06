@@ -1,0 +1,5 @@
+App appCode=O offlineDate=Device
+	name Oficina
+	clearOptionMenu password=123456
+	logo name=cortezengenharia
+	camera resolution=720

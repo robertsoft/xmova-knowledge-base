@@ -1,0 +1,34 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 417123201--417123201_src_app_screens--ResumoPontoDetail
+  labels:
+  - recordDetail fields=DATA,CRACHA,NOME labels
+pipeline:
+  tasks:
+  - id: get__resumoPonto
+    name: get__resumoPonto
+    run:
+      type: resource_query
+      resource: _resumoPonto
+  - id: query__resumoPonto
+    name: query__resumoPonto
+    run:
+      type: sql
+      sql: Select * from ResumoPonto
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: DATA
+    - name: CRACHA
+    - name: NOME
+hooks:
+  beforeInit:
+  - _resumoPonto: 'null'
+resources:
+- name: _resumoPonto
+  type: sql
+  sql: Select * from ResumoPonto
+secrets: {}

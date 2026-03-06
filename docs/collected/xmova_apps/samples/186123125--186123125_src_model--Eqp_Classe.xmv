@@ -1,0 +1,6 @@
+Eqp_Classe sync=in searchFields=CODIGO,DESCRICAO descriptionFields=CODIGO,DESCRICAO
+	SEQ_DB long
+	CODIGO Str
+	DESCRICAO Str
+	server name=Eqp_Classe_Mobile
+//------------------------ OPERAÇÃO --------------------------

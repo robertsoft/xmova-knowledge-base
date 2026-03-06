@@ -1,0 +1,27 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123415--320123415_src_app_screens--ResumoEquipamentoDetail
+  labels:
+  - recordDetail fields=HORIMETRO,HORA_TRILHA,CHASSI,FROTA labels
+pipeline:
+  tasks:
+  - id: get__resumoEquipamento
+    name: get__resumoEquipamento
+    run:
+      type: query
+      source: _resumoEquipamento
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: HORIMETRO
+    - name: HORA_TRILHA
+    - name: CHASSI
+    - name: FROTA
+hooks:
+  beforeInit:
+  - _resumoEquipamento: 'null'
+resources: []
+secrets: {}

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Xmova Pipeline Manifest Schema",
+  "type": "object",
+  "required": ["apiVersion", "kind", "metadata", "pipeline"],
+  "properties": {
+    "apiVersion": { "type": "string", "example": "v1" },
+    "kind": { "type": "string", "enum": ["Pipeline"] },
+    "metadata": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "pipeline": {
+      "type": "object",
+      "required": ["tasks"],
+      "properties": {
+        "description": { "type": "string" },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": { "type": "string" },
+              "run": {
+                "type": "object",
+                "properties": {
+                  "image": { "type": "string" },
+                  "command": { "type": "array", "items": { "type": "string" } }
+                }
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "name": { "type": "string" }, "source": { "type": "string" } }
+                }
+              },
+              "outputs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "name": { "type": "string" }, "path": { "type": "string" } }
+                }
+              },
+              "retries": { "type": "integer", "default": 0 },
+              "resources": {
+                "type": "object",
+                "properties": { "cpu": { "type": "string" }, "memory": { "type": "string" } }
+              },
+              "secrets": {
+                "type": "array",
+                "items": { "type": "object", "properties": { "name": { "type": "string" }, "mountPath": { "type": "string" } } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "hooks": {
+      "type": "object",
+      "properties": {
+        "pre": { "type": "array", "items": { "type": "string" } },
+        "post": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "triggers": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "type": { "type": "string" }, "schedule": { "type": "string" }, "event": { "type": "string" } } }
+    }
+  }
+}

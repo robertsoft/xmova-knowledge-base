@@ -1,0 +1,3 @@
+ConectarMarte
+	id	int
+	podeConectar int

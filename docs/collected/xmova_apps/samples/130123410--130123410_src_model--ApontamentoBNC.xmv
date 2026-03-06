@@ -1,0 +1,50 @@
+ApontamentoBNC sync=out cleanupDays=7
+	id inc ignoreExternal
+	boletim Boletim ignoreExternal
+	seqFuncionario SeqFuncionario
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long uuid
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	subOS_SEQ_DB long
+	cliente_projeto PROJETO autoFill=ordemServico.CLIENTE_PROJETO_SEQ_DB
+	chamado Str
+	atividade Atividade
+	equipamento EQUIPAMENTO_LIST autoFillWhenOneItem
+	hardware HARDWARE
+	marte _MARTE_STATUS inlineData
+	flagMarteConectado boolean notFill
+	motivoDesconectado text notFill
+	infosMarte boolean ignoreExternal
+	idMarteInstalado Str fillCondition="infosMarte == true"
+	chipMarteInstalado Str fillCondition="infosMarte == true"
+	snMarteInstalado Str fillCondition="infosMarte == true"
+	xid Str fillCondition="infosMarte == true"
+	marca Str fillCondition="infosMarte == true"
+	numLacre Str fillCondition="infosMarte == true"
+	irregularidade text maxLength=5000
+	tratativa text maxLength=5000
+	flagTroca boolean
+	flagTrocaMotivo int
+	identificacaoCliente Str
+	assinatura Binary Draw
+	server name=apontamentoBNC
+	events
+		afterInsert
+			INSERT INTO ResumoBNC (SEQ_DB_DEVICE, descricaoAtividade, ordemServico, dataInicial, equipamento, irregularidade, tratativa, cliente) VALUES (:SEQ_DB_DEVICE, :atividade.DESCRICAO, :ordemServico, :data, :equipamento, :irregularidade, :tratativa, :identificacaoCliente)
+			sync background
+	fieldEvents
+		filterListRecord
+			equipamento
+				return listRecord.CLIENTE_SEQ_DB == ordemServico.CLIENTE_SEQ_DB
+		afterFill
+			marte
+				if marte == null
+					toast @"desconectado"
+					flagMarteConectado = 0
+				else
+					toast @"conectado"
+					flagMarteConectado = 1
+		

@@ -1,0 +1,15 @@
+EquipamentoLivre sync=in memory searchFields=CODIGO,DESCRICAO descriptionFields=CODIGO,DESCRICAO EmptyVerify=false 
+	SEQ_DB long
+	CODIGO String
+	DESCRICAO String
+	SEQ_DB_DEVICE_MASTER_SEQ_DB long notSync
+	flagApontado boolean notSync
+	flagMecanica boolean notSync
+	flagAvaria boolean notSync
+	//FLAG_AVARIA int
+//	SEQ_DB_DEVICE long notSync
+//	FLAG_LIBERACAO boolean
+//	flagApontarOperacao boolean defaultValue=true notSync
+	TIPO int
+	server name=Equipamento_Corretiva_Mobile_Livre
+//------------------------ EQUIPAMENTO --------------------------

@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123250--186123250_src_model--ResumoCheckList
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

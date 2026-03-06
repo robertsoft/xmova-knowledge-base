@@ -1,0 +1,4 @@
+tracking
+minTime 30m
+maxCacheTime 30m
+minDistance 500

@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 379123250--379123250_src_model--Atividade_Disposicao
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

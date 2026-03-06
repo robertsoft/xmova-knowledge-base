@@ -1,0 +1,15 @@
+MenuResumoLapso notSavedMessage noFinishAction noSyncAction
+    SEQ_DB_DEVICE long uuid
+    crudActions
+		Lapsos
+			isVisible
+				ResumoLapsosSemanal rl = SelectFirst from ResumoLapsosSemanal
+				return rl != null
+			show ResumoLapsosSemanalDetails
+		EspelhoLapsos
+			isVisible
+				ResumoEspelhoLapso re = SelectFirst from ResumoEspelhoLapso
+				return re != null
+			show ResumoEspelhoLapsoDetails
+        Voltar
+			CrudBack entity=MenuResumoLapso

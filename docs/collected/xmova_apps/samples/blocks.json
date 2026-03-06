@@ -1,0 +1,2352 @@
+[
+  {
+    "file": "130123410--130123410_src--LANG.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "custom.msgCustomConfirmaConfig = Funcion\u00c3\u00a1rio: %nomeFuncionario\\n\\nDeseja Confirmar a Configura\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "custom.msgCustomConfirmaRegistroRefeicaoI = Deseja Registrar o ponto de inicio de refei\u00c3\u00a7\u00c3\u00a3o?\\n\\nData do Ponto: %data",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "custom.msgCustomConfirmaPonto = Confirmar o Registro de Ponto?\\n\\nData do Ponto: %data",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "custom.msgCustomConfirmaPonto2 = Confirmar o Registro de Ponto?\\n\\nData do Ponto: %data\\n\\nO tempo m\u00c3\u00adnimo de 30 minutos entre um ponto e outro n\u00c3\u00a3o foi atingido\\n\\nO intervalo entre esse registro e o anterior ser\u00c3\u00a1 de: %duracao",
+        "lines": []
+      },
+      {
+        "start_line": 5,
+        "header": "custom.msgBloqueiaFim = Para encerrar a OS \u00c3\u00a9 necess\u00c3\u00a1rio a assinatura do Cliente",
+        "lines": []
+      },
+      {
+        "start_line": 6,
+        "header": "custom.msgInterrupcao = Deslocamento interrompido pelo motivo <%motivo>.\\nAo finalizar interrup\u00c3\u00a7\u00c3\u00a3o pressione \"Retomar\" para retomar o deslocamento.",
+        "lines": []
+      },
+      {
+        "start_line": 7,
+        "header": "custom.deslocamentoKmFinalMenorKmInicial = Km Final informado (%kmFinal) menor que o KM Inicial (%kmInicial). Confirma?",
+        "lines": []
+      },
+      {
+        "start_line": 8,
+        "header": "custom.deslocamentoKmAtualMenorKmInicial = Km Atual informado (%kmAtual) menor que o KM Inicial (%kmInicial). Confirma?",
+        "lines": []
+      },
+      {
+        "start_line": 9,
+        "header": "custom.msgBloqueiaHorimetroMarte = Necess\u00c3\u00a1ria pelo menos 1 foto para prosseguir.",
+        "lines": []
+      },
+      {
+        "start_line": 10,
+        "header": "custom.msgBloqueiaFimMarte = Para pausar/encerrar a OS \u00c3\u00a9 necess\u00c3\u00a1rio finalizar a instala\u00c3\u00a7\u00c3\u00a3o do Marte",
+        "lines": []
+      },
+      {
+        "start_line": 11,
+        "header": "custom.msgHodometroInvalido = Hod\u00c3\u00b4metro inv\u00c3\u00a1lido!",
+        "lines": []
+      },
+      {
+        "start_line": 12,
+        "header": "custom.msgManutSucesso = Manuten\u00c3\u00a7\u00c3\u00a3o Realizada Com Sucesso!",
+        "lines": []
+      },
+      {
+        "start_line": 13,
+        "header": "custom.msgCustomInstSucesso = Instala\u00c3\u00a7\u00c3\u00a3o Realizada com Sucesso!",
+        "lines": []
+      },
+      {
+        "start_line": 14,
+        "header": "custom.msgCustomDesmSucesso = Desmobiliza\u00c3\u00a7\u00c3\u00a3o Realizada com Sucesso!",
+        "lines": []
+      },
+      {
+        "start_line": 15,
+        "header": "custom.msgTermoCautelarSucesso = Termo Cautelar realizado com sucesso!",
+        "lines": []
+      },
+      {
+        "start_line": 16,
+        "header": "custom.msgNotificarNenhumRegistro = Tempo de boletim iniciado sem Registro de ponto excedido. Por favor, registre o ponto!",
+        "lines": []
+      },
+      {
+        "start_line": 17,
+        "header": "custom.msgNotificarDeslocamentoComMarteDesconectado = Deslocamento apontado com Marte desconectado. Por favor, conecte o Marte!",
+        "lines": [
+          "",
+          "//MAIN",
+          "//Altera\u00c3\u00a7\u00c3\u00a3o do Bot\u00c3\u00a3o Inicial do Mobile",
+          "ScreenActionLabel.Main.Iniciar = Iniciar Boletim"
+        ]
+      },
+      {
+        "start_line": 18,
+        "header": "FieldLabel.AuthInput.idEmpresa = Empresa",
+        "lines": []
+      },
+      {
+        "start_line": 19,
+        "header": "FieldLabel.AuthInput.idFilial = Filial",
+        "lines": []
+      },
+      {
+        "start_line": 20,
+        "header": "FieldLabel.AuthInput.idLocal = Local",
+        "lines": []
+      },
+      {
+        "start_line": 21,
+        "header": "FieldLabel.AuthInput.idChaveAcesso = Digite a Chave de acesso",
+        "lines": [
+          "FieldOnlineValidateError.AuthInput.idChaveAcesso = Chave de acesso incorreta!",
+          "FieldOnlineValidateFail.AuthInput.idChaveAcesso = Chave de acesso incorreta!",
+          "FieldOnlineValidateError.AuthInput.codigoFuncionario = C\u00c3\u00b3digo de Funcion\u00c3\u00a1rio n\u00c3\u00a3o encontrado!",
+          "FieldOnlineValidateFail.AuthInput.codigoFuncionario = C\u00c3\u00b3digo de Funcion\u00c3\u00a1rio n\u00c3\u00a3o encontrado!"
+        ]
+      },
+      {
+        "start_line": 22,
+        "header": "FieldLabel.AuthInput.codigoFuncionario = C\u00c3\u00b3digo de Funcion\u00c3\u00a1rio",
+        "lines": []
+      },
+      {
+        "start_line": 23,
+        "header": "FieldLabel.AuthInput.nomeFuncionario = Funcion\u00c3\u00a1rio",
+        "lines": []
+      },
+      {
+        "start_line": 24,
+        "header": "FieldLabel.AuthInput.descricaoEmpresa = Empresa",
+        "lines": []
+      },
+      {
+        "start_line": 25,
+        "header": "FieldLabel.AuthInput.descricaoFilial = Filial",
+        "lines": []
+      },
+      {
+        "start_line": 26,
+        "header": "FieldLabel.AuthInput.descricaoLocal = Local",
+        "lines": [
+          "",
+          "//FIXED",
+          "FixedKeyAppVersion = Vers\u00c3\u00a3o",
+          "FixedKeyMsgEmptyList = N\u00c3\u00a3o h\u00c3\u00a1 dados para serem exibidos!"
+        ]
+      },
+      {
+        "start_line": 27,
+        "header": "FieldLabel.Boletim.confirmaFinalizarBoletim = Finalizar Boletim?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.Boletim.confirmaFinalizarBoletim = Sim",
+          "BooleanInputScreenBackActionLabel.Boletim.confirmaFinalizarBoletim = N\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 28,
+        "header": "FieldLabel.ORDEM_SERVICO.CODIGO = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 29,
+        "header": "FieldLabel.ORDEM_SERVICO.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 30,
+        "header": "FieldLabel.ORDEM_SERVICO.DATA_ABERTURA = Data de Abertura",
+        "lines": []
+      },
+      {
+        "start_line": 31,
+        "header": "FieldLabel.ORDEM_SERVICO.DATA_INICIO_PREVISTO = Data Prevista para In\u00c3\u00adcio",
+        "lines": []
+      },
+      {
+        "start_line": 32,
+        "header": "FieldLabel.ORDEM_SERVICO.DATA_FIM_PREVISTO = Data Prevista para Fechamento",
+        "lines": [
+          "EntityLabel.ORDEM_SERVICO_ATIVIDADE = OS x Atividade"
+        ]
+      },
+      {
+        "start_line": 33,
+        "header": "FieldLabel.CLIENTE.CODIGO = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 34,
+        "header": "FieldLabel.CLIENTE.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 35,
+        "header": "FieldLabel.PROJETO.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 36,
+        "header": "FieldLabel.CLIENTE_LOCAL.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 37,
+        "header": "FieldLabel.PRODUTO.CODIGO = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 38,
+        "header": "FieldLabel.PRODUTO.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 39,
+        "header": "FieldLabel.ATIVIDADE.CODIGO = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 40,
+        "header": "FieldLabel.ATIVIDADE.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 41,
+        "header": "FieldLabel.ATIVIDADE.FLAG_MARTE = Instala\u00c3\u00a7\u00c3\u00a3o do Marte",
+        "lines": []
+      },
+      {
+        "start_line": 42,
+        "header": "FieldLabel.ATIVIDADE.FLAG_DESLOCAMENTO = Deslocamento",
+        "lines": []
+      },
+      {
+        "start_line": 43,
+        "header": "FieldLabel.ATIVIDADE.FLAG_ANTENA = Antena",
+        "lines": []
+      },
+      {
+        "start_line": 44,
+        "header": "FieldLabel.ATIVIDADE.FLAG_LOCAL = Local",
+        "lines": []
+      },
+      {
+        "start_line": 45,
+        "header": "FieldLabel.ATIVIDADE.FLAG_LISTA_PRESENCA = Lista de Presen\u00c3\u00a7a",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 46,
+        "header": "FieldLabel.ApontamentoServico.problema = Problema Relatado",
+        "lines": []
+      },
+      {
+        "start_line": 47,
+        "header": "FieldLabel.ApontamentoServico.diagnostico = Diagn\u00c3\u00b3stico",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 48,
+        "header": "FieldLabel.ApontamentoItem.item = Itens",
+        "lines": []
+      },
+      {
+        "start_line": 49,
+        "header": "FieldLabel.ApontamentoItem.observacao = Motivo",
+        "lines": [
+          "",
+          "//APONTAMENTO INDICACAO",
+          "EntityLabel.ApontamentoIndicacao = Indica\u00c3\u00a7\u00c3\u00a3o de Cliente"
+        ]
+      },
+      {
+        "start_line": 50,
+        "header": "FieldLabel.ApontamentoIndicacao.nomeEmpresa = Nome da Empresa",
+        "lines": []
+      },
+      {
+        "start_line": 51,
+        "header": "FieldLabel.ApontamentoIndicacao.contato = Contato",
+        "lines": []
+      },
+      {
+        "start_line": 52,
+        "header": "FieldLabel.ApontamentoIndicacao.telefone = Telefone",
+        "lines": []
+      },
+      {
+        "start_line": 53,
+        "header": "FieldLabel.ApontamentoIndicacao.email = E-mail",
+        "lines": []
+      },
+      {
+        "start_line": 54,
+        "header": "FieldLabel.ApontamentoIndicacao.segmento = Segmento",
+        "lines": []
+      },
+      {
+        "start_line": 55,
+        "header": "FieldLabel.ApontamentoIndicacao.flagFoto = Deseja tirar foto?",
+        "lines": []
+      },
+      {
+        "start_line": 56,
+        "header": "FieldLabel.ApontamentoIndicacao.foto = Foto",
+        "lines": [
+          "CrudOptionsActionLabel.Boletim.IndicarCliente = Indica\u00c3\u00a7\u00c3\u00a3o de Cliente"
+        ]
+      },
+      {
+        "start_line": 57,
+        "header": "FieldLabel.ApontamentoAtividade.antenaID = ID ou IP da antena",
+        "lines": []
+      },
+      {
+        "start_line": 58,
+        "header": "FieldLabel.ApontamentoAtividade.detalheAtividade = Detalhe da Atividade",
+        "lines": []
+      },
+      {
+        "start_line": 59,
+        "header": "FieldLabel.ApontamentoAtividade.flagLocal = Deseja informar o local da atividade?",
+        "lines": []
+      },
+      {
+        "start_line": 60,
+        "header": "FieldLabel.ApontamentoAtividade.localAtividade = Local da Atividade",
+        "lines": []
+      },
+      {
+        "start_line": 61,
+        "header": "FieldLabel.ApontamentoAtividade.flagListaPresenca = Deseja informar a lista de presen\u00c3\u00a7a?",
+        "lines": []
+      },
+      {
+        "start_line": 62,
+        "header": "FieldLabel.ApontamentoAtividade.flagConfirmaDeslocamento = Deseja iniciar o deslocamento?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoAtividade.flagConfirmaDeslocamento = SIM",
+          "BooleanInputScreenBackActionLabel.ApontamentoAtividade.flagConfirmaDeslocamento = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 63,
+        "header": "FieldLabel.ApontamentoBNC.infosMarte = Deseja informar ID, CHIP e SN instalado?",
+        "lines": []
+      },
+      {
+        "start_line": 64,
+        "header": "FieldLabel.ApontamentoBNC.idMarteInstalado = ID Instalado",
+        "lines": []
+      },
+      {
+        "start_line": 65,
+        "header": "FieldLabel.ApontamentoBNC.chipMarteInstalado = Chip Instalado",
+        "lines": []
+      },
+      {
+        "start_line": 66,
+        "header": "FieldLabel.ApontamentoBNC.snMarteInstalado = SN Instalado",
+        "lines": []
+      },
+      {
+        "start_line": 67,
+        "header": "FieldLabel.ApontamentoBNC.irregularidade = Informe a Irregularidade",
+        "lines": []
+      },
+      {
+        "start_line": 68,
+        "header": "FieldLabel.ApontamentoBNC.tratativa = Informe a tratativa",
+        "lines": []
+      },
+      {
+        "start_line": 69,
+        "header": "FieldLabel.ApontamentoBNC.identificacaoCliente = Identifica\u00c3\u00a7\u00c3\u00a3o do Cliente",
+        "lines": []
+      },
+      {
+        "start_line": 70,
+        "header": "FieldLabel.ApontamentoBNC.assinatura = Assinatura",
+        "lines": []
+      },
+      {
+        "start_line": 71,
+        "header": "FieldLabel.ApontamentoBNC.chamado = Chamado",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 72,
+        "header": "FieldLabel.ApontamentoTermoCautelar.chamado = Chamado",
+        "lines": []
+      },
+      {
+        "start_line": 73,
+        "header": "FieldLabel.ApontamentoTermoCautelar.local = EPS / Provedor",
+        "lines": []
+      },
+      {
+        "start_line": 74,
+        "header": "FieldLabel.ApontamentoTermoCautelar.nomeRecebedor = Nome do Recebedor",
+        "lines": []
+      },
+      {
+        "start_line": 75,
+        "header": "FieldLabel.ApontamentoTermoCautelar.funcao = Fun\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 76,
+        "header": "FieldLabel.ApontamentoTermoCautelar.matriculaRecebedor = Matr\u00c3\u00adcula / CPF",
+        "lines": []
+      },
+      {
+        "start_line": 77,
+        "header": "FieldLabel.ApontamentoTermoCautelar.eqpColetor = Equip. / Coletor",
+        "lines": []
+      },
+      {
+        "start_line": 78,
+        "header": "FieldLabel.ApontamentoTermoCautelar.celular = Celular",
+        "lines": []
+      },
+      {
+        "start_line": 79,
+        "header": "FieldLabel.ApontamentoTermoCautelar.email = E-mail",
+        "lines": []
+      },
+      {
+        "start_line": 80,
+        "header": "FieldLabel.ApontamentoTermoCautelar.aparelhoCelular = Foi entregue CELULAR?",
+        "lines": []
+      },
+      {
+        "start_line": 81,
+        "header": "FieldLabel.ApontamentoTermoCautelar.marcaAparelhoCelular = Informe a Marca",
+        "lines": []
+      },
+      {
+        "start_line": 82,
+        "header": "FieldLabel.ApontamentoTermoCautelar.modeloAparelhoCelular = Informe o Modelo",
+        "lines": []
+      },
+      {
+        "start_line": 83,
+        "header": "FieldLabel.ApontamentoTermoCautelar.idAparelhoCelular = Informe o XiD / IMEI / ID",
+        "lines": []
+      },
+      {
+        "start_line": 84,
+        "header": "FieldLabel.ApontamentoTermoCautelar.tablet = Foi entregue TABLET?",
+        "lines": []
+      },
+      {
+        "start_line": 85,
+        "header": "FieldLabel.ApontamentoTermoCautelar.marcaTablet = Informe a Marca",
+        "lines": []
+      },
+      {
+        "start_line": 86,
+        "header": "FieldLabel.ApontamentoTermoCautelar.modeloTablet = Informe o Modelo",
+        "lines": []
+      },
+      {
+        "start_line": 87,
+        "header": "FieldLabel.ApontamentoTermoCautelar.idTablet = Informe o XiD / IMEI / ID",
+        "lines": []
+      },
+      {
+        "start_line": 88,
+        "header": "FieldLabel.ApontamentoTermoCautelar.carregador = Foi entregue CARREGADOR DE TOMADA?",
+        "lines": []
+      },
+      {
+        "start_line": 89,
+        "header": "FieldLabel.ApontamentoTermoCautelar.caboUsb = Foi entregue CABO USB?",
+        "lines": []
+      },
+      {
+        "start_line": 90,
+        "header": "FieldLabel.ApontamentoTermoCautelar.suporte = Foi entregue SUPORTE PARA CELULAR?",
+        "lines": []
+      },
+      {
+        "start_line": 91,
+        "header": "FieldLabel.ApontamentoTermoCautelar.outros = Foi entregue algum outro acess\u00c3\u00b3rio?",
+        "lines": []
+      },
+      {
+        "start_line": 92,
+        "header": "FieldLabel.ApontamentoTermoCautelar.outrosObs = Informe o acess\u00c3\u00b3rio que foi entregue",
+        "lines": []
+      },
+      {
+        "start_line": 93,
+        "header": "FieldLabel.ApontamentoTermoCautelar.fotoTermoCautelar = Deseja tirar foto?",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 94,
+        "header": "FieldLabel.ApontamentoFotoTermoCautelar.novaFoto = Deseja tirar outra foto?",
+        "lines": [
+          "",
+          "//RESUMO TERMO CAUTELAR",
+          "EntityLabel.ResumoTermoCautelar = Termos Cautelares Realizados"
+        ]
+      },
+      {
+        "start_line": 95,
+        "header": "FieldLabel.ResumoTermoCautelar.SEQ_DB_DEVICE = ID",
+        "lines": []
+      },
+      {
+        "start_line": 96,
+        "header": "FieldLabel.ResumoTermoCautelar.dataInicial = Data",
+        "lines": []
+      },
+      {
+        "start_line": 97,
+        "header": "FieldLabel.ResumoTermoCautelar.ordemServico = Ordem de Servi\u00c3\u00a7o",
+        "lines": []
+      },
+      {
+        "start_line": 98,
+        "header": "FieldLabel.ResumoTermoCautelar.chamado = Chamado",
+        "lines": []
+      },
+      {
+        "start_line": 99,
+        "header": "FieldLabel.ResumoTermoCautelar.nomeRecebedor = Recebedor",
+        "lines": []
+      },
+      {
+        "start_line": 100,
+        "header": "FieldLabel.ResumoTermoCautelar.matriculaRecebedor = Matr\u00c3\u00adcula",
+        "lines": []
+      },
+      {
+        "start_line": 101,
+        "header": "FieldLabel.ResumoTermoCautelar.eqpColetor = Equip / Coletor",
+        "lines": []
+      },
+      {
+        "start_line": 102,
+        "header": "FieldLabel.ResumoTermoCautelar.celular = Celular",
+        "lines": []
+      },
+      {
+        "start_line": 103,
+        "header": "FieldLabel.ResumoTermoCautelar.email = E-mail",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 104,
+        "header": "FieldLabel.ApontamentoListaPresenca.nome = Nome",
+        "lines": []
+      },
+      {
+        "start_line": 105,
+        "header": "FieldLabel.ApontamentoListaPresenca.documento = Documento",
+        "lines": []
+      },
+      {
+        "start_line": 106,
+        "header": "FieldLabel.ApontamentoListaPresenca.email = E-mail",
+        "lines": []
+      },
+      {
+        "start_line": 107,
+        "header": "FieldLabel.ApontamentoListaPresenca.assinatura = Assinatura",
+        "lines": []
+      },
+      {
+        "start_line": 108,
+        "header": "FieldLabel.ApontamentoListaPresenca.apontar = Adicionar mais um participante?",
+        "lines": [
+          "BooleanInputScreenBackActionLabel.ApontamentoListaPresenca.apontar = N\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 109,
+        "header": "FieldLabel.ApontamentoListaPresencaEmail.apontar = Confirma enviar e-mail com a lista de presen\u00c3\u00a7a para os respons\u00c3\u00a1veis pelo produto?",
+        "lines": [
+          "BooleanInputScreenBackActionLabel.ApontamentoListaPresencaEmail.apontar = N\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 110,
+        "header": "FieldLabel.VEICULO.codigo = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 111,
+        "header": "FieldLabel.VEICULO.descricao = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 112,
+        "header": "FieldLabel.VEICULO.placa = Placa",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 113,
+        "header": "FieldLabel.ApontamentoDeslocamento.tipoDeslocamento = Em Deslocamento",
+        "lines": []
+      },
+      {
+        "start_line": 114,
+        "header": "FieldLabel.ApontamentoDeslocamento.kmInicial = Km Inicial",
+        "lines": []
+      },
+      {
+        "start_line": 115,
+        "header": "FieldLabel.ApontamentoDeslocamento.kmAtual = Km Atual",
+        "lines": []
+      },
+      {
+        "start_line": 116,
+        "header": "FieldLabel.ApontamentoDeslocamento.kmFinal = Km Final",
+        "lines": []
+      },
+      {
+        "start_line": 117,
+        "header": "FieldLabel.ApontamentoDeslocamento.confirmaRegistroRefeicaoI = Deseja Registrar o ponto de inicio de refei\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoDeslocamento.retomarDeslocamento = Retomar"
+        ]
+      },
+      {
+        "start_line": 118,
+        "header": "FieldLabel.ApontamentoDeslocamento.todosApontados = Para finalizar o deslocamento, realize um novo apontamento!",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 119,
+        "header": "FieldLabel.PARADA.codigo = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 120,
+        "header": "FieldLabel.PARADA.descricao = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          "EntityLabel.ParadaPadrao = Parada Padr\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 121,
+        "header": "FieldLabel.ApontamentoParada.kmCarro = KM do Carro",
+        "lines": []
+      },
+      {
+        "start_line": 122,
+        "header": "FieldLabel.ApontamentoParada.foto = Foto",
+        "lines": []
+      },
+      {
+        "start_line": 123,
+        "header": "FieldLabel.ApontamentoParada.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 124,
+        "header": "FieldLabel.ApontamentoParada.confirmaRegistroRefeicaoI = Deseja Registrar o ponto de inicio de refei\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 125,
+        "header": "FieldLabel.COMBUSTIVEL.codigo = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 126,
+        "header": "FieldLabel.COMBUSTIVEL.descricao = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 127,
+        "header": "FieldLabel.ResumoLapsosSemanal.horarioPonto = Data Alterada",
+        "lines": []
+      },
+      {
+        "start_line": 128,
+        "header": "FieldLabel.ResumoLapsosSemanal.DATA_REAL = Data Real",
+        "lines": []
+      },
+      {
+        "start_line": 129,
+        "header": "FieldLabel.ResumoLapsosSemanal.MOTIVO = Motivo Reprova\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 130,
+        "header": "FieldLabel.ResumoLapsosSemanal.STATUS = Status Aprova\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          "",
+          "// RESUMO PONTO",
+          "EntityLabel.ResumoPontoPainel = Resumo de Ponto"
+        ]
+      },
+      {
+        "start_line": 131,
+        "header": "FieldLabel.ResumoPontoPainel.ENTRADA = Primeira Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 132,
+        "header": "FieldLabel.ResumoPontoPainel.SAIDA = Primeira Saida",
+        "lines": []
+      },
+      {
+        "start_line": 133,
+        "header": "FieldLabel.ResumoPontoPainel.ENTRADA2 = Segunda Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 134,
+        "header": "FieldLabel.ResumoPontoPainel.SAIDA2 = Segunda Sa\u00c3\u00adda",
+        "lines": []
+      },
+      {
+        "start_line": 135,
+        "header": "FieldLabel.ResumoPontoPainel.ENTRADA3 = Terceira Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 136,
+        "header": "FieldLabel.ResumoPontoPainel.SAIDA3 = Terceira Sa\u00c3\u00adda",
+        "lines": []
+      },
+      {
+        "start_line": 137,
+        "header": "FieldLabel.ResumoPontoPainel.HORAS_A_TRABALHAR = Jornada",
+        "lines": []
+      },
+      {
+        "start_line": 138,
+        "header": "FieldLabel.ResumoPontoPainel.SUJESTAO_SAIDA = Sugest\u00c3\u00a3o de Sa\u00c3\u00adda",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 139,
+        "header": "FieldLabel.ResumoEspelhoLapso.horarioPonto = Data Alterada",
+        "lines": []
+      },
+      {
+        "start_line": 140,
+        "header": "FieldLabel.ResumoEspelhoLapso.DATA_REAL = Data Real",
+        "lines": []
+      },
+      {
+        "start_line": 141,
+        "header": "FieldLabel.ResumoEspelhoLapso.MOTIVO = Motivo Reprova\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 142,
+        "header": "FieldLabel.ResumoEspelhoLapso.STATUS = Status Aprova\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          "",
+          "//RESUMO SEMANAL",
+          "EntityLabel.ResumoApontamentoSemanal = Pontos da Semana"
+        ]
+      },
+      {
+        "start_line": 143,
+        "header": "FieldLabel.ResumoApontamentoSemanal.DIA = Data",
+        "lines": []
+      },
+      {
+        "start_line": 144,
+        "header": "FieldLabel.ResumoApontamentoSemanal.ENTRADA = Primeira Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 145,
+        "header": "FieldLabel.ResumoApontamentoSemanal.SAIDA = Primeira Sa\u00c3\u00adda",
+        "lines": []
+      },
+      {
+        "start_line": 146,
+        "header": "FieldLabel.ResumoApontamentoSemanal.ENTRADA2 = Segunda Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 147,
+        "header": "FieldLabel.ResumoApontamentoSemanal.SAIDA2 = Segunda Sa\u00c3\u00adda",
+        "lines": []
+      },
+      {
+        "start_line": 148,
+        "header": "FieldLabel.ResumoApontamentoSemanal.ENTRADA3 = Terceira Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 149,
+        "header": "FieldLabel.ResumoApontamentoSemanal.SAIDA3 = Terceira Sa\u00c3\u00adda",
+        "lines": [
+          "",
+          "// BANCO DE HORAS",
+          "EntityLabel.ResumoBancoHoras = Banco de Horas"
+        ]
+      },
+      {
+        "start_line": 150,
+        "header": "FieldLabel.ResumoBancoHoras.HORAS_TRABALHADAS = Horas Trabalhadas",
+        "lines": []
+      },
+      {
+        "start_line": 151,
+        "header": "FieldLabel.ResumoBancoHoras.HORAS_EXTRAS = Horas Extra",
+        "lines": []
+      },
+      {
+        "start_line": 152,
+        "header": "FieldLabel.ResumoBancoHoras.HORAS_FALTANTES = Horas Faltantes",
+        "lines": []
+      },
+      {
+        "start_line": 153,
+        "header": "FieldLabel.ResumoBancoHoras.SALDO = Saldo",
+        "lines": [
+          "// FieldLabel.Boletim.Banco = Banco de Horas"
+        ]
+      },
+      {
+        "start_line": 154,
+        "header": "FieldLabel.ResumoEspelhoPonto.DATA = Data",
+        "lines": []
+      },
+      {
+        "start_line": 155,
+        "header": "FieldLabel.ResumoEspelhoPonto.ENTRADA = Primeira Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 156,
+        "header": "FieldLabel.ResumoEspelhoPonto.SAIDA = Primeira Sa\u00c3\u00adda",
+        "lines": []
+      },
+      {
+        "start_line": 157,
+        "header": "FieldLabel.ResumoEspelhoPonto.ENTRADA2 = Segunda Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 158,
+        "header": "FieldLabel.ResumoEspelhoPonto.SAIDA2 = Segunda Sa\u00c3\u00adda",
+        "lines": []
+      },
+      {
+        "start_line": 159,
+        "header": "FieldLabel.ResumoEspelhoPonto.ENTRADA3 = Terceira Entrada",
+        "lines": []
+      },
+      {
+        "start_line": 160,
+        "header": "FieldLabel.ResumoEspelhoPonto.SAIDA3 = Terceira Sa\u00c3\u00adda",
+        "lines": []
+      },
+      {
+        "start_line": 161,
+        "header": "FieldLabel.ResumoEspelhoPonto.HORAS_A_TRABALHAR = Jornada",
+        "lines": []
+      },
+      {
+        "start_line": 162,
+        "header": "FieldLabel.ResumoEspelhoPonto.HORAS_TRABALHADAS = Horas Trabalhadas",
+        "lines": []
+      },
+      {
+        "start_line": 163,
+        "header": "FieldLabel.ResumoEspelhoPonto.HORAS_EXTRAS = Horas Extras",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 164,
+        "header": "FieldLabel.ApontamentoDespesa.dataDespesa = Data da Despesa",
+        "lines": []
+      },
+      {
+        "start_line": 165,
+        "header": "FieldLabel.ApontamentoDespesa.tipoPagamento = Tipo de Pagamento",
+        "lines": []
+      },
+      {
+        "start_line": 166,
+        "header": "FieldLabel.ApontamentoDespesa.valor = Valor da despesa(R$)",
+        "lines": []
+      },
+      {
+        "start_line": 167,
+        "header": "FieldLabel.ApontamentoDespesa.foto = Foto do comprovante",
+        "lines": []
+      },
+      {
+        "start_line": 168,
+        "header": "FieldLabel.ApontamentoDespesa.flagInformarQtdPessoas = Informar quantidade de pessoas?",
+        "lines": []
+      },
+      {
+        "start_line": 169,
+        "header": "FieldLabel.ApontamentoDespesa.qtdPessoas = Informe a quantidade de pessoas abaixo",
+        "lines": []
+      },
+      {
+        "start_line": 170,
+        "header": "FieldLabel.ApontamentoDespesa.flagInformarObservacao = Deseja informar observa\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 171,
+        "header": "FieldLabel.ApontamentoDespesa.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 172,
+        "header": "FieldLabel.ApontamentoDespesa.apontar = Adicionar outra despesa?",
+        "lines": []
+      },
+      {
+        "start_line": 173,
+        "header": "FieldLabel.ApontamentoDespesa.litroCombustivel = Quantidade de Litros Abastecidos",
+        "lines": []
+      },
+      {
+        "start_line": 174,
+        "header": "FieldLabel.ApontamentoDespesa.hodometro = Quilometragem do hodometro:",
+        "lines": [
+          "BooleanInputScreenBackActionLabel.ApontamentoDespesa.apontar = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 175,
+        "header": "FieldLabel.MenuLapso.data = Selecione uma data",
+        "lines": []
+      },
+      {
+        "start_line": 176,
+        "header": "FieldLabel.MenuLapso.tipoLapso = Deseja realizar um ajuste ou inclus\u00c3\u00a3o de Ponto?",
+        "lines": []
+      },
+      {
+        "start_line": 177,
+        "header": "FieldLabel.MenuLapso.ponto = Marca\u00c3\u00a7\u00c3\u00b5es",
+        "lines": []
+      },
+      {
+        "start_line": 178,
+        "header": "FieldLabel.MenuLapso.dataMarcacao = Data",
+        "lines": []
+      },
+      {
+        "start_line": 179,
+        "header": "FieldLabel.MenuLapso.justificativa = Justificativa",
+        "lines": []
+      },
+      {
+        "start_line": 180,
+        "header": "FieldLabel.MenuLapso.novoHorario = Novo Hor\u00c3\u00a1rio",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.MenuLapso.tipoLapso = Ajuste",
+          "BooleanInputScreenNoActionLabel.MenuLapso.tipoLapso = Inclus\u00c3\u00a3o",
+          "//FieldLabel.MenuLapso"
+        ]
+      },
+      {
+        "start_line": 181,
+        "header": "FieldLabel.LapsoInicio.novoHorario = Novo Horario",
+        "lines": []
+      },
+      {
+        "start_line": 182,
+        "header": "FieldLabel.LapsoInicio.justificativa = Justificativa",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.LapsoInicio.lapso = Ajustar"
+        ]
+      },
+      {
+        "start_line": 183,
+        "header": "FieldLabel.LapsoFim.novoHorario = Novo Horario",
+        "lines": []
+      },
+      {
+        "start_line": 184,
+        "header": "FieldLabel.LapsoFim.justificativa = Justificativa",
+        "lines": [
+          "",
+          "BooleanInputScreenYesActionLabel.LapsoFim.pontoFaltante = Registrar Ponto",
+          "BooleanInputScreenNoActionLabel.LapsoFim.pontoFaltante = Enviar Lapso",
+          "//DESPESA",
+          "EntityLabel.DESPESA = Despesa"
+        ]
+      },
+      {
+        "start_line": 185,
+        "header": "FieldLabel.DESPESA.codigo = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 186,
+        "header": "FieldLabel.DESPESA.descricao = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 187,
+        "header": "FieldLabel.ApontamentoFoto.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 188,
+        "header": "FieldLabel.ApontamentoFoto.Foto = Foto",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 189,
+        "header": "FieldLabel.ApontamentoAssinatura.responsavel = Respons\u00c3\u00a1vel",
+        "lines": []
+      },
+      {
+        "start_line": 190,
+        "header": "FieldLabel.ApontamentoAssinatura.assinatura = Assinatura",
+        "lines": []
+      },
+      {
+        "start_line": 191,
+        "header": "FieldLabel.ApontamentoAssinatura.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 192,
+        "header": "FieldLabel.MOTIVO_PAUSA.codigo = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 193,
+        "header": "FieldLabel.MOTIVO_PAUSA.descricao = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 194,
+        "header": "FieldLabel.ApontamentoEncerrarOS.assinatura = Assinatura do Analista",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 195,
+        "header": "FieldLabel.ApontamentoAdiantamentoEmail.apontar = Confirma enviar e-mail de adiantamento para os respons\u00c3\u00a1veis pelo produto?",
+        "lines": [
+          "BooleanInputScreenBackActionLabel.ApontamentoAdiantamentoEmail.apontar = N\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 196,
+        "header": "FieldLabel.ApontamentoAdiantamento.valor = Valor(R$)",
+        "lines": []
+      },
+      {
+        "start_line": 197,
+        "header": "FieldLabel.ApontamentoAdiantamento.apontar = Adicionar outra despesa?",
+        "lines": []
+      },
+      {
+        "start_line": 198,
+        "header": "FieldLabel.ApontamentoAdiantamento.dataInicioViagem = Data inicial da viagem",
+        "lines": []
+      },
+      {
+        "start_line": 199,
+        "header": "FieldLabel.ApontamentoAdiantamento.dataFimViagem = Data final da viagem",
+        "lines": []
+      },
+      {
+        "start_line": 200,
+        "header": "FieldLabel.ApontamentoAdiantamento.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          "BooleanInputScreenBackActionLabel.ApontamentoAdiantamento.apontar = N\u00c3\u0192O",
+          "EntityLabel.TipoAdiantamento = Tipo de adiantamento"
+        ]
+      },
+      {
+        "start_line": 201,
+        "header": "FieldLabel.ResumoApontamento.tipoApontamento = Tipo de Apontamento",
+        "lines": []
+      },
+      {
+        "start_line": 202,
+        "header": "FieldLabel.ResumoApontamento.descricao = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 203,
+        "header": "FieldLabel.ResumoApontamento.ordemServico = OS",
+        "lines": []
+      },
+      {
+        "start_line": 204,
+        "header": "FieldLabel.ResumoApontamento.dataInicial = In\u00c3\u00adcio",
+        "lines": []
+      },
+      {
+        "start_line": 205,
+        "header": "FieldLabel.ResumoApontamento.dataFinal = Fim",
+        "lines": []
+      },
+      {
+        "start_line": 206,
+        "header": "FieldLabel.ResumoApontamento.tempo = Tempo",
+        "lines": []
+      },
+      {
+        "start_line": 207,
+        "header": "FieldLabel.ResumoApontamento.duracao = Dura\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 208,
+        "header": "FieldLabel.ResumoTotal.duracaoServico = Total Atividade",
+        "lines": []
+      },
+      {
+        "start_line": 209,
+        "header": "FieldLabel.ResumoTotal.duracaoParada = Total Parada",
+        "lines": []
+      },
+      {
+        "start_line": 210,
+        "header": "FieldLabel.ResumoTotal.duracaoDeslocamento = Total Deslocamento",
+        "lines": [
+          "",
+          "//CHECKLIST",
+          "CrudOptionsActionLabel.Boletim.menuChecklistDeslocamento = Responder question\u00c3\u00a1rio",
+          "CrudOptionsActionLabel.Boletim.menuChecklistInicioEquipamento = Responder question\u00c3\u00a1rio",
+          "CrudOptionsActionLabel.Boletim.menuChecklistFimEquipamento = Responder question\u00c3\u00a1rio"
+        ]
+      },
+      {
+        "start_line": 211,
+        "header": "FieldLabel.ApontamentoChecklist.grupoQuestao = Question\u00c3\u00a1rio",
+        "lines": []
+      },
+      {
+        "start_line": 212,
+        "header": "FieldLabel.ApontamentoChecklist.todosApontados = N\u00c3\u00a3o h\u00c3\u00a1 quest\u00c3\u00b5es para responder!",
+        "lines": [
+          "",
+          "CrudOptionsActionLabel.Boletim.menuChecklist = Responder question\u00c3\u00a1rio"
+        ]
+      },
+      {
+        "start_line": 213,
+        "header": "FieldLabel.MenuChecklist.todosApontados = N\u00c3\u00a3o h\u00c3\u00a1 Question\u00c3\u00a1rios para responder!",
+        "lines": [
+          "EntityLabel.MenuChecklist = Question\u00c3\u00a1rio"
+        ]
+      },
+      {
+        "start_line": 214,
+        "header": "FieldLabel.Resposta.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 215,
+        "header": "FieldLabel.Resposta.binaryId = Foto",
+        "lines": [
+          "",
+          "EntityLabel.Grupo_Questao = Grupo de Quest\u00c3\u00a3o",
+          "EntityLabel.Questao = Quest\u00c3\u00a3o",
+          "EntityLabel.Tipo_Resposta = Resposta"
+        ]
+      },
+      {
+        "start_line": 216,
+        "header": "FieldLabel.ApontamentoMarteInicio.nomeEPS = Nome da EPS / M\u00c3\u00b3dulo",
+        "lines": []
+      },
+      {
+        "start_line": 217,
+        "header": "FieldLabel.ApontamentoMarteInicio.frota = C\u00c3\u00b3digo/Frota do equipamento",
+        "lines": []
+      },
+      {
+        "start_line": 218,
+        "header": "FieldLabel.ApontamentoMarteInicio.frente = Frente",
+        "lines": [
+          "",
+          "//CADASTRO E LISTA DE EQUIPAMENTO",
+          "EntityLabel.ApontamentoEquipamento = Cadastro de Equipamento"
+        ]
+      },
+      {
+        "start_line": 219,
+        "header": "FieldLabel.ApontamentoEquipamento.frota = Frota",
+        "lines": [
+          "",
+          "EntityLabel.EQUIPAMENTO_LIST = Equipamento"
+        ]
+      },
+      {
+        "start_line": 220,
+        "header": "FieldLabel.EQUIPAMENTO_LIST.FROTA = Frota",
+        "lines": []
+      },
+      {
+        "start_line": 221,
+        "header": "FieldLabel.EQUIPAMENTO_LIST.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          "",
+          "EntityLabel.Classificacao_Equipamento = Classifica\u00c3\u00a7\u00c3\u00a3o",
+          "EntityLabel.MARCA = Marca",
+          "EntityLabel.MODELO = Modelo",
+          "EntityLabel.TIPO_EQUIPAMENTO = Tipo de Equipamento",
+          "EntityLabel.CLASSE_OPERACIONAL = Classe Operacional",
+          "EntityLabel.FlagProprio_Equipamento = Pr\u00c3\u00b3prio/Terceiro"
+        ]
+      },
+      {
+        "start_line": 222,
+        "header": "FieldLabel.ApontamentoMarteFoto.foto = Foto",
+        "lines": []
+      },
+      {
+        "start_line": 223,
+        "header": "FieldLabel.ApontamentoMarteFoto.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 224,
+        "header": "FieldLabel.ApontamentoMarteFoto.flagApontarNovo = Deseja registrar outra foto?",
+        "lines": [
+          "BooleanInputScreenBackActionLabel.ApontamentoMarteFoto.flagApontarNovo = N\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 225,
+        "header": "FieldLabel.ApontamentoMarteInicioHorimetro.horimetro = Hor\u00c3\u00admetro",
+        "lines": []
+      },
+      {
+        "start_line": 226,
+        "header": "FieldLabel.ApontamentoMarteInicioHorimetro.horimetroAuxiliar = Hor\u00c3\u00admetro auxiliar",
+        "lines": []
+      },
+      {
+        "start_line": 227,
+        "header": "FieldLabel.ApontamentoMarteInicioHorimetro.odometro = Od\u00c3\u00b4metro",
+        "lines": [
+          "",
+          "//FINALIZAR INSTALACAO",
+          "CrudCreateConfirmMessage.ApontamentoMarteFim = Confirmar informa\u00c3\u00a7\u00c3\u00b5es?",
+          "EntityLabel.ApontamentoMarteFim = Finalizar Instala\u00c3\u00a7\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 228,
+        "header": "FieldLabel.ApontamentoMarteFim.apt = Equipamentos instalados",
+        "lines": []
+      },
+      {
+        "start_line": 229,
+        "header": "FieldLabel.ApontamentoMarteFim.marteInstalado = Marte Instalado",
+        "lines": []
+      },
+      {
+        "start_line": 230,
+        "header": "FieldLabel.ApontamentoMarteFim.marteAnterior = Marte Anterior",
+        "lines": []
+      },
+      {
+        "start_line": 231,
+        "header": "FieldLabel.ApontamentoMarteFim.tipoMarte = Tipo",
+        "lines": []
+      },
+      {
+        "start_line": 232,
+        "header": "FieldLabel.ApontamentoMarteFim.chipID = ID do Chip de dados",
+        "lines": []
+      },
+      {
+        "start_line": 233,
+        "header": "FieldLabel.ApontamentoMarteFim.tipoChip = Tipo de Chip",
+        "lines": [
+          "",
+          "EntityLabel.MarteEmInstalacao = Equipamentos instalados"
+        ]
+      },
+      {
+        "start_line": 234,
+        "header": "FieldLabel.MarteEmInstalacao.nomeCliente = Cliente",
+        "lines": []
+      },
+      {
+        "start_line": 235,
+        "header": "FieldLabel.MarteEmInstalacao.nomeEPS = Nome da EPS / M\u00c3\u00b3dulo / Frente",
+        "lines": []
+      },
+      {
+        "start_line": 236,
+        "header": "FieldLabel.MarteEmInstalacao.frota = C\u00c3\u00b3digo/Frota equipamento",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 237,
+        "header": "FieldLabel.ApontamentoMarteFimAssinatura.flagOperadorPresente = Operador presente?",
+        "lines": []
+      },
+      {
+        "start_line": 238,
+        "header": "FieldLabel.ApontamentoMarteFimAssinatura.nomeOperador = Nome do operador",
+        "lines": []
+      },
+      {
+        "start_line": 239,
+        "header": "FieldLabel.ApontamentoMarteFimAssinatura.assinaturaOperador = Assinatura do operedor",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 240,
+        "header": "FieldLabel.ResumoPonto.DATA_PONTO = Data",
+        "lines": [
+          "",
+          "// ----------------------- NOVOS CADASTROS e APTS"
+        ]
+      },
+      {
+        "start_line": 241,
+        "header": "custom.msgCustomFinalizaSubOSManut = Sub OS: %subOSCodigo :: %subOSDesc\\nFalha Identificada: %hwFalhaIdentificadaDesc\\nSolu\u00c3\u00a7\u00c3\u00a3o Aplicada: %hwSolucaoDesc\\n\\nDeseja Finalizar a Sub OS?",
+        "lines": []
+      },
+      {
+        "start_line": 242,
+        "header": "custom.msgCustomFinalizaSubOSInstall = Sub OS: %subOSDesc\\n\\nEquipamento: %eqpDesc\\n\\nHardware Instalado: %instalado\\n\\nFinalizar a Sub OS?",
+        "lines": []
+      },
+      {
+        "start_line": 243,
+        "header": "custom.msgCustomFinalizaSubOSDesmobilizacao = Sub OS: %subOSDesc\\n\\nEquipamento: %eqpDesc\\n\\nHardware Instalado: %instalado\\n\\nFinalizar a Sub OS?",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 244,
+        "header": "custom.msgCustomFinalizaSubOSManutSemSub = Chamado: %chamado\\n\\nFalha Identificada: %hwFalhaIdentificadaDesc\\nSolu\u00c3\u00a7\u00c3\u00a3o Aplicada: %hwSolucaoDesc\\n\\nDeseja Finalizar o chamado?",
+        "lines": []
+      },
+      {
+        "start_line": 245,
+        "header": "custom.msgCustomFinalizaSubOSInstallSemSub = Chamado: %chamado\\n\\nEquipamento: %eqpDesc\\n\\nHardware Instalado: %instalado\\n\\nFinalizar o chamado?",
+        "lines": []
+      },
+      {
+        "start_line": 246,
+        "header": "custom.msgCustomFinalizaSubOSDesmobilizacaoSemSub = Chamado: %chamado\\n\\nEquipamento: %eqpDesc\\n\\nHardware Instalado: %instalado\\n\\nFinalizar o chamado?",
+        "lines": [
+          "",
+          "//HW_FALHA",
+          "EntityLabel.HW_FALHA = Falha"
+        ]
+      },
+      {
+        "start_line": 247,
+        "header": "FieldLabel.HW_FALHA.CODIGO = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 248,
+        "header": "FieldLabel.HW_FALHA.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          "",
+          "//HW_SOLUCAO",
+          "EntityLabel.HW_SOLUCAO = Solu\u00c3\u00a7\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 249,
+        "header": "FieldLabel.HW_SOLUCAO.CODIGO = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 250,
+        "header": "FieldLabel.HW_SOLUCAO.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": [
+          "",
+          "//SUB_OS",
+          "EntityLabel.SUB_OS = SUB OS"
+        ]
+      },
+      {
+        "start_line": 251,
+        "header": "FieldLabel.SUB_OS.CODIGO = C\u00c3\u00b3digo",
+        "lines": []
+      },
+      {
+        "start_line": 252,
+        "header": "FieldLabel.SUB_OS.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 253,
+        "header": "FieldLabel.SUB_OS.DATA_ABERTURA = Data de Abertura",
+        "lines": []
+      },
+      {
+        "start_line": 254,
+        "header": "FieldLabel.SUB_OS.ORDEM_SERVICO_SEQ_DB = Ordem de Servi\u00c3\u00a7o",
+        "lines": []
+      },
+      {
+        "start_line": 255,
+        "header": "FieldLabel.SUB_OS.EQUIPAMENTO_SEQ_DB = Equipamento",
+        "lines": [
+          "",
+          "//HARDWARE",
+          "EntityLabel.HARDWARE = Hardwares"
+        ]
+      },
+      {
+        "start_line": 256,
+        "header": "FieldLabel.HARDWARE.TIPO_HARDWARE_STR = Tipo Hardware",
+        "lines": []
+      },
+      {
+        "start_line": 257,
+        "header": "FieldLabel.HARDWARE.NUM_PATRIMONIAL = N\u00c3\u00bamero Patrimonial",
+        "lines": []
+      },
+      {
+        "start_line": 258,
+        "header": "FieldLabel.HARDWARE.SERIAL_NUMBER = Serial Number",
+        "lines": []
+      },
+      {
+        "start_line": 259,
+        "header": "FieldLabel.HARDWARE.CODIGO_MARTE = C\u00c3\u00b3digo Marte",
+        "lines": []
+      },
+      {
+        "start_line": 260,
+        "header": "FieldLabel.HARDWARE.MODELO_MARTE = Modelo Marte",
+        "lines": []
+      },
+      {
+        "start_line": 261,
+        "header": "FieldLabel.HARDWARE.TIPO_MARTE = Tipo Marte",
+        "lines": []
+      },
+      {
+        "start_line": 262,
+        "header": "FieldLabel.HARDWARE.IMEI_PRIMARIO = IMEI 1",
+        "lines": []
+      },
+      {
+        "start_line": 263,
+        "header": "FieldLabel.HARDWARE.MARCA_DEVICE = Marca Device",
+        "lines": []
+      },
+      {
+        "start_line": 264,
+        "header": "FieldLabel.HARDWARE.SSID = SSID",
+        "lines": []
+      },
+      {
+        "start_line": 265,
+        "header": "FieldLabel.HARDWARE.APN = APN",
+        "lines": []
+      },
+      {
+        "start_line": 266,
+        "header": "FieldLabel.HARDWARE.OPERADORA = Operadora",
+        "lines": []
+      },
+      {
+        "start_line": 267,
+        "header": "FieldLabel.HARDWARE.CODIGO_ACESSORIO = C\u00c3\u00b3digo Acess\u00c3\u00b3rio",
+        "lines": []
+      },
+      {
+        "start_line": 268,
+        "header": "FieldLabel.HARDWARE.DESCRICAO_ACESSORIO = Descri\u00c3\u00a7\u00c3\u00a3o Acess\u00c3\u00b3rio",
+        "lines": [
+          "",
+          "//APONTAMENTO SUB_OS MANUTEN\u00c3\u2021\u00c3\u0192O",
+          "EntityLabel.ApontamentoSubOSManut = Sub OS - Manuten\u00c3\u00a7\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 269,
+        "header": "FieldLabel.ApontamentoSubOSManut.subOS = Sub OS - Manuten\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 270,
+        "header": "FieldLabel.ApontamentoSubOSManut.hardware = Hardware",
+        "lines": []
+      },
+      {
+        "start_line": 271,
+        "header": "FieldLabel.ApontamentoSubOSManut.equipamento = Equipamento",
+        "lines": []
+      },
+      {
+        "start_line": 272,
+        "header": "FieldLabel.ApontamentoSubOSManut.hwFalhaIdentificada = Falha Identificada",
+        "lines": []
+      },
+      {
+        "start_line": 273,
+        "header": "FieldLabel.ApontamentoSubOSManut.hwSolucao = Solu\u00c3\u00a7\u00c3\u00a3o Aplicada",
+        "lines": []
+      },
+      {
+        "start_line": 274,
+        "header": "FieldLabel.ApontamentoSubOSManut.fotoFalha = Registrar Falha Identificada?",
+        "lines": []
+      },
+      {
+        "start_line": 275,
+        "header": "FieldLabel.ApontamentoSubOSManut.chamado = Chamado",
+        "lines": [
+          "",
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoFalha = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoFalha = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 276,
+        "header": "FieldLabel.ApontamentoSubOSManut.fotoSolucao = Registrar Solu\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.fotoSolucao = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.fotoSolucao = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 277,
+        "header": "FieldLabel.ApontamentoSubOSManut.finalizaSubOS = Deseja Encerrar a Sub OS?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.finalizaSubOS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.finalizaSubOS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 278,
+        "header": "FieldLabel.ApontamentoSubOSManut.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 279,
+        "header": "FieldLabel.ApontamentoSubOSManut.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.registraOBS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.registraOBS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 280,
+        "header": "FieldLabel.ApontamentoSubOSManut.flagTroca = Algum item foi trocado?",
+        "lines": []
+      },
+      {
+        "start_line": 281,
+        "header": "FieldLabel.ApontamentoSubOSManut.flagTrocaMotivo = Qual o motivo da troca?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.flagTrocaMotivo = MAU USO",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.flagTrocaMotivo = DESGASTE"
+        ]
+      },
+      {
+        "start_line": 282,
+        "header": "FieldLabel.ApontamentoSubOSManut.identificacaoCliente = Respons\u00c3\u00a1vel",
+        "lines": []
+      },
+      {
+        "start_line": 283,
+        "header": "FieldLabel.ApontamentoSubOSManut.assinatura = Assinatura Respons\u00c3\u00a1vel",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 284,
+        "header": "FieldLabel.ApontamentoSubOSManut.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSManut.flagSubOS = Com Sub OS",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSManut.flagSubOS = Sem Sub OS"
+        ]
+      },
+      {
+        "start_line": 285,
+        "header": "FieldLabel.ApontamentoSubOSManut.finalizaLoop = N\u00c3\u00a3o Existe Sub OS para ser Apontada! Deseja Realizar uma Manuten\u00c3\u00a7\u00c3\u00a3o N\u00c3\u00a3o Agendada?",
+        "lines": [
+          "",
+          "//APONTAMENTO FOTO SUB_OS Manut",
+          "EntityLabel.ApontamentoFotoSubOS = Sub OS - Foto Manuten\u00c3\u00a7\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 286,
+        "header": "FieldLabel.ApontamentoFotoSubOS.foto = Foto",
+        "lines": []
+      },
+      {
+        "start_line": 287,
+        "header": "FieldLabel.ApontamentoFotoSubOS.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoFotoSubOS.registraOBS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoFotoSubOS.registraOBS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 288,
+        "header": "FieldLabel.ApontamentoFotoSubOS.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 289,
+        "header": "FieldLabel.ApontamentoFotoSubOS.novaFoto = Registrar Nova Foto?",
+        "lines": [
+          "",
+          "//APONTAMENTO SUB_OS INSTALA\u00c3\u2021\u00c3\u0192O",
+          "EntityLabel.ApontamentoSubOSInstall = Sub OS - Instala\u00c3\u00a7\u00c3\u00a3o"
+        ]
+      },
+      {
+        "start_line": 290,
+        "header": "FieldLabel.ApontamentoSubOSInstall.subOS = Sub OS - Instala\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 291,
+        "header": "FieldLabel.ApontamentoSubOSInstall.hardware = Hardware",
+        "lines": []
+      },
+      {
+        "start_line": 292,
+        "header": "FieldLabel.ApontamentoSubOSInstall.equipamento = Equipamento",
+        "lines": []
+      },
+      {
+        "start_line": 293,
+        "header": "FieldLabel.ApontamentoSubOSInstall.fotoInstall = Registrar Instala\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 294,
+        "header": "FieldLabel.ApontamentoSubOSInstall.chamado = Chamado",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.fotoInstall = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.fotoInstall = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 295,
+        "header": "FieldLabel.ApontamentoSubOSInstall.finalizaSubOS = Deseja Encerrar a Sub OS?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.finalizaSubOS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.finalizaSubOS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 296,
+        "header": "FieldLabel.ApontamentoSubOSInstall.identificacaoCliente = Respons\u00c3\u00a1vel",
+        "lines": []
+      },
+      {
+        "start_line": 297,
+        "header": "FieldLabel.ApontamentoSubOSInstall.assinatura = Assinatura Respons\u00c3\u00a1vel",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 298,
+        "header": "FieldLabel.ApontamentoSubOSInstall.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.flagSubOS = Com Sub OS",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.flagSubOS = Sem Sub OS"
+        ]
+      },
+      {
+        "start_line": 299,
+        "header": "FieldLabel.ApontamentoSubOSInstall.finalizaLoop = N\u00c3\u00a3o Existe Sub OS para ser Apontada! Deseja Realizar uma Instala\u00c3\u00a7\u00c3\u00a3o N\u00c3\u00a3o Agendada?",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 300,
+        "header": "FieldLabel.ApontamentoSubOSInstall.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 301,
+        "header": "FieldLabel.ApontamentoSubOSInstall.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSInstall.registraOBS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSInstall.registraOBS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 302,
+        "header": "FieldLabel.ApontamentoFotoSubOSInstall.foto = Foto",
+        "lines": []
+      },
+      {
+        "start_line": 303,
+        "header": "FieldLabel.ApontamentoFotoSubOSInstall.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoFotoSubOSInstall.registraOBS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoFotoSubOSInstall.registraOBS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 304,
+        "header": "FieldLabel.ApontamentoFotoSubOSInstall.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 305,
+        "header": "FieldLabel.ApontamentoFotoSubOSInstall.novaFoto = Registrar Nova Foto?",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 306,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.subOS = Sub OS - Desmobiliza\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 307,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.hardware = Hardware",
+        "lines": []
+      },
+      {
+        "start_line": 308,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.equipamento = Equipamento",
+        "lines": []
+      },
+      {
+        "start_line": 309,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = Registrar Desmobiliza\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 310,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.chamado = Chamado",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.fotoDesmobilizacao = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 311,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = Deseja Encerrar a Sub OS?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.finalizaSubOS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 312,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.identificacaoCliente = Respons\u00c3\u00a1vel",
+        "lines": []
+      },
+      {
+        "start_line": 313,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.assinatura = Assinatura Respons\u00c3\u00a1vel",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 314,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Apontar Com Sub OS ou Sem Sub OS?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Com Sub OS",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.flagSubOS = Sem Sub OS"
+        ]
+      },
+      {
+        "start_line": 315,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.finalizaLoop = N\u00c3\u00a3o Existe Sub OS para ser Apontada! Deseja Realizar uma Instala\u00c3\u00a7\u00c3\u00a3o N\u00c3\u00a3o Agendada?",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 316,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 317,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.registraOBS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.registraOBS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 318,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.pendencia = Descreva a pend\u00c3\u00aancia",
+        "lines": []
+      },
+      {
+        "start_line": 319,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = Registrar alguma pend\u00c3\u00aancia da Desmobiliza\u00c3\u00a7\u00c3\u00a3o?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoSubOSDesmobilizacao.registraPendencia = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 320,
+        "header": "FieldLabel.ApontamentoFotoSubOSDesmobilizacao.foto = Foto",
+        "lines": []
+      },
+      {
+        "start_line": 321,
+        "header": "FieldLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = Registrar Observa\u00c3\u00a7\u00c3\u00a3o da Foto?",
+        "lines": [
+          "BooleanInputScreenYesActionLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = SIM",
+          "BooleanInputScreenNoActionLabel.ApontamentoFotoSubOSDesmobilizacao.registraOBS = N\u00c3\u0192O"
+        ]
+      },
+      {
+        "start_line": 322,
+        "header": "FieldLabel.ApontamentoFotoSubOSDesmobilizacao.observacao = Observa\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 323,
+        "header": "FieldLabel.ApontamentoFotoSubOSDesmobilizacao.novaFoto = Registrar Nova Foto?",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 324,
+        "header": "FieldLabel.ResumoSubOS.CODIGO = C\u00c3\u00b3digo Sub OS",
+        "lines": []
+      },
+      {
+        "start_line": 325,
+        "header": "FieldLabel.ResumoSubOS.DESCRICAO = Descri\u00c3\u00a7\u00c3\u00a3o",
+        "lines": []
+      },
+      {
+        "start_line": 326,
+        "header": "FieldLabel.ResumoSubOS.DATA_ABERTURA = Aberta Em",
+        "lines": []
+      },
+      {
+        "start_line": 327,
+        "header": "FieldLabel.ResumoSubOS.TIPO_SUB_OS = Tipo Sub OS",
+        "lines": []
+      },
+      {
+        "start_line": 328,
+        "header": "FieldLabel.ResumoSubOS.EQP_DESC = Equipamento",
+        "lines": []
+      },
+      {
+        "start_line": 329,
+        "header": "FieldLabel.ResumoSubOS.OS_DESC = Ordem Servi\u00c3\u00a7o",
+        "lines": []
+      },
+      {
+        "start_line": 330,
+        "header": "FieldLabel.ResumoSubOS.STATUS_SUB_OS_DESC = Status Sub OS",
+        "lines": [
+          "",
+          "//AGENDAMENTO DE OS",
+          "EntityLabel.TipoListaOS = Apontar OS",
+          "EntityLabel.DiaListaOS = Agenda"
+        ]
+      },
+      {
+        "start_line": 331,
+        "header": "FieldLabel.ApontamentoSubOSInstall.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 332,
+        "header": "FieldLabel.ApontamentoBNC.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 333,
+        "header": "FieldLabel.ApontamentoDeslocamento.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 334,
+        "header": "FieldLabel.ApontamentoEquipamento.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 335,
+        "header": "FieldLabel.ApontamentoMarteFim.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 336,
+        "header": "FieldLabel.ApontamentoMarteFimAssinatura.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 337,
+        "header": "FieldLabel.ApontamentoMarteFoto.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 338,
+        "header": "FieldLabel.ApontamentoMarteInicio.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 339,
+        "header": "FieldLabel.ApontamentoMarteInicioHorimetro.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 340,
+        "header": "FieldLabel.ApontamentoServico.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 341,
+        "header": "FieldLabel.ApontamentoSubOSDesmobilizacao.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      },
+      {
+        "start_line": 342,
+        "header": "FieldLabel.ApontamentoSubOSManut.motivoDesconectado = Motivo da desconex\u00c3\u00a3o?",
+        "lines": []
+      }
+    ],
+    "count": 342
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoApontamentoDetail.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoApontamento",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=tipoApontamento,descricao,dataInicial,dataFinal,duracao labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "recordList getRecords=_resumoTotal",
+        "lines": []
+      },
+      {
+        "start_line": 5,
+        "header": "recordDetail fields=duracaoServico,duracaoParada,duracaoDeslocamento labels",
+        "lines": []
+      },
+      {
+        "start_line": 6,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "\t\t\t_resumoApontamento = Select * FROM ResumoApontamento",
+          "\t\t\t_resumoTotal = Select * FROM ResumoTotal",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoApontamento = null",
+          "\t\t\t_resumoTotal = null"
+        ]
+      }
+    ],
+    "count": 6
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoApontamentoSemanalDetails.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoApontamentoSemanal",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=DIA,ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3 labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "\t\t\t_resumoApontamentoSemanal = select * from ResumoApontamentoSemanal",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoApontamentoSemanal = null"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoBancoHorasDetails.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoBancoHoras",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=SALDO,HORAS_TRABALHADAS labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "\t\t\t_resumoBancoHoras = select * from ResumoBancoHoras",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoBancoHoras = null"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoBNCDetail.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoBNC",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=descricaoAtividade,ordemServico,dataInicial,equipamento,irregularidade,tratativa,cliente labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "\t\t\t_resumoBNC = Select * FROM ResumoBNC",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoBNC = null"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoEspelhoLapsoDetails.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoEspelhoLapso",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "\t\t\t_resumoEspelhoLapso = select * from ResumoEspelhoLapso",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoEspelhoLapso = null"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoEspelhoPontoDetails.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoEspelhoPonto",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=DATA,ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3,HORAS_A_TRABALHAR,HORAS_TRABALHADAS,HORAS_EXTRAS labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "\t\t\t_resumoEspelhoPonto = select * from ResumoEspelhoPonto",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoEspelhoPonto = null",
+          "        defineRowColor entity=ResumoEspelhoPonto",
+          "            if FALTOU_HORAS == 1",
+          "                return @#ffb6b6",
+          "            if FALTOU_HORAS == 0",
+          "                return @#a1ffa7"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoLapsosSemanalDetails.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoLapsosSemanal",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "\t\t\t_resumoLapsosSemanal = select * from ResumoLapsosSemanal",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoLapsosSemanal = null"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoPontoDetail.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoPontoPainel ResumoPontoPainel",
+        "lines": [
+          ""
+        ]
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3,HORAS_A_TRABALHAR,SUJESTAO_SAIDA labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "            sync",
+          "\t\t\t_resumoPontoPainel = select * from ResumoPontoPainel",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoPontoPainel = null"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoSubOSDetail.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoSubOS",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=OS_DESC,CODIGO,DESCRICAO,DATA_ABERTURA,TIPO_SUB_OS,OS_SEQ_DB,EQP_DESC,STATUS_SUB_OS_DESC labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeClose",
+          "\t\t\t_resumoSubOS = null"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_app_screens--ResumoTermoCautelarDetail.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "views",
+        "lines": []
+      },
+      {
+        "start_line": 2,
+        "header": "recordList getRecords=_resumoTermoCautelar",
+        "lines": []
+      },
+      {
+        "start_line": 3,
+        "header": "recordDetail fields=SEQ_DB_DEVICE,ordemServico,dataInicial,chamado,nomeRecebedor,matriculaRecebedor,eqpColetor,celular,email labels",
+        "lines": []
+      },
+      {
+        "start_line": 4,
+        "header": "events",
+        "lines": [
+          "\t\tbeforeInit",
+          "\t\t\t_resumoTermoCautelar = Select * FROM ResumoTermoCautelar",
+          "\t\tbeforeClose",
+          "\t\t\t_resumoTermoCautelar = null"
+        ]
+      }
+    ],
+    "count": 4
+  },
+  {
+    "file": "130123410--130123410_src_model--ApontamentoAdiantamento.xmv",
+    "blocks": [
+      {
+        "start_line": 1,
+        "header": "events",
+        "lines": [
+          "\t\tafterInsert",
+          "\t\t\tMenuAdiantamento a = menuAdiantamento",
+          "\t\t\ta.flagPrimeiroApontamento = 0",
+          "\t\t\tsave a",
+          "\t\t\tBoletim b = boletim",
+          "\t\t\tb.SEQ_DB_DEVICE_ADIANTAMENTO = SEQ_DB_DEVICE_ADIANTAMENTO",
+          "\t\t\tb.SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO = SEQ_DB_DEVICE_ADIANTAMENTO_GRUPO",
+          "\t\t\tb.flagRealizouAdiantamento = true",
+          "\t\t\tsave b",
+          "\tfieldEvents",
+          "\t\tfillCondition",
+          "\t\t\tapontar",
+          "\t\t\t\tif menuAdiantamento.flagPrimeiroApontamento == 1",
+          "\t\t\t\t\treturn false",
+          "\t\t\ttipoAdiantamento",
+          "\t\t\t\tif despesa.TIPO_DESPESA == 6",
+          "\t\t\t\t\treturn true",
+          "\t\t\t\treturn false",
+          "\t\t\tdataInicioViagem",
+          "\t\t\t\tif menuAdiantamento.flagPrimeiroApontamento == 1",
+          "\t\t\t\t\treturn true",
+          "\t\t\t\treturn false",
+          "\t\t\tdataFimViagem",
+          "\t\t\t\tif menuAdiantamento.flagPrimeiroApontamento == 1",
+          "\t\t\t\t\treturn true",
+          "\t\t\t\treturn false"
+        ]
+      }
+    ],
+    "count": 1
+  }
+]

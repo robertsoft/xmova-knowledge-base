@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 318123203--318123203_src_app_config--syncConfig
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

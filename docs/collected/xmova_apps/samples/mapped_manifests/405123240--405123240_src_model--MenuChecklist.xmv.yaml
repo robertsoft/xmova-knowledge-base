@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 405123240--405123240_src_model--MenuChecklist
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

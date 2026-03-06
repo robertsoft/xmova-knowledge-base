@@ -1,0 +1,32 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoSubOSDetail
+  labels:
+  - recordDetail fields=OS_DESC,CODIGO,DESCRICAO,DATA_ABERTURA,TIPO_SUB_OS,OS_SEQ_DB,EQP_DESC,STATUS_SUB_OS_DESC
+    labels
+pipeline:
+  tasks:
+  - id: get__resumoSubOS
+    name: get__resumoSubOS
+    run:
+      type: query
+      source: _resumoSubOS
+  - id: recorddetail_fields_2
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: OS_DESC
+    - name: CODIGO
+    - name: DESCRICAO
+    - name: DATA_ABERTURA
+    - name: TIPO_SUB_OS
+    - name: OS_SEQ_DB
+    - name: EQP_DESC
+    - name: STATUS_SUB_OS_DESC
+hooks:
+  beforeInit:
+  - _resumoSubOS: 'null'
+resources: []
+secrets: {}

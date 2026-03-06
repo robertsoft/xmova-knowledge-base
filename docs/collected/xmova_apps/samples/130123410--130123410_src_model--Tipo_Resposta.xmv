@@ -1,0 +1,7 @@
+Tipo_Resposta sync=in emptyVerify=false
+	SEQ_DB long hide
+	DESCRICAO Str
+	FLAG_OBSERVACAO boolean
+	FLAG_FOTO boolean
+	FLAG_EMAIL boolean
+	server name=Tipo_Resposta_Mobile

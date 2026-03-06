@@ -1,0 +1,36 @@
+ApontamentoChecklist cleanupDays=7 notSavedMessage
+	id inc ignoreExternal
+	menuChecklist MenuChecklist ignoreExternal
+	boletim_rh Boletim_RH ignoreExternal
+	data Now ignoreExternal
+	equipamento Equipamento autoFill=menuChecklist.equipamento
+	descricaoEquipamento Str autoFill=equipamento.DESCRICAO
+	eqp_Classe Eqp_Classe autoFill=equipamento.EQP_CLASSE_SEQ_DB
+	apontar boolean ignoreExternal
+	todosApontados boolean notShowNo notShowYes fillCondition="apontar == false" ignoreExternal
+	funcionario Efetivo_funcionario autoFill=boletim_rh.efetivo_funcionario
+	descFuncionario Str autoFill=funcionario.NOME
+	grupo_questao Grupo_Questao fillCondition="apontar == true" ignoreExternal
+	grupoDescricao Str autoFill=grupo_questao.DESCRICAO
+	responderQuestoes boolean notShowNo ignoreExternal
+	respostas List<Resposta> getManyRecords="select * from Questao WHERE CHECK_GRUPO_QUESTAO_SEQ_DB == :grupo_questao.SEQ_DB and flagRespondido == false and :equipamento in EQP_LOVN order by ORDEM" fillCondition="apontar == true" ignoreExternal
+	fieldEvents
+		autoFill
+			boletim_rh
+				Boletim_RH b = selectLast FROM Boletim_RH
+				return b
+			apontar
+				Integer responderChecklist = 0
+				Questao questoes = Select * FROM Questao WHERE :equipamento in EQP_LOVN
+				for q in questoes
+					ChecklistPreenchido q3 = SelectFirst FROM ChecklistPreenchido WHERE equipamento == :equipamento.SEQ_DB AND questao == q.SEQ_DB
+					if q3 == null
+						responderChecklist = 1
+				return responderChecklist == 1
+		filterListRecord
+			grupo_questao
+				ChecklistPreenchido q3 = SelectFirst FROM ChecklistPreenchido WHERE grupo_questao == listRecord.SEQ_DB and equipamento == :equipamento.SEQ_DB
+				return q3 == null
+		getInputScreenLabel
+			responderQuestoes
+				return lang=custom.msgResponderQuestoes vars=grupo:grupoDescricao

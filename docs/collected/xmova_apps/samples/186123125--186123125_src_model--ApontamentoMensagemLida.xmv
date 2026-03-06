@@ -1,0 +1,9 @@
+ApontamentoMensagemLida sync=out cleanupDays=7 notSavedMessage
+	id inc
+	SEQ_DB_DEVICE long uuid
+	data Now timeTypeField=tipoData	
+	flagOnline int notFill onlineFlagCreate
+	locationMensagemLida Location inlineData
+	SEQ_DB long
+	ATIVO int
+	server name=Eqp_Apt_Mensagem_Lida

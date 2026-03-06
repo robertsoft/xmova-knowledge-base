@@ -1,0 +1,9 @@
+Main main entity=AuthInput fields=descricaoEmpresa,descricaoFilial,descricaoLocal,nomeFuncionario
+	actions
+		Iniciar Ok
+			sync
+			Integer resultadoListaVazia= verifyEmptyEntity
+			if resultadoListaVazia == 0
+				crud Boletim
+		Sair Back
+			exit

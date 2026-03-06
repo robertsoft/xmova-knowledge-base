@@ -1,0 +1,24 @@
+ApontamentoAdiantamentoEmail sync=out cleanupDays=7
+	id inc
+	apontar boolean notShowNo
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE_MASTER long autofill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long autofill=boletim.SEQ_DB_DEVICE_ADIANTAMENTO
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	produto PRODUTO autoFill=ordemServico.PRODUTO_SEQ_DB fillCondition="ordemServico.PRODUTO_SEQ_DB != null"
+	cliente long autoFill=boletim.cliente
+	events
+		afterInsert
+			Boletim b = boletim
+			b.SEQ_DB_DEVICE_ADIANTAMENTO = null
+			b.flagRealizouAdiantamento = false
+			save b
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast from Boletim
+//LISTA DE PRESENCA

@@ -1,0 +1,37 @@
+ApontamentoEquipamento sync=out cleanupDays=7 confirm=Finish
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	pedeMarte boolean
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico hide
+	cliente long autoFill=boletim.cliente
+	projeto long autoFill=boletim.projeto
+	clienteLocal long autoFill=boletim.clienteLocal
+	frota Str
+	classificacao Classificacao_Equipamento
+	marca MARCA
+	modelo MODELO
+	tipoEquipamento TIPO_EQUIPAMENTO
+	classeOperacional CLASSE_OPERACIONAL
+	flagProprio FlagProprio_Equipamento
+	marte _MARTE_STATUS inlineData
+	flagMarteConectado boolean notFill
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	fieldEvents
+		afterFill
+			marte
+				if marte == null
+					flagMarteConectado = 0
+				else
+					flagMarteConectado = 1
+		autoFill
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false

@@ -1,0 +1,12 @@
+ResumoBNC cleanupDays=7
+	id inc
+	SEQ_DB_DEVICE long
+	descricaoAtividade Str
+	ordemServico ORDEM_SERVICO
+	dataInicial Date
+	equipamento EQUIPAMENTO_LIST
+	irregularidade Str
+	tratativa Str
+	cliente Str
+//----------------FIM BNC----------------------------------------
+//-------------- NOVOS APONTAMENTOS -----------------------------

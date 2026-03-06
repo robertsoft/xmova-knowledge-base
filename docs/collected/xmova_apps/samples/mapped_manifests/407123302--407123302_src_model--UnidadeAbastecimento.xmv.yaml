@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 407123302--407123302_src_model--UnidadeAbastecimento
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

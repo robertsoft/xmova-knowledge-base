@@ -1,0 +1,5 @@
+Local sync=beforeInstall
+	SEQ_DB long 
+	NOME Str
+	TIMEZONE Str
+	FILIAL_SEQ_DB Filial

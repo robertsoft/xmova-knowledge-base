@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 438123250--438123250_src_model--TipoMobilizacao
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

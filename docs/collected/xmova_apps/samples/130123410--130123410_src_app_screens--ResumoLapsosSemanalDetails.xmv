@@ -1,0 +1,9 @@
+ResumoLapsosSemanalDetails tableLayout title="LAPSOS DA SEMANA"
+	views
+		recordList getRecords=_resumoLapsosSemanal 
+			recordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels
+	events
+		beforeInit
+			_resumoLapsosSemanal = select * from ResumoLapsosSemanal
+		beforeClose
+			_resumoLapsosSemanal = null

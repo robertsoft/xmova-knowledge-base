@@ -1,0 +1,3 @@
+Empresa sync=beforeInstall
+	SEQ_DB int hide
+	NOME Str

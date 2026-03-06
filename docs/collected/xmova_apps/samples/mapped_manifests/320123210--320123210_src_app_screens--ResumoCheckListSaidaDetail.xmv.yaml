@@ -1,0 +1,34 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123210--320123210_src_app_screens--ResumoCheckListSaidaDetail
+pipeline:
+  tasks:
+  - id: get__checklistRespondido
+    name: get__checklistRespondido
+    run:
+      type: resource_query
+      resource: _checklistRespondido
+  - id: query__checklistRespondido
+    name: query__checklistRespondido
+    run:
+      type: sql
+      sql: select * from ResumoCheckListSaida
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: grupoQuestaoDesc
+    - name: descricaoQuestao
+    - name: tipoResposta
+    - name: informarHorimetro
+hooks:
+  beforeInit:
+  - _checklistRespondido: select * from ResumoCheckListSaida
+  - _checklistRespondido: 'null'
+resources:
+- name: _checklistRespondido
+  type: sql
+  sql: select * from ResumoCheckListSaida
+secrets: {}

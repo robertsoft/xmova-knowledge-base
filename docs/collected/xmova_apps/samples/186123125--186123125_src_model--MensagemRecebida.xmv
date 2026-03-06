@@ -1,0 +1,14 @@
+MensagemRecebida sync=backgroundIn emptyVerify=false
+	SEQ_DB long hide
+	DATA Str
+	DESCRICAO Str
+	REMETENTE Str
+	server name=Mensagem_Equipamento_Mobile
+	events
+		beforeSyncSave
+			ApontamentoMensagemLida l = selectFirst FROM ApontamentoMensagemLida WHERE SEQ_DB == :SEQ_DB
+			if l != null
+				DELETE FROM MensagemRecebida WHERE SEQ_DB == l.SEQ_DB
+				return false
+		AfterSyncFinish
+			show MessageScr

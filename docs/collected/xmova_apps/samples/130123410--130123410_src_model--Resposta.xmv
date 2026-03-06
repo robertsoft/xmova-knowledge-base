@@ -1,0 +1,43 @@
+Resposta sync=out cleanupDays=7
+	id inc
+	questao Questao notFill
+	SEQ_DB_QUESTAO long autoFill=questao.SEQ_DB
+	grupoQuestao long autoFill=questao.GRUPO_QUESTAO_SEQ_DB
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE_MARTE long autoFill=boletim.SEQ_DB_DEVICE_MARTE
+	SEQ_DB_DEVICE_APONTAMENTO long autoFill=boletim.SEQ_DB_DEVICE_DESLOCAMENTO
+	SEQ_DB_DEVICE_BNC long
+	SEQ_DB_DEVICE long uuid
+	data now
+	descricaoResposta Str autoFill=questao.DESCRICAO
+	tipoResposta Tipo_Resposta getInputScreenLabel=":descricaoResposta" notBack
+	observacao text maxLength=500 fillCondition="tipoResposta.FLAG_OBSERVACAO == true"
+	binaryId Binary picture fillCondition="tipoResposta.FLAG_FOTO == true"
+	FLAG_EMAIL boolean autoFill=tipoResposta.FLAG_EMAIL
+	server name=ApontamentoRespostaMarte
+	events
+		afterInsert
+			UPDATE Questao SET flagRespondido = true WHERE SEQ_DB == :SEQ_DB_QUESTAO
+			if FLAG_EMAIL == true
+				Boletim b = boletim
+				b.flagEmailChecklist = true
+				save b
+	fieldEvents
+		autoFill
+			boletim
+				return SelectLast FROM Boletim
+			SEQ_DB_DEVICE_BNC
+				Grupo_Questao g = SelectLast FROM Grupo_Questao WHERE SEQ_DB == :grupoQuestao
+				if g.TIPO == 6 //itens trocados BNC
+					Boletim b = SelectLast FROM Boletim
+					return b.SEQ_DB_DEVICE_BNC
+				return null
+		filterListRecord
+			tipoResposta
+				if listRecord.SEQ_DB in questao.TIPO_RESPOSTA_LOVN
+					return true
+				return false
+//------------------------CHECKLIST FIM----------------------
+//------------------------OS AGENDADA----------------------

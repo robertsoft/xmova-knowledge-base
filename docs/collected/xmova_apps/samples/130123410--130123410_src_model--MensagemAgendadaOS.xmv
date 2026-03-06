@@ -1,0 +1,8 @@
+MensagemAgendadaOS sync=backgroundIn emptyVerify=false messageScheduled
+	id int
+	title Str
+	text Str
+	hour Str
+	date Str
+	server name=Mensagem_OS_Agendada_Mobile
+//Definição do tipo usado em fotos

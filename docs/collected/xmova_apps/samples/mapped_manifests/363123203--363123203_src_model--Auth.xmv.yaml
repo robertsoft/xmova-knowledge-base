@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 363123203--363123203_src_model--Auth
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

@@ -1,0 +1,3 @@
+TipoMarte
+	id int
+	desc Str

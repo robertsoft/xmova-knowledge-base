@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 396123302--396123302_src_model--ApontamentoRecebimento
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

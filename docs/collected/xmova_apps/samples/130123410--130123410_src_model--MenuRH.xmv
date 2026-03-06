@@ -1,0 +1,13 @@
+MenuRH notSavedMessage noFinishAction noSyncAction
+    SEQ_DB_DEVICE long uuid
+    crudActions
+		MenuResumoPonto
+			crud MenuResumoPonto
+		MenuResumoLapso
+			crud MenuResumoLapso
+        Voltar
+			CrudBack entity=MenuRH
+			// MenuRH mrh = SelectLast from MenuRH
+			// log "Returning from MenuRH"
+			// log mrh
+			// finishRecord mrh

@@ -1,0 +1,13 @@
+ResumoSubOS sync=in emptyVerify=false
+	SEQ_DB long
+	CODIGO String
+	DESCRICAO String
+	DATA_ABERTURA String
+	TIPO_SUB_OS String
+	EQP_DESC String
+	OS_SEQ_DB long
+	OS_DESC String
+	STATUS_SUB_OS_DESC String
+	STATUS_SUB_OS int
+	server name=Resumo_Sub_OS_Mobile
+//-------------- NOVOS APONTAMENTOS -----------------------------	

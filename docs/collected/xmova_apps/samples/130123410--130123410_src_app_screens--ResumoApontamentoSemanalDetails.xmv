@@ -1,0 +1,9 @@
+ResumoApontamentoSemanalDetails tableLayout title="PONTOS DA SEMANA"
+	views
+		recordList getRecords=_resumoApontamentoSemanal 
+			recordDetail fields=DIA,ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3 labels
+	events
+		beforeInit
+			_resumoApontamentoSemanal = select * from ResumoApontamentoSemanal
+		beforeClose
+			_resumoApontamentoSemanal = null

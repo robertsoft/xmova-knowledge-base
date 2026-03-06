@@ -1,0 +1,56 @@
+ApontamentoMarteFoto sync=out cleanupDays=7
+	id inc
+	seqFuncionario SeqFuncionario hide
+	menuMarteFoto MenuMarteFoto
+	boletim Boletim hide
+	equipamento EQUIPAMENTO_LIST hide
+	flagApontarNovo boolean notShowNo ignoreExternal
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE_MARTE long autoFill=boletim.SEQ_DB_DEVICE_MARTE
+	SEQ_DB_DEVICE long uuid
+	pedeMarte boolean ignoreExternal
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	data Now timeTypeField=tipoData
+	marte _MARTE_STATUS inlineData
+	flagMarteConectado boolean notFill
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	foto Binary picture
+	observacao text
+	motivoDesconectado text fillCondition="flagMarteConectado == 0 && pedeMarte == true"
+	server name=Apontamento_Marte_Foto
+	events
+		afterInsert
+			MenuMarteFoto m = menuMarteFoto
+			m.apresentarFlagApontarNovo = true
+			save m
+			Boletim b = boletim
+			b.flagMarteFotoApontada = true
+			save b
+	fieldEvents
+		autoFill
+			menuMarteFoto
+				return SelectLast from MenuMarteFoto
+			boletim
+				return SelectLast from Boletim
+			equipamento
+                ApontamentoMarteInicio apontamentoMarte = SelectLast from ApontamentoMarteInicio
+                return apontamentoMarte.equipamento
+			pedeMarte
+				ConectarMarte p = SelectLast From ConectarMarte
+				if p != null
+					return true
+				return false
+		filterListRecord
+			equipamento
+				return listRecord.CLIENTE_SEQ_DB == ordemServico.CLIENTE_SEQ_DB
+		fillCondition
+			flagApontarNovo
+				return menuMarteFoto.apresentarFlagApontarNovo == true
+		afterFill
+			marte
+				if marte == null
+					flagMarteConectado = 0
+				else
+					flagMarteConectado = 1

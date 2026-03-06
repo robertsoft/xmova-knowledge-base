@@ -1,0 +1,9 @@
+ResumoEspelhoLapsoDetails tableLayout title="ESPELHO DE LAPSO"
+	views
+		recordList getRecords=_resumoEspelhoLapso 
+			recordDetail fields=DATA_REAL,horarioPonto,STATUS,MOTIVO labels
+	events
+		beforeInit
+			_resumoEspelhoLapso = select * from ResumoEspelhoLapso
+		beforeClose
+			_resumoEspelhoLapso = null

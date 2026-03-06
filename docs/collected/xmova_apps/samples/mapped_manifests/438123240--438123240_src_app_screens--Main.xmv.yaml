@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 438123240--438123240_src_app_screens--Main
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

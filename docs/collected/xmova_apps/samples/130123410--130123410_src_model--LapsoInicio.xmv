@@ -1,0 +1,64 @@
+LapsoInicio notSavedMessage
+	boletim Boletim
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	SEQ_DB_DEVICE long uuid
+	vigencia Vigencia_Banco autoFill=boletim.vigencia
+	funcionario Funcionario autoFill=boletim.funcionario
+	seqFuncionario SeqFuncionario autoFill=boletim.seqFuncionario
+
+	FUNCIONARIO_SEQ_DB int autoFill=funcionario.SEQ_DB
+	location Location inlineData
+	dataSolicitacao Now
+
+	lapso Boolean notShowNo notBack
+	
+	novoHorario Date onlytime
+	dataLapso Date
+
+	justificativa Justificativa
+	confirmaLapso boolean notShowNo
+
+	dataLapsoAux String notFill ignoreExternal
+	dataLapsoAux2 String notFill ignoreExternal
+	// registrarPonto ApontamentoPonto transient notFill add ignoreExternal hide
+
+	events
+		afterInsert
+			INSERT INTO LapsoEnvio (SEQ_DB_DEVICE_MASTER, SEQ_DB_DEVICE,novoHorario, justificativa, tipoLapso, dataSolicitacao, funcionario, vigencia, seqFuncionario) VALUES (:SEQ_DB_DEVICE_MASTER, :SEQ_DB_DEVICE, :dataLapso, :justificativa, 0, :dataSolicitacao, :funcionario, :vigencia, :seqFuncionario)
+			toast @"Lapso enviado"
+	fieldEvents
+		autoFill
+			dataLapso
+				MarcacoesData data3 = SelectLast from MarcacoesData
+				String dataStr = DateFormat @"dd/MM/yyyy" data3.INI_DH
+				
+				String horaStr = DateFormat @"HH:mm:ss" novoHorario
+				String espaco = @" "
+				dataLapsoAux = @
+				dataLapsoAux = concat dataLapsoAux dataStr
+				dataLapsoAux = concat dataLapsoAux espaco
+				dataLapsoAux = concat dataLapsoAux horaStr
+				return dataLapsoAux
+		getInputScreenLabel
+			lapso
+				MarcacoesData data2 = SelectLast from MarcacoesData
+				MarcacoesPonto ponto2 = SELECT * FROM MarcacoesPonto WHERE DATA == data2.DATA
+				String dataStr = DateFormat @"dd/MM/yyyy" data2.INI_DH
+
+				String lapsoMsg = @"Identificado pontos faltantes, favor verificar!"
+				lapsoMsg = concat lapsoMsg @"\n\nData: " 
+				lapsoMsg = concat lapsoMsg dataStr
+				lapsoMsg = concat lapsoMsg @"\n\nPontos registrados:"
+				
+				if ponto2 != null
+					for p in ponto2
+						lapsoMsg = concat lapsoMsg @"\n" 
+						lapsoMsg = concat lapsoMsg p.HORA
+				return lapsoMsg
+			confirmaLapso
+				String confirma2 = @"Confirma o lapso:\n\n"
+				confirma2 = concat confirma2 @"Data/hora:  "
+				confirma2 = concat confirma2 :dataLapso
+				confirma2 = concat confirma2 @"\n\nEsse registro não será lançado automaticamente na folha de ponto. Ele será apenas encaminhado ao RH para conferência e inclusão no sistema, se aprovado."
+				return confirma2
+

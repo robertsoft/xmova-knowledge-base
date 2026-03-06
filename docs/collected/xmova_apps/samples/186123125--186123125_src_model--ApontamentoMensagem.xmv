@@ -1,0 +1,12 @@
+ApontamentoMensagem sync=out cleanupDays=7
+	id inc
+	SEQ_DB_DEVICE_MASTER long
+	SEQ_DB_DEVICE long uuid
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	locationMensagem Location inlineData
+	efetivo_funcionario long 
+	SEQ_DB_MENSAGEM_CADASTRO long
+	DESCRICAO Str
+	equipamento long
+	server name=EQP_APT_MENSAGEM

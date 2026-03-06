@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 318123202--318123202_src_model--ApontamentoAtividade
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 396123240--396123240_src_model--SeqOperador
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

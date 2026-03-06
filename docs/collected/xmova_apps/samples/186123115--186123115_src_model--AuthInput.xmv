@@ -1,0 +1,17 @@
+AuthInput notSavedMessage
+	idEmpresa Empresa
+	descricaoEmpresa Str autoFill=idEmpresa.NOME
+	idFilial Filial autoFillWhenOneItem
+	idLocal Local autoFillWhenOneItem
+	idChaveAcesso Str numerickeyboard notFormatThousand onlineValidate=chave
+//	idChaveAcesso Str notFormatThousand onlineValidate=chave
+	uuidDevice Str
+	fieldEvents
+		filterListRecord
+			idFilial
+				return listRecord.EMPRESA_SEQ_DB == :idEmpresa
+			idLocal
+				return listRecord.FILIAL_SEQ_DB == :idFilial
+		autoFill
+			uuidDevice
+				return getUuid

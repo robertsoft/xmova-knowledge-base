@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 363123203--363123203_src_model--ApontamentoProducaoFim
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

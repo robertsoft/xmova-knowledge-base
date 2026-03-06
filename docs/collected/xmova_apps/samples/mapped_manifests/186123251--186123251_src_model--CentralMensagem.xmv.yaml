@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123251--186123251_src_model--CentralMensagem
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

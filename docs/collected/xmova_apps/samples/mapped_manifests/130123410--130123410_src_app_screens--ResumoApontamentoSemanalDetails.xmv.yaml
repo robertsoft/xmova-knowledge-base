@@ -1,0 +1,39 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoApontamentoSemanalDetails
+  labels:
+  - recordDetail fields=DIA,ENTRADA,SAIDA,ENTRADA2,SAIDA2,ENTRADA3,SAIDA3 labels
+pipeline:
+  tasks:
+  - id: get__resumoApontamentoSemanal
+    name: get__resumoApontamentoSemanal
+    run:
+      type: resource_query
+      resource: _resumoApontamentoSemanal
+  - id: query__resumoApontamentoSemanal
+    name: query__resumoApontamentoSemanal
+    run:
+      type: sql
+      sql: select * from ResumoApontamentoSemanal
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: DIA
+    - name: ENTRADA
+    - name: SAIDA
+    - name: ENTRADA2
+    - name: SAIDA2
+    - name: ENTRADA3
+    - name: SAIDA3
+hooks:
+  beforeInit:
+  - _resumoApontamentoSemanal: select * from ResumoApontamentoSemanal
+  - _resumoApontamentoSemanal: 'null'
+resources:
+- name: _resumoApontamentoSemanal
+  type: sql
+  sql: select * from ResumoApontamentoSemanal
+secrets: {}

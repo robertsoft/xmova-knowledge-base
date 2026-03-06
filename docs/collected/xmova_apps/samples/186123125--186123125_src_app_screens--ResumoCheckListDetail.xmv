@@ -1,0 +1,9 @@
+ResumoCheckListDetail tableLayout title="Resumo CheckList"
+	views
+		recordList getRecords=_checklistRespondido
+			recordDetail fields=data,descricao,tipoResposta,quantidadeAbastecida,observacao,equipamento,funcionario labels
+	events
+		beforeInit
+			_checklistRespondido = select * from ResumoCheckList
+		beforeClose
+			_checklistRespondido = null

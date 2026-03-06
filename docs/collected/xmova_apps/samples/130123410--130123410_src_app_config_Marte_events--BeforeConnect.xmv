@@ -1,0 +1,4 @@
+ConectarMarte p = SelectLast From ConectarMarte
+if p != null
+    return true
+return false

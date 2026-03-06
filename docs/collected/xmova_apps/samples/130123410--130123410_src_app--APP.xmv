@@ -1,0 +1,14 @@
+App appCode=S offlineDate=Device
+	name SmartOS
+	install type=fillAuth inputEntity=AuthInput
+	bluetooth sender marte
+	logo name=smartos
+	camera resolution=720 quality=80
+	server
+		timeZoneProvider jsonServiceList path=types.records key=timezone filter=SEQ_DB:idLocal //url=%cmUrlLocal
+		versionControl Crc
+	syncConfig
+		syncInterval 5m
+		waitForNetworkTimeout 4s
+		connectionTimeout 30s
+		readTimeout 120s

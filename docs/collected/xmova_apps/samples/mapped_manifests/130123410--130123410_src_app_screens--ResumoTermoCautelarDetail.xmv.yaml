@@ -1,0 +1,41 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 130123410--130123410_src_app_screens--ResumoTermoCautelarDetail
+  labels:
+  - recordDetail fields=SEQ_DB_DEVICE,ordemServico,dataInicial,chamado,nomeRecebedor,matriculaRecebedor,eqpColetor,celular,email
+    labels
+pipeline:
+  tasks:
+  - id: get__resumoTermoCautelar
+    name: get__resumoTermoCautelar
+    run:
+      type: resource_query
+      resource: _resumoTermoCautelar
+  - id: query__resumoTermoCautelar
+    name: query__resumoTermoCautelar
+    run:
+      type: sql
+      sql: Select * FROM ResumoTermoCautelar
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: SEQ_DB_DEVICE
+    - name: ordemServico
+    - name: dataInicial
+    - name: chamado
+    - name: nomeRecebedor
+    - name: matriculaRecebedor
+    - name: eqpColetor
+    - name: celular
+    - name: email
+hooks:
+  beforeInit:
+  - _resumoTermoCautelar: 'null'
+resources:
+- name: _resumoTermoCautelar
+  type: sql
+  sql: Select * FROM ResumoTermoCautelar
+secrets: {}

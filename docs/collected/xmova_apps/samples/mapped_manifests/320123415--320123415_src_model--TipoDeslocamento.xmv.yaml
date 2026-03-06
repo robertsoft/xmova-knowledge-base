@@ -1,0 +1,9 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 320123415--320123415_src_model--TipoDeslocamento
+pipeline:
+  tasks: []
+hooks: {}
+resources: []
+secrets: {}

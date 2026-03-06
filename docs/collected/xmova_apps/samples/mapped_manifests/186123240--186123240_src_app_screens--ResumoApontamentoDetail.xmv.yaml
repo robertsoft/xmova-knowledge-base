@@ -1,0 +1,40 @@
+apiVersion: xmova/v1
+kind: Pipeline
+metadata:
+  name: 186123240--186123240_src_app_screens--ResumoApontamentoDetail
+  labels:
+  - recordDetail fields=equipamento,data,efetivo_funcionario,oper,acesso,alerta,observacao
+    labels
+pipeline:
+  tasks:
+  - id: get__lastApontamento
+    name: get__lastApontamento
+    run:
+      type: resource_query
+      resource: _lastApontamento
+  - id: query__lastApontamento
+    name: query__lastApontamento
+    run:
+      type: sql
+      sql: select * from ResumoApontamento
+  - id: recorddetail_fields_3
+    name: recorddetail_fields
+    run:
+      type: emit
+    outputs:
+    - name: equipamento
+    - name: data
+    - name: efetivo_funcionario
+    - name: oper
+    - name: acesso
+    - name: alerta
+    - name: observacao
+hooks:
+  beforeInit:
+  - _lastApontamento: select * from ResumoApontamento
+  - _lastApontamento: 'null'
+resources:
+- name: _lastApontamento
+  type: sql
+  sql: select * from ResumoApontamento
+secrets: {}

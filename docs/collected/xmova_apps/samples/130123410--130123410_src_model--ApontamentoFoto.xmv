@@ -1,0 +1,13 @@
+ApontamentoFoto sync=out cleanupDays=7
+	id inc
+	boletim Boletim hide
+	seqFuncionario SeqFuncionario hide
+	data Now timeTypeField=tipoData
+	flagOnline int notFill onlineFlagCreate
+	location Location inlineData hide
+	SEQ_DB_DEVICE long uuid
+	SEQ_DB_DEVICE_MASTER long autoFill=boletim.SEQ_DB_DEVICE
+	ordemServico ORDEM_SERVICO autoFill=boletim.ordemServico
+	cliente long autoFill=boletim.cliente
+	foto Binary picture
+	observacao text
