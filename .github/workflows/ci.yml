@@ -10,7 +10,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up shell
         run: chmod +x scripts/verify_repo.sh || true
       - name: Verify repository structure
